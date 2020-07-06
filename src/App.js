@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.css";
-import Auth from "./components/Auth/Auth";
-import Home from "./components/Home/Home";
-import PrivateRoute from "./containers/helper/PrivateRoute";
+import Auth from "./containers/Auth/Auth";
+import Home from "./containers/Home/Home";
+import PrivateRoute from "./components/helper/PrivateRoute";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // setIsAuthenticated(false)
   return (
     <div className="App">
       <BrowserRouter>
