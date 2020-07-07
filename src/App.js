@@ -1,32 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./App.css";
 import Auth from "./containers/Auth/Auth";
 import Home from "./containers/Home/Home";
 import PrivateRoute from "./components/helper/PrivateRoute";
 
-const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // setIsAuthenticated(false)
+const App = (props) => {
+  console.log(`Is authenticted: ${props.isAuthenticated}`);
+
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Switch>
-          <Route path="/auth" component={Auth} />
+          {/* <Route path="/auth" component={Auth} /> */}
           <PrivateRoute
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={props.isAuthenticated}
             path="/"
+            exact
             component={Home}
           />
+          <Route path="/auth" exact component={Auth} />
         </Switch>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.idToken !== null,
+  };
+};
 
+export default connect(mapStateToProps, null)(App);
 
 
 

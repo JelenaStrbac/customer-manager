@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import "./Auth.css";
 import "./Auth.scss";
@@ -7,8 +9,9 @@ import { checkValidity } from "../../components/helper/CheckValidity";
 import Button from "../../components/UI/Button/Button";
 import Logo from "../../components/Logo/Logo";
 import Icon from "../../components/UI/Icon/Icon";
+import * as actions from "../../store/actions";
 
-const Auth = () => {
+const Auth = (props) => {
   const [authForm, setAuthForm] = useState({
     email: {
       elementType: "input",
@@ -65,6 +68,11 @@ const Auth = () => {
     setAuthForm(updatedAuthForm);
   };
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    props.onAuth(authForm.email.value, authForm.password.value);
+  };
+
   const formElementsArray = [];
   for (let key in authForm) {
     formElementsArray.push({
@@ -74,11 +82,11 @@ const Auth = () => {
   }
 
   let form = (
-    <form className="Form" autoComplete="off">
+    <form className="Form" autoComplete="off" onSubmit={onSubmitHandler}>
       {formElementsArray.map((el, idx) => {
         return (
-          <div className="InputIcon">
-            <Icon key={idx} icon={el.config.icon} />
+          <div key={idx} className="InputIcon">
+            <Icon icon={el.config.icon} />
             <Input
               key={el.id}
               elementType={el.config.elementType}
@@ -96,6 +104,11 @@ const Auth = () => {
       <Button>LOGIN</Button>
     </form>
   );
+
+  if (props.isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="Auth">
       <Logo />
@@ -117,4 +130,18 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.auth.loading,
+    error: state.auth.error,
+    isAuthenticated: state.auth.idToken !== null,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => dispatch(actions.auth(email, password)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
