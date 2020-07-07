@@ -2,23 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-// import Button from "../../components/UI/Button/Button";
 import * as actions from "../../../store/actions";
 import Button from "../../../components/UI/Button/Button";
 
 const Logout = (props) => {
+  const onClickHandler = () => {
+    props.onLogout();
+  };
+
   return (
     <div className="Logout">
-      <Button clicked={props.onLogout}>LOGOUT</Button>
-      <Redirect to="/" />;
+      <Button clicked={onClickHandler}>LOGOUT</Button>
+      {props.isAuthenticated ? <Redirect to="/auth" /> : null}
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    onLogout: () => dispatch(actions.logoutSucced()),
+    isAuthenticated: state.auth.idToken !== null,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Logout);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: () => dispatch(actions.logout()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);
