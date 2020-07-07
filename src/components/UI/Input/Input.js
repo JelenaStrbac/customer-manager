@@ -26,6 +26,7 @@ const input = (props) => {
             {...props.elementConfig}
             value={props.value}
             onChange={props.changed}
+            placeholder={props.placeholder}
           />
           <label className={labelClass.join(" ")}>
             <span className={contentClass.join(" ")}>{props.label}</span>
@@ -47,6 +48,7 @@ const input = (props) => {
                   key={el.label}
                   autoComplete="off"
                   value={el.label}
+                  placeholder={props.placeholder}
                 />
                 <span className="Checkmark"></span>
               </label>
@@ -64,6 +66,7 @@ const input = (props) => {
             {...props.elementConfig}
             value={props.value}
             onChange={props.changed}
+            placeholder={props.placeholder}
           />
           <label className={labelClass.join(" ")}>
             <span className={contentClass.join(" ")}>{props.label}</span>

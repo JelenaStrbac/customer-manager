@@ -1,0 +1,10 @@
+$darkestBlue: #051e34;
+$darkerBlue: #083053;
+$lightBlue: #0e5491;
+$lightestBlue: #1580de;
+
+.Toolbar {
+  background-color: $darkestBlue;
+  grid-area: Toolbar;
+  padding: 2rem;
+}

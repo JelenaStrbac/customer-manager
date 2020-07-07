@@ -8,19 +8,18 @@ import Home from "./containers/Home/Home";
 import PrivateRoute from "./components/helper/PrivateRoute";
 
 const App = (props) => {
-  console.log(`Is authenticted: ${props.isAuthenticated}`);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          {/* <Route path="/auth" component={Auth} /> */}
-          <PrivateRoute
+          {/* <PrivateRoute
             isAuthenticated={props.isAuthenticated}
             path="/"
             exact
             component={Home}
-          />
+          /> */}
+          <Route path="/" exact component={Home} />
           <Route path="/auth" exact component={Auth} />
         </Switch>
       </div>

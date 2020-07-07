@@ -1,0 +1,40 @@
+$--theme-color-bg: #f6f7f9;
+$--theme-color-fg-primary: #1b3a57;
+$--theme-color-fg-secondary: #476282;
+$--theme-color-fg-tertiary: #476282;
+$--theme-color-fg-disabled: #8ea1b9;
+$--theme-color-fg-default-border: #c3cfdd;
+$--theme-color-fg-rgb: 71, 98, 130;
+
+$darkestBlue: #051e34;
+$darkerBlue: #083053;
+$lightBlue: #0e5491;
+$lightestBlue: #1580de;
+
+.CustomersList {
+  grid-area: Customer;
+  padding: 2rem;
+}
+
+.AddCustomerButton {
+  border: 1px solid $--theme-color-fg-default-border;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  color: $lightestBlue;
+  cursor: pointer;
+  width: 25%;
+  background-color: rgb(255, 255, 255);
+}
+
+.Plus {
+  font-size: 4rem;
+}
+
+.CustomersBreakdown {
+  margin-top: 4rem;
+}

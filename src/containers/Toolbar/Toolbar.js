@@ -1,13 +1,12 @@
 import React from "react";
 
-import "./Toolbar.css";
-import Logout from "../Auth/Logout/Logout";
+import "./Toolbar.scss";
+import Logo from "../../components/Logo/Logo";
 
 const Toolbar = () => {
   return (
     <div className="Toolbar">
-      Toolbar
-      <Logout />
+      <Logo/>
     </div>
   );
 };

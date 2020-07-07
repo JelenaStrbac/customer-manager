@@ -11,6 +11,7 @@ import Logo from "../../components/Logo/Logo";
 import Icon from "../../components/UI/Icon/Icon";
 import * as actions from "../../store/actions";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import ErrorMessage from "../../components/UI/ErrorMessage/ErrorMessage";
 
 const Auth = (props) => {
   const [authForm, setAuthForm] = useState({
@@ -110,12 +111,9 @@ const Auth = (props) => {
     form = <Spinner />;
   }
 
-  if (props.isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <div className="Auth">
+      {props.isAuthenticated ? <Redirect to="/" /> : null}
       <Logo />
       <div className="WelcomeAndForm">
         <div className="Welcome">
@@ -128,6 +126,9 @@ const Auth = (props) => {
           <div>
             <span className="LoginText">Login</span> to your account
           </div>
+          {props.error ? (
+            <ErrorMessage>{props.error.message}</ErrorMessage>
+          ) : null}
           {form}
         </div>
       </div>
