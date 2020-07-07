@@ -10,6 +10,7 @@ import Button from "../../components/UI/Button/Button";
 import Logo from "../../components/Logo/Logo";
 import Icon from "../../components/UI/Icon/Icon";
 import * as actions from "../../store/actions";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Auth = (props) => {
   const [authForm, setAuthForm] = useState({
@@ -104,6 +105,10 @@ const Auth = (props) => {
       <Button>LOGIN</Button>
     </form>
   );
+
+  if (props.isLoading) {
+    form = <Spinner />;
+  }
 
   if (props.isAuthenticated) {
     return <Redirect to="/" />;
