@@ -6,7 +6,7 @@ const Logo = (props) => {
   return (
     <div className="Logo">
       <svg
-        width="160"
+        width="120"
         height="45"
         viewBox="0 0 192 55"
         fill="none"

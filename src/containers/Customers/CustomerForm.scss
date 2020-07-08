@@ -1,0 +1,73 @@
+$--theme-color-bg: #f6f7f9;
+$--theme-color-fg-primary: #1b3a57;
+$--theme-color-fg-secondary: #476282;
+$--theme-color-fg-tertiary: #476282;
+$--theme-color-fg-disabled: #8ea1b9;
+$--theme-color-fg-default-border: #c3cfdd;
+$--theme-color-fg-rgb: 71, 98, 130;
+
+$blueGray20: #f5f7f8;
+$blueGray100: #cfd8dc;
+$blueGray300: #90a4ae;
+$blueGray400: #78909c;
+$blueGray600: #546e7a;
+
+$darkestBlue: #051e34;
+$darkerBlue: #083053;
+$lightBlue: #0e5491;
+$lightestBlue: #1580de;
+
+.CustomerForm {
+  grid-area: Customer;
+  padding: 2rem;
+}
+
+.CustomerFormContainer {
+    width: 80%;
+    border: 0.5px solid $--theme-color-fg-default-border;
+    border-radius: 0.8rem;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(255, 255, 255);
+}
+
+.TableNav {
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    font-weight: 500;
+    border-bottom: 0.5px solid $--theme-color-fg-default-border;
+}
+
+.TableNav:first-child {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+}
+
+table {
+    width: 100%;
+    padding: 1rem 1rem 3rem 3rem;
+}
+
+td:first-child {
+    width: 40%;
+    vertical-align: bottom;
+}
+
+.CustomerForm .Content {
+    display: none;
+}
+
+.CustomerForm .Button {
+    margin: 1rem;
+}
+
+.CustomerForm input::placeholder {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.2);
+}

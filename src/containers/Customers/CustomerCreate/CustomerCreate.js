@@ -1,9 +1,17 @@
 import React from "react";
 
-import "./CustomerCreate.css";
+import "./CustomerCreate.scss";
+import CustomerForm from "../CustomerForm";
 
-const CustomerCreate = () => {
-  return <div className="CustomerCreate">CustomerCreate</div>;
+const CustomerCreate = (props) => {
+  
+
+
+  return (
+    <div className="CustomerCreate">
+      <CustomerForm />
+    </div>
+  );
 };
 
 export default CustomerCreate;

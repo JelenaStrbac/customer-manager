@@ -41,55 +41,53 @@ $--theme-color-fg-rgb: 71, 98, 130;
 
 .Navbar {
   grid-area: Navbar;
+  min-height: 8rem;
   padding: 1rem 2rem;
   margin: 0 1rem;
   border-bottom: 1px solid $--theme-color-fg-default-border;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  justify-items: flex-start;
+  justify-content: flex-end;
 }
 
 .Navbar h1 {
-    color: $--theme-color-fg-primary;
-    font-size: 2rem;
-    font-weight: 400;
-    margin-top: 1rem;
+  color: $--theme-color-fg-primary;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-top: 1rem;
 }
 
 .LogoutSign {
   display: flex;
   justify-content: flex-end;
-
 }
 
 .LogoutSign .Logout .Button {
-    margin-top: 0;
-    background-color: $--theme-color-fg-secondary;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  margin-top: 0;
+  background-color: $--theme-color-fg-secondary;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-
 .SearchBar {
-    display: flex;
-    align-items: center;
-    display: flex;
-    justify-items: flex-end;
-    justify-content: flex-end;
-    padding-right: 8rem;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 8rem;
 }
 
 .SearchBar .Input {
-    padding-top: 0;
-    width: 50%;
+  padding-top: 0;
+  width: 50%;
 }
 
 .SearchBar .Label::after {
-    transition: none;
+  transition: none;
 }
 
 .fa-search {
-    color: #9c9a9b;
+  color: #9c9a9b;
 }
