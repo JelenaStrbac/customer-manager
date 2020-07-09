@@ -5,6 +5,7 @@ import "./CustomerForm.scss";
 import Input from "../../components/UI/Input/Input";
 import { checkValidity } from "../../components/helper/CheckValidity";
 import Button from "../../components/UI/Button/Button";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const CustomerForm = (props) => {
   const [customerForm, setCustomerForm] = useState({
@@ -177,6 +178,10 @@ const CustomerForm = (props) => {
     </form>
   );
 
+  if (props.isLoading) {
+    form = <Spinner />;
+  }
+
   return <div className="CustomerForm">{form}</div>;
 };
 
@@ -184,6 +189,7 @@ const mapStateToProps = (state) => {
   return {
     token: state.auth.idToken,
     userId: state.auth.userId,
+    isLoading: state.customers.loading,
   };
 };
 

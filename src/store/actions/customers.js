@@ -21,6 +21,12 @@ export const customerFail = (error) => {
   };
 };
 
+export const customerFinished = () => {
+    return {
+      type: actionTypes.CUSTOMER_FINISHED,
+    };
+  };
+
 export const customerAdd = (customerData, token) => {
   return {
     type: actionTypes.CUSTOMER_ADD,

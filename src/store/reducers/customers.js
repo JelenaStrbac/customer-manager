@@ -3,7 +3,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   loading: false,
   error: null,
-  customers: [],
+  allCustomers: [],
+  isAddedSuccessfully: false,
 };
 
 const customerStart = (state, action) => {
@@ -19,7 +20,8 @@ const customerSucess = (state, action) => {
   return {
     ...state,
     loading: false,
-    customers: [...state.customers, newCustomer],
+    allCustomers: [...state.allCustomers, newCustomer],
+    isAddedSuccessfully: true,
   };
 };
 
@@ -27,7 +29,11 @@ const customerFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
 };
 
-// ALL reducers for authentication combined
+const customerFinished = (state, action) => {
+  return { ...state, isAddedSuccessfully: false };
+};
+
+// ALL reducers for adding customer combined
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CUSTOMER_START:
@@ -36,6 +42,8 @@ const customerReducer = (state = initialState, action) => {
       return customerSucess(state, action);
     case actionTypes.CUSTOMER_FAIL:
       return customerFail(state, action);
+    case actionTypes.CUSTOMER_FINISHED:
+      return customerFinished(state, action);
     default:
       return state;
   }

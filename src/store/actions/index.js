@@ -13,5 +13,6 @@ export {
   customerStart,
   customerSuccess,
   customerFail,
+  customerFinished,
   customerAdd,
 } from "./customers";

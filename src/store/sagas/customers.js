@@ -15,6 +15,8 @@ export function* customerAddSaga(action) {
 
     // SUCCESS
     yield put(actions.customerSuccess(response.data.name, action.customerData));
+    // FINISHED
+    yield put(actions.customerFinished());
   } catch (error) {
     // FAIL
     yield put(actions.customerFail(error.response.data.error));
