@@ -7,6 +7,7 @@ const initialState = {
   isAddedSuccessfully: false,
 };
 
+// adding new customer
 const customerStart = (state, action) => {
   return { ...state, loading: true, error: null };
 };
@@ -33,7 +34,24 @@ const customerFinished = (state, action) => {
   return { ...state, isAddedSuccessfully: false };
 };
 
-// ALL reducers for adding customer combined
+// fetching all customers
+const fetchCustomersStart = (state, action) => {
+  return { ...state, loading: true, error: null };
+};
+
+const fetchCustomersSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    allCustomers: action.allCustomers,
+  };
+};
+
+const fetchCustomersFail = (state, action) => {
+  return { ...state, loading: false, error: action.error };
+};
+
+// ALL REDUCERS COMBINED
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CUSTOMER_START:
@@ -44,6 +62,12 @@ const customerReducer = (state = initialState, action) => {
       return customerFail(state, action);
     case actionTypes.CUSTOMER_FINISHED:
       return customerFinished(state, action);
+    case actionTypes.FETCH_CUSTOMERS_START:
+      return fetchCustomersStart(state, action);
+    case actionTypes.FETCH_CUSTOMERS_SUCCESS:
+      return fetchCustomersSuccess(state, action);
+    case actionTypes.FETCH_CUSTOMERS_FAIL:
+      return fetchCustomersFail(state, action);
     default:
       return state;
   }

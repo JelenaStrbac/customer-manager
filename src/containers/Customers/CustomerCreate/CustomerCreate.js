@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
+// import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+// import { Redirect, useHistory } from "react-router-dom";
 
 import "./CustomerCreate.scss";
 import CustomerForm from "../CustomerForm";

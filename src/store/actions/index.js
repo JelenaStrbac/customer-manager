@@ -15,4 +15,8 @@ export {
   customerFail,
   customerFinished,
   customerAdd,
+  fetchCustomersStart,
+  fetchCustomersSuccess,
+  fetchCustomersFail,
+  fetchAllCustomers,
 } from "./customers";

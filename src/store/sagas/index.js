@@ -8,7 +8,7 @@ import {
   authCheckStateSaga,
 } from "./auth";
 
-import { customerAddSaga } from "./customers";
+import { customerAddSaga, fetchAllCustomersSaga } from "./customers";
 
 export function* watchAuthSaga() {
   yield takeEvery(actionTypes.AUTH_USER, authUserSaga);
@@ -19,4 +19,5 @@ export function* watchAuthSaga() {
 
 export function* watchCustomerSaga() {
   yield takeEvery(actionTypes.CUSTOMER_ADD, customerAddSaga);
+  yield takeEvery(actionTypes.FETCH_ALL_CUSTOMERS, fetchAllCustomersSaga);
 }
