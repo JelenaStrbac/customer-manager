@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./App.css";
 import Auth from "./containers/Auth/Auth";
 import Home from "./containers/Home/Home";
-// import PrivateRoute from "./components/helper/PrivateRoute";
+import PrivateRoute from "./components/helper/PrivateRoute";
 
 const App = (props) => {
   
@@ -13,14 +13,14 @@ const App = (props) => {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          {/* <PrivateRoute
+          <Route path="/auth" exact component={Auth} />
+          <PrivateRoute
             isAuthenticated={props.isAuthenticated}
             path="/"
-            exact
+            // exact
             component={Home}
-          /> */}
-          <Route path="/auth" exact component={Auth} />
-          <Route path="/"  component={Home} />
+          />
+          {/* <Route path="/"  component={Home} /> */}
         </Switch>
       </div>
     </BrowserRouter>

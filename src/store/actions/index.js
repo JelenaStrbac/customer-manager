@@ -6,5 +6,12 @@ export {
   checkAuthTimeout,
   logout,
   logoutSucced,
-  authCheckState
+  authCheckState,
 } from "./auth";
+
+export {
+  customerStart,
+  customerSuccess,
+  customerFail,
+  customerAdd,
+} from "./customers";

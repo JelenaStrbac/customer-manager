@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import "./CustomerForm.scss";
 import Input from "../../components/UI/Input/Input";
@@ -117,9 +118,21 @@ const CustomerForm = (props) => {
     setCustomerForm(updatedCustomerForm);
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // props.onAuth(authForm.email.value, authForm.password.value);
+
+    const formData = {};
+    for (let formElementIdentifier in customerForm) {
+      formData[formElementIdentifier] =
+        customerForm[formElementIdentifier].value;
+    }
+
+    const data = {
+      customerData: formData,
+      userId: props.userId,
+    };
+
+    props.onSubmit(data, props.token);
   };
 
   const formElementsArray = [];
@@ -131,14 +144,14 @@ const CustomerForm = (props) => {
   }
 
   let form = (
-    <form className="Form" autoComplete="off" onSubmit={onSubmitHandler}>
+    <form className="Form" autoComplete="off" onSubmit={onSubmit}>
       <div className="CustomerFormContainer">
         <div className="TableNav">MAIN INFO</div>
         <table>
           <tbody>
             {formElementsArray.map((el, idx) => {
               return (
-                <tr>
+                <tr key={idx}>
                   <td>{el.config.elementConfig.label}:</td>
                   <td>
                     <Input
@@ -167,4 +180,11 @@ const CustomerForm = (props) => {
   return <div className="CustomerForm">{form}</div>;
 };
 
-export default CustomerForm;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.idToken,
+    userId: state.auth.userId,
+  };
+};
+
+export default connect(mapStateToProps, null)(CustomerForm);

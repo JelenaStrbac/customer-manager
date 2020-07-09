@@ -8,7 +8,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import authReducer from "./store/reducers/auth";
-import { watchAuthSaga } from "./store/sagas/index";
+import customerReducer from "./store/reducers/customers";
+import { watchAuthSaga, watchCustomerSaga } from "./store/sagas/index";
 
 const composeEnhancers =
   process.env.NODE_ENV === "development"
@@ -17,6 +18,7 @@ const composeEnhancers =
 
 const reducers = combineReducers({
   auth: authReducer,
+  customers: customerReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -27,6 +29,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchAuthSaga);
+sagaMiddleware.run(watchCustomerSaga);
 
 ReactDOM.render(
   <React.StrictMode>
