@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   allCustomers: [],
   isAddedSuccessfully: false,
+  particularCustomer: ''
 };
 
 // adding new customer
@@ -51,6 +52,23 @@ const fetchCustomersFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
 };
 
+// fetching one particular customer
+const fetchCustomerStart = (state, action) => {
+  return { ...state, loading: true, error: null };
+};
+
+const fetchCustomerSuccess = (state, action) => {
+  return {
+    ...state,
+    loading: false,
+    particularCustomer: action.particularCustomer,
+  };
+};
+
+const fetchCustomerFail = (state, action) => {
+  return { ...state, loading: false, error: action.error };
+};
+
 // ALL REDUCERS COMBINED
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -68,6 +86,12 @@ const customerReducer = (state = initialState, action) => {
       return fetchCustomersSuccess(state, action);
     case actionTypes.FETCH_CUSTOMERS_FAIL:
       return fetchCustomersFail(state, action);
+    case actionTypes.FETCH_CUSTOMER_START:
+      return fetchCustomerStart(state, action);
+    case actionTypes.FETCH_CUSTOMER_SUCCESS:
+      return fetchCustomerSuccess(state, action);
+    case actionTypes.FETCH_CUSTOMER_FAIL:
+      return fetchCustomerFail(state, action);
     default:
       return state;
   }

@@ -57,9 +57,39 @@ export const fetchCustomersFail = (error) => {
   };
 };
 
-export const fetchAllCustomers = (token) => {
+export const fetchAllCustomers = (token, userId) => {
   return {
     type: actionTypes.FETCH_ALL_CUSTOMERS,
     token,
+    userId,
+  };
+};
+
+// fetching one customer
+export const fetchCustomerStart = () => {
+  return {
+    type: actionTypes.FETCH_CUSTOMER_START,
+  };
+};
+
+export const fetchCustomerSuccess = (particularCustomer) => {
+  return {
+    type: actionTypes.FETCH_CUSTOMER_SUCCESS,
+    particularCustomer,
+  };
+};
+
+export const fetchCustomerFail = (error) => {
+  return {
+    type: actionTypes.FETCH_CUSTOMER_FAIL,
+    error,
+  };
+};
+
+export const fetchOneCustomer = (token, id) => {
+  return {
+    type: actionTypes.FETCH_ONE_CUSTOMER,
+    token,
+    id,
   };
 };

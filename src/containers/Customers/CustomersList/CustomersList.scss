@@ -41,5 +41,26 @@ $lightestBlue: #1580de;
 }
 
 .CustomersBreakdown {
-  margin-top: 4rem;
+  margin-top: 8rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  justify-content: space-evenly;
+  grid-gap: 3rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .CustomersBreakdown {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .CustomersBreakdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .CustomersBreakdown {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
