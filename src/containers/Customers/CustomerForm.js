@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import "./CustomerForm.scss";
@@ -96,6 +96,28 @@ const CustomerForm = (props) => {
       touched: false,
     },
   });
+
+  useEffect(() => {
+    debugger
+    if (props.initialFormValues) {
+      initialFormValuesHandler();
+    }
+  }, []);
+
+  const initialFormValuesHandler = () => {
+    console.log('test')
+    const initialCustomerFormForEditing = {
+      ...customerForm,
+    };
+    debugger
+    for (let formElementIdentifier in initialCustomerFormForEditing) {
+      initialCustomerFormForEditing[formElementIdentifier].value =
+        props.initialFormValues[formElementIdentifier];
+    }
+    console.log(initialCustomerFormForEditing)
+    setCustomerForm(initialCustomerFormForEditing);
+  };
+
   const inputChangedHandler = (e, inputIdentifier) => {
     const updatedCustomerForm = {
       ...customerForm,

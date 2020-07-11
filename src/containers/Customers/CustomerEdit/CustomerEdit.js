@@ -24,7 +24,7 @@ const CustomerEdit = (props) => {
     <div className="CustomerEdit">
       {props.isEditedSuccessfully ? <Redirect to="/" /> : null}
       CustomerEdit
-      <CustomerForm id={idRef.current} onSubmit={onSubmit}/>
+      <CustomerForm initialFormValues={props.particularCustomer.customerData} id={idRef.current} onSubmit={onSubmit}/>
     </div>
   );
 };
@@ -33,7 +33,6 @@ const mapStateToProps = (state) => {
   return {
     particularCustomer: state.customers.particularCustomer,
     token: state.auth.idToken,
-    // userId: state.auth.userId,
     isLoading: state.customers.loading,
     isEditedSuccessfully: state.customers.isEditedSuccessfully,
   };
