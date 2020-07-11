@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-// adding new customer
+// 1. adding new customer
 export const customerStart = () => {
   return {
     type: actionTypes.ADD_CUSTOMER_START,
@@ -36,7 +36,7 @@ export const customerAdd = (customerData, token) => {
   };
 };
 
-// fetching all customers
+// 2. fetching all customers
 export const fetchCustomersStart = () => {
   return {
     type: actionTypes.FETCH_CUSTOMERS_START,
@@ -65,7 +65,7 @@ export const fetchAllCustomers = (token, userId) => {
   };
 };
 
-// fetching one customer
+// 3. fetching one customer
 export const fetchCustomerStart = () => {
   return {
     type: actionTypes.FETCH_CUSTOMER_START,
@@ -94,19 +94,13 @@ export const fetchOneCustomer = (token, id) => {
   };
 };
 
-// editing customer
+// 4. editing customer
 export const editCustomerStart = () => {
   return {
     type: actionTypes.EDIT_CUSTOMER_START,
   };
 };
 
-// export const editCustomerSuccess = (customerData) => {
-//   return {
-//     type: actionTypes.EDIT_CUSTOMER_SUCCESS,
-//     customerData,
-//   };
-// };
 export const editCustomerSuccess = (id, customerData) => {
   return {
     type: actionTypes.EDIT_CUSTOMER_SUCCESS,
@@ -136,3 +130,39 @@ export const customerEdit = (customerData, token, id) => {
     id,
   };
 };
+
+
+// 5. deleting customer
+export const deleteCustomerStart = () => {
+    return {
+      type: actionTypes.DELETE_CUSTOMER_START,
+    };
+  };
+  
+  export const deleteCustomerSuccess = (id) => {
+    return {
+      type: actionTypes.DELETE_CUSTOMER_SUCCESS,
+      customerId: id,
+    };
+  };
+  
+  export const deleteCustomerFail = (error) => {
+    return {
+      type: actionTypes.DELETE_CUSTOMER_FAIL,
+      error,
+    };
+  };
+  
+  export const deleteCustomerFinished = () => {
+    return {
+      type: actionTypes.DELETE_CUSTOMER_FINISHED,
+    };
+  };
+  
+  export const customerDelete = (token, id) => {
+    return {
+      type: actionTypes.DELETE_CUSTOMER,
+      token,
+      id,
+    };
+  };

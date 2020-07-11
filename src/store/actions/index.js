@@ -28,4 +28,9 @@ export {
   editCustomerFail,
   editCustomerFinished,
   customerEdit,
+  deleteCustomerStart,
+  deleteCustomerSuccess,
+  deleteCustomerFail,
+  deleteCustomerFinished,
+  customerDelete,
 } from "./customers";

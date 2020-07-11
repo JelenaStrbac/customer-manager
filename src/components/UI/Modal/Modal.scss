@@ -1,0 +1,44 @@
+.Modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ModalWindow {
+  background-color: white;
+  width: 40%;
+  height: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #9c9a9b;
+  border-radius: 8px;
+  padding: 3rem;
+}
+
+.content {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-items: flex-end;
+}
+
+.actions .Button {
+  margin-right: 1rem;
+}
+
+.actions .Delete {
+  background-color: red;
+}

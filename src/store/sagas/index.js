@@ -13,6 +13,7 @@ import {
   fetchAllCustomersSaga,
   fetchOneCustomerSaga,
   customerEditSaga,
+  customerDeleteSaga,
 } from "./customers";
 
 export function* watchAuthSaga() {
@@ -28,6 +29,7 @@ export function* watchCustomerSaga() {
     takeLatest(actionTypes.FETCH_ALL_CUSTOMERS, fetchAllCustomersSaga),
     takeLatest(actionTypes.FETCH_ONE_CUSTOMER, fetchOneCustomerSaga),
     takeLatest(actionTypes.EDIT_CUSTOMER, customerEditSaga),
+    takeLatest(actionTypes.DELETE_CUSTOMER, customerDeleteSaga),
   ]);
 }
 // export function* watchCustomerSaga() {

@@ -60,7 +60,7 @@ export function* fetchOneCustomerSaga(action) {
       //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"$key"&equalTo="${action.id}"`
       //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"id"&equalTo="${action.id}"`
       `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
-    //   `/customers/${action.id}.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
+      //   `/customers/${action.id}.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
     );
     let fetchedCustomer = {};
     for (let key in response.data) {
@@ -104,3 +104,21 @@ export function* customerEditSaga(action) {
 // ("https://[PROJECT_ID].firebaseio.com/users/jack/name/.json"); PATCH
 // ("https://[PROJECT_ID].firebaseio.com/users/jack/name.json"); GET
 // ("https://[PROJECT_ID].firebaseio.com/users/jack/name/last.json"); DELETE
+
+/// 5.
+export function* customerDeleteSaga(action) {
+  // START
+  yield put(actions.deleteCustomerStart());
+
+  try {
+    yield axios.delete(`/customers/${action.id}/.json?auth=${action.token}`);
+
+    // SUCCESS
+    yield put(actions.deleteCustomerSuccess(action.id));
+    // FINISHED
+    yield put(actions.deleteCustomerFinished());
+  } catch (error) {
+    // FAIL
+    yield put(actions.deleteCustomerFail(error.response.data.error));
+  }
+}
