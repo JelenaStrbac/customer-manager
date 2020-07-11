@@ -16,15 +16,18 @@ const CustomersList = (props) => {
     fetchAllCustomersRef.current(tokenRef.current, userIdRef.current);
   }, []);
 
-  console.log(props.allCustomers)
-  let showAllCustomers = props.allCustomers.map(el => (
-    <Customer 
-    key={el.id}
-    id={el.id}
-    name={el.customerData.companyName}
-    website={el.customerData.website}
-    />
-  ))
+  console.log(props.allCustomers);
+  let showAllCustomers = null;
+  if (props.allCustomers) {
+    showAllCustomers = props.allCustomers.map((el) => (
+      <Customer
+        key={el.id}
+        id={el.id}
+        name={el.customerData.companyName}
+        website={el.customerData.website}
+      />
+    ));
+  }
 
   if (props.isLoading) {
     showAllCustomers = <Spinner />;
@@ -37,7 +40,7 @@ const CustomersList = (props) => {
         <div>Add customer</div>
       </Link>
       <div className="CustomersBreakdown">
-      {showAllCustomers ? showAllCustomers : null}
+        {showAllCustomers ? showAllCustomers : null}
 
         {/* All customers - grid prikaz fetchovanih plus paginacija */}
       </div>
@@ -56,7 +59,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllCustomers: (token, userId) => dispatch(actions.fetchAllCustomers(token, userId)),
+    fetchAllCustomers: (token, userId) =>
+      dispatch(actions.fetchAllCustomers(token, userId)),
   };
 };
 

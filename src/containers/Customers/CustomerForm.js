@@ -133,7 +133,7 @@ const CustomerForm = (props) => {
       userId: props.userId,
     };
 
-    props.onSubmit(data, props.token);
+    props.onSubmit(data, props.token, props.id);
   };
 
   const formElementsArray = [];

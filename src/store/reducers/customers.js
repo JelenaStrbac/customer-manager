@@ -5,7 +5,8 @@ const initialState = {
   error: null,
   allCustomers: [],
   isAddedSuccessfully: false,
-  particularCustomer: ''
+  isEditedSuccessfully: false,
+  particularCustomer: "",
 };
 
 // adding new customer
@@ -69,16 +70,70 @@ const fetchCustomerFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
 };
 
+// editing customer
+const editCustomerStart = (state, action) => {
+  return { ...state, loading: true, error: null };
+};
+
+const editCustomerSuccess = (state, action) => {
+  //   const editedCustomer = {
+  //     ...action.customerData,
+  //   };
+  const editedCustomer = {
+    ...action.customerData,
+    id: action.customerId,
+  };
+
+  return {
+    ...state,
+    loading: false,
+    // allCustomers: [...state.allCustomers, { [action.customerId]: editedCustomer }], /// ovo proveriti, ako ne sa filterom da probam
+    // allCustomers: [...state.allCustomers, state.allCustomers.filter(el.id === action.customerId)],
+    // allCustomers: [...state.allCustomers.filter(el => el.id !== action.customerId), {[action.customerId]: editedCustomer}],
+    // allCustomers: state.allCustomers.map((el) => {
+    //   if (el.id !== action.customerId) {
+    //     return el;
+    //   }
+    //   return [...el, {[action.customerId]: editedCustomer}];
+    // }),
+    // allCustomers: state.allCustomers.map((el) =>
+    //   el.id === action.customerId ? { [action.customerId]: editedCustomer } : el
+    // ),
+    allCustomers: state.allCustomers.map((el) =>
+      el.id === action.customerId ? editedCustomer : el
+    ),
+    isEditedSuccessfully: true,
+  };
+};
+
+// allCustomers: state.allCustomers.map(el => {
+//     if (el.id !== action.customerId) {
+//         return el
+//     }
+//     return {
+//         ...el,
+
+//     }
+// },
+
+const editCustomerFail = (state, action) => {
+  return { ...state, loading: false, error: action.error };
+};
+
+const editCustomerFinished = (state, action) => {
+  return { ...state, isEditedSuccessfully: false };
+};
+
 // ALL REDUCERS COMBINED
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.CUSTOMER_START:
+    case actionTypes.ADD_CUSTOMER_START:
       return customerStart(state, action);
-    case actionTypes.CUSTOMER_SUCCESS:
+    case actionTypes.ADD_CUSTOMER_SUCCESS:
       return customerSucess(state, action);
-    case actionTypes.CUSTOMER_FAIL:
+    case actionTypes.ADD_CUSTOMER_FAIL:
       return customerFail(state, action);
-    case actionTypes.CUSTOMER_FINISHED:
+    case actionTypes.ADD_CUSTOMER_FINISHED:
       return customerFinished(state, action);
     case actionTypes.FETCH_CUSTOMERS_START:
       return fetchCustomersStart(state, action);
@@ -92,6 +147,14 @@ const customerReducer = (state = initialState, action) => {
       return fetchCustomerSuccess(state, action);
     case actionTypes.FETCH_CUSTOMER_FAIL:
       return fetchCustomerFail(state, action);
+    case actionTypes.EDIT_CUSTOMER_START:
+      return editCustomerStart(state, action);
+    case actionTypes.EDIT_CUSTOMER_SUCCESS:
+      return editCustomerSuccess(state, action);
+    case actionTypes.EDIT_CUSTOMER_FAIL:
+      return editCustomerFail(state, action);
+    case actionTypes.EDIT_CUSTOMER_FINISHED:
+      return editCustomerFinished(state, action);
     default:
       return state;
   }

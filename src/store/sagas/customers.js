@@ -10,7 +10,7 @@ export function* customerAddSaga(action) {
 
   try {
     const response = yield axios.post(
-      "/customers.json?auth=" + action.token,
+      `/customers.json?auth=${action.token}`,
       action.customerData
     );
 
@@ -60,16 +60,8 @@ export function* fetchOneCustomerSaga(action) {
       //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"$key"&equalTo="${action.id}"`
       //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"id"&equalTo="${action.id}"`
       `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
+    //   `/customers/${action.id}.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
     );
-
-    // const fetchedCustomer = [];
-    // for (let key in response.data) {
-    //   fetchedCustomer.push({
-    //     ...response.data[key],
-    //     id: key,
-    //   });
-    // }
-
     let fetchedCustomer = {};
     for (let key in response.data) {
       fetchedCustomer = {
@@ -85,3 +77,30 @@ export function* fetchOneCustomerSaga(action) {
     yield put(actions.fetchCustomerFail(error.response.data.error));
   }
 }
+
+/// 4.
+export function* customerEditSaga(action) {
+  // START
+  yield put(actions.editCustomerStart());
+
+  try {
+    const response = yield axios.patch(
+      //   `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`,
+      // `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}/"`,
+      `/customers/${action.id}/.json?auth=${action.token}`,
+      action.customerData
+    );
+
+    // SUCCESS
+    yield put(actions.editCustomerSuccess(action.id, response.data));
+    // FINISHED
+    yield put(actions.editCustomerFinished());
+  } catch (error) {
+    // FAIL
+    yield put(actions.editCustomerFail(error.response.data.error));
+  }
+}
+
+// ("https://[PROJECT_ID].firebaseio.com/users/jack/name/.json"); PATCH
+// ("https://[PROJECT_ID].firebaseio.com/users/jack/name.json"); GET
+// ("https://[PROJECT_ID].firebaseio.com/users/jack/name/last.json"); DELETE

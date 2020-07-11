@@ -3,13 +3,13 @@ import * as actionTypes from "./actionTypes";
 // adding new customer
 export const customerStart = () => {
   return {
-    type: actionTypes.CUSTOMER_START,
+    type: actionTypes.ADD_CUSTOMER_START,
   };
 };
 
 export const customerSuccess = (id, customerData) => {
   return {
-    type: actionTypes.CUSTOMER_SUCCESS,
+    type: actionTypes.ADD_CUSTOMER_SUCCESS,
     customerId: id,
     customerData,
   };
@@ -17,20 +17,20 @@ export const customerSuccess = (id, customerData) => {
 
 export const customerFail = (error) => {
   return {
-    type: actionTypes.CUSTOMER_FAIL,
+    type: actionTypes.ADD_CUSTOMER_FAIL,
     error,
   };
 };
 
 export const customerFinished = () => {
   return {
-    type: actionTypes.CUSTOMER_FINISHED,
+    type: actionTypes.ADD_CUSTOMER_FINISHED,
   };
 };
 
 export const customerAdd = (customerData, token) => {
   return {
-    type: actionTypes.CUSTOMER_ADD,
+    type: actionTypes.ADD_CUSTOMER,
     customerData,
     token,
   };
@@ -89,6 +89,49 @@ export const fetchCustomerFail = (error) => {
 export const fetchOneCustomer = (token, id) => {
   return {
     type: actionTypes.FETCH_ONE_CUSTOMER,
+    token,
+    id,
+  };
+};
+
+// editing customer
+export const editCustomerStart = () => {
+  return {
+    type: actionTypes.EDIT_CUSTOMER_START,
+  };
+};
+
+// export const editCustomerSuccess = (customerData) => {
+//   return {
+//     type: actionTypes.EDIT_CUSTOMER_SUCCESS,
+//     customerData,
+//   };
+// };
+export const editCustomerSuccess = (id, customerData) => {
+  return {
+    type: actionTypes.EDIT_CUSTOMER_SUCCESS,
+    customerId: id,
+    customerData,
+  };
+};
+
+export const editCustomerFail = (error) => {
+  return {
+    type: actionTypes.EDIT_CUSTOMER_FAIL,
+    error,
+  };
+};
+
+export const editCustomerFinished = () => {
+  return {
+    type: actionTypes.EDIT_CUSTOMER_FINISHED,
+  };
+};
+
+export const customerEdit = (customerData, token, id) => {
+  return {
+    type: actionTypes.EDIT_CUSTOMER,
+    customerData,
     token,
     id,
   };

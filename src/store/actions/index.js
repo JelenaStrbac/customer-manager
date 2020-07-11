@@ -23,4 +23,9 @@ export {
   fetchCustomerSuccess,
   fetchCustomerFail,
   fetchOneCustomer,
+  editCustomerStart,
+  editCustomerSuccess,
+  editCustomerFail,
+  editCustomerFinished,
+  customerEdit,
 } from "./customers";
