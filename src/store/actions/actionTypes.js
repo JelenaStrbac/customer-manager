@@ -1,0 +1,54 @@
+// authentication
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_USER = "AUTH_USER";
+
+export const AUTH_CHECK_TIMEOUT = "AUTH_CHECK_TIMEOUT";
+export const AUTH_CHECK_STATE = "AUTH_CHECK_STATE";
+
+export const AUTH_INITIATE_LOGOUT = "AUTH_INITIATE_LOGOUT";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
+
+// customer - adding new
+export const ADD_CUSTOMER_START = "ADD_CUSTOMER_START";
+export const ADD_CUSTOMER_SUCCESS = "ADD_CUSTOMER_SUCCESS";
+export const ADD_CUSTOMER_FAIL = "ADD_CUSTOMER_FAIL";
+export const ADD_CUSTOMER_FINISHED = "ADD_CUSTOMER_FINISHED";
+
+export const ADD_CUSTOMER = "ADD_CUSTOMER";
+
+// customers - fetching all customers
+export const FETCH_CUSTOMERS_START = "FETCH_CUSTOMERS_START";
+export const FETCH_CUSTOMERS_SUCCESS = "FETCH_CUSTOMERS_SUCCESS";
+export const FETCH_CUSTOMERS_FAIL = "FETCH_CUSTOMERS_FAIL";
+
+export const FETCH_ALL_CUSTOMERS = "FETCH_ALL_CUSTOMERS";
+
+// customer - fetching one customer
+export const FETCH_CUSTOMER_START = "FETCH_CUSTOMER_START";
+export const FETCH_CUSTOMER_SUCCESS = "FETCH_CUSTOMER_SUCCESS";
+export const FETCH_CUSTOMER_FAIL = "FETCH_CUSTOMER_FAIL";
+
+export const FETCH_ONE_CUSTOMER = "FETCH_ONE_CUSTOMER";
+
+// customer - editing
+export const EDIT_CUSTOMER_START = "EDIT_CUSTOMER_START";
+export const EDIT_CUSTOMER_SUCCESS = "EDIT_CUSTOMER_SUCCESS";
+export const EDIT_CUSTOMER_FAIL = "EDIT_CUSTOMER_FAIL";
+export const EDIT_CUSTOMER_FINISHED = "EDIT_CUSTOMER_FINISHED";
+
+export const EDIT_CUSTOMER = "EDIT_CUSTOMER";
+
+// customer - deleting
+export const DELETE_CUSTOMER_START = "DELETE_CUSTOMER_START";
+export const DELETE_CUSTOMER_SUCCESS = "DELETE_CUSTOMER_SUCCESS";
+export const DELETE_CUSTOMER_FAIL = "DELETE_CUSTOMER_FAIL";
+export const DELETE_CUSTOMER_FINISHED = "DELETE_CUSTOMER_FINISHED";
+
+export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
+
+
+// tools (search, filter, sort)
+export const SEARCH_QUERY = "SEARCH_QUERY";
+export const SORT_QUERY = "SORT_QUERY";

@@ -1,0 +1,106 @@
+$darkestBlue: #051e34;
+$darkerBlue: #083053;
+$lightBlue: #0e5491;
+$lightestBlue: #1580de;
+
+$normalBlue: #1a73e8;
+$lightenBlue: #64b5f6;
+
+$darkOrange: #f57c00;
+$middleOrange: #ffa000;
+$lightOrange: #ffca28;
+
+$white: #fff;
+
+.Auth {
+  background-image: linear-gradient(
+    to bottom right,
+    $darkestBlue,
+    $darkerBlue,
+    $lightBlue,
+    $lightestBlue
+  );
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.WelcomeAndForm {
+  background-color: $white;
+  width: 40%;
+  height: 50%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoginForm {
+  background-color: $white;
+  padding-right: 1rem;
+  width: 50%;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #9c9a9b;
+}
+
+.LoginText {
+  color: $lightestBlue;
+}
+
+.Form {
+  // background-color: $white;
+  // width: 50%;
+  // height: 100%;
+  // border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60%;
+  width: 100%;
+}
+
+.InputIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 120%;
+  padding-right: 1rem;
+}
+
+.Welcome {
+  // background-color: $lightestBlue;
+  background-image: linear-gradient( #1580dec9, #1580dec9), url(../../paper.jpg);
+  background-attachment: fixed;
+  background-position: left 5%;
+  background-size: contain;
+  // background-size: 50%;
+  // background-repeat: no-repeat;
+  height: 100vh;
+  clip-path: polygon(0 0, 100% 0, 59% 100%, 0% 100%);
+  width: 50%;
+  height: 110%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 80px;
+  padding-left: 40px;
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.WelcomeMessage {
+  font-weight: 100;
+  font-size: 1.2rem;
+}

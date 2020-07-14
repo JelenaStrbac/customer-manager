@@ -1,35 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./App.css";
-import Auth from "./components/Auth/Auth";
-import Home from "./components/Home/Home";
-import PrivateRoute from "./containers/helper/PrivateRoute";
+import Auth from "./containers/Auth/Auth";
+import Home from "./containers/Home/Home";
+import PrivateRoute from "./components/helper/PrivateRoute";
+import * as actions from "./store/actions";
 
-const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+const App = (props) => {
+  const onAutoLoginRef = useRef(props.onAutoLogin)
+
+  useEffect(() => {
+    onAutoLoginRef.current();
+  }, []);
 
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Switch>
-          <Route path="/auth" component={Auth} />
+          <Route path="/auth" exact component={Auth} />
           <PrivateRoute
-            isAuthenticated={isAuthenticated}
+            isAuthenticated={props.isAuthenticated}
             path="/"
+            // exact
             component={Home}
           />
+          {/* <Route path="/"  component={Home} /> */}
         </Switch>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.idToken !== null,
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAutoLogin: () => dispatch(actions.authCheckState()),
+  };
+};
 
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // const App = () => {
 //   const [isAuthenticated, setIsAuthenticated] = useState(false);

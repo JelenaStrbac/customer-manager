@@ -1,0 +1,21 @@
+.SearchBar {
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 8rem;
+  }
+  
+  .SearchBar .Input {
+    padding-top: 0;
+    width: 50%;
+  }
+  
+  .SearchBar .Label::after {
+    transition: none;
+  }
+  
+  .fa-search {
+    color: #9c9a9b;
+  }

@@ -1,0 +1,34 @@
+$lightestBlue: #1580de;
+
+.Button,
+.Button:link,
+.Button:visited {
+  background-color: $lightestBlue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  margin-top: 1.5rem;
+//   font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.Button:hover,
+.Button:active {
+  background-color: $lightestBlue;
+  transform: translateY(1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.Button:focus {
+  outline: 0;
+}
+
+.Disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
