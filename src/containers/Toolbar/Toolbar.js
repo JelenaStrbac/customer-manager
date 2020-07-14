@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import "./Toolbar.scss";
 import Logo from "../../components/Logo/Logo";
 import Icon from "../../components/UI/Icon/Icon";
-import Filter from "./Filter/Filter";
-import Sort from "./Sort/Sort";
+import Filter from "../Tools/Filter/Filter";
+import Sort from "../Tools/Sort/Sort";
 
 const Toolbar = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const Toolbar = () => {
       </div>
       {location.pathname === "/" ? (
         <>
-          <Filter /> <Sort />
+          <Sort /> <Filter /> 
         </>
       ) : null}
     </div>

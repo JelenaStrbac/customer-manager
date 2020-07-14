@@ -85,3 +85,120 @@
 .Invalid {
   border-bottom: 2px solid red;
 }
+
+.Checkbox-main {
+  display: flex;
+  justify-content: flex-start;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  color: #9c9a9b;
+  font-weight: 300;
+  padding: 0.5rem;
+}
+
+/* Checkbox style */
+.Container {
+  display: block;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 0.7rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.Container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.Checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.8rem;
+  width: 1.8rem;
+  background-color: none;
+  border: 0.5px solid #d5d7d9;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.Container:hover input ~ .Checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.Container input:checked ~ .Checkmark {
+  background-color: #46d4b4;
+  border: none;
+  animation: pulse 2s;
+}
+
+/* Create the Checkmark/indicator (hidden when not checked) */
+.Checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the Checkmark when checked */
+.Container input:checked ~ .Checkmark:after {
+  display: block;
+}
+
+/* Style the Checkmark/indicator */
+.Container .Checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: 0.5px solid white;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(70, 212, 180, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0.4);
+    box-shadow: 0 0 0 0 rgba(70, 212, 180, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(70, 212, 180, 0);
+    box-shadow: 0 0 0 10px rgba(70, 212, 180, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0);
+    box-shadow: 0 0 0 0 rgba(70, 212, 180, 0);
+  }
+}
+
+.BorderCheckbox {
+  border: solid 1px rgba(221, 221, 221, 0.15);
+  padding: 0.5rem;
+  margin-top: 1rem;
+  // height: 3rem;
+  overflow-y: scroll;
+}

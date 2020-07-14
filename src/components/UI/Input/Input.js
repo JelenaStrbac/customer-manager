@@ -36,7 +36,7 @@ const input = (props) => {
       break;
     case "checkbox":
       inputElement = (
-        <div>
+        <div className="BorderCheckbox">
           <label className="LabelCheckbox">{props.label}</label>
           {props.elementConfig.obj.map((el, idx) => (
             <div key={idx} className="Checkbox-main">

@@ -9,6 +9,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import authReducer from "./store/reducers/auth";
 import customerReducer from "./store/reducers/customers";
+import toolsReducer from "./store/reducers/tools";
 import { watchAuthSaga, watchCustomerSaga } from "./store/sagas/index";
 
 const composeEnhancers =
@@ -19,6 +20,7 @@ const composeEnhancers =
 const reducers = combineReducers({
   auth: authReducer,
   customers: customerReducer,
+  tools: toolsReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

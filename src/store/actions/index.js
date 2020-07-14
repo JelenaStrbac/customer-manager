@@ -34,3 +34,5 @@ export {
   deleteCustomerFinished,
   customerDelete,
 } from "./customers";
+
+export { searchQuery, sortQueryOne, sortQueryTwo } from "./tools";
