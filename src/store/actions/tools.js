@@ -9,16 +9,9 @@ export const searchQuery = (query) => {
 };
 
 // sort
-export const sortQueryOne = (query) => {
+export const sortQuery = (query) => {
   return {
-    type: actionTypes.SORT_QUERY_ONE,
-    query,
-  };
-};
-
-export const sortQueryTwo = (query) => {
-  return {
-    type: actionTypes.SORT_QUERY_TWO,
+    type: actionTypes.SORT_QUERY,
     query,
   };
 };

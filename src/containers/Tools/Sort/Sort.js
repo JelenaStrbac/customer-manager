@@ -5,7 +5,6 @@ import "./Sort.scss";
 import Icon from "../../../components/UI/Icon/Icon";
 import * as actions from "../../../store/actions";
 
-
 const Sort = (props) => {
   return (
     <div className="Sort">
@@ -14,24 +13,17 @@ const Sort = (props) => {
         <span>Sort</span>
       </div>
       <div className="Select">
-        <select defaultValue="" onChange={(e) => props.onSortOne(e.target.value)}>
-          <option value="" disabled>
-            Sort by Name
-          </option>
-          <option value="az">Alphabet - A-Z</option>
-          <option value="za">Alphabet - Z-A</option>
-        </select>
-      </div>
-      <div className="Select">
         <select
           defaultValue=""
-          onChange={(e) => props.onSortTwo(e.target.value)}
+          onChange={(e) => props.onSort(e.target.value)}
         >
           <option value="" disabled>
-            Sort by Turnover
+            Sort by:
           </option>
-          <option value="asc">Lowest to Highest</option>
-          <option value="des">Highest to Lowest</option>
+          <option value="az">Name - A-Z</option>
+          <option value="za">Name - Z-A</option>
+          <option value="asc">Turnover - Ascending</option>
+          <option value="des">Turnover - Descending</option>
         </select>
       </div>
     </div>
@@ -40,8 +32,7 @@ const Sort = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSortOne: (query) => dispatch(actions.sortQueryOne(query)),
-    onSortTwo: (query) => dispatch(actions.sortQueryTwo(query)),
+    onSort: (query) => dispatch(actions.sortQuery(query)),
   };
 };
 

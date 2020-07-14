@@ -1,33 +1,26 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  searcQuery: "",
-  sortQueryOne: "",
-  sortQueryTwo: "",
+  searchQuery: "",
+  sortQuery: "",
 };
 
 // search
 const searchQuery = (state, action) => {
-  return { ...state, query: action.query };
+  return { ...state, searchQuery: action.query };
 };
 
 // sort
-const sortQueryOne = (state, action) => {
-  return { ...state, sortQueryOne: action.query };
-};
-
-const sortQueryTwo = (state, action) => {
-  return { ...state, sortQueryTwo: action.query };
+const sortQuery = (state, action) => {
+  return { ...state, sortQuery: action.query};
 };
 
 const toolsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SEARCH_QUERY:
       return searchQuery(state, action);
-    case actionTypes.SORT_QUERY_ONE:
-      return sortQueryOne(state, action);
-    case actionTypes.SORT_QUERY_TWO:
-      return sortQueryTwo(state, action);
+    case actionTypes.SORT_QUERY:
+      return sortQuery(state, action);
     default:
       return state;
   }

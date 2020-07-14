@@ -51,5 +51,4 @@ export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
 
 // tools (search, filter, sort)
 export const SEARCH_QUERY = "SEARCH_QUERY";
-export const SORT_QUERY_ONE = "SORT_QUERY_ONE";
-export const SORT_QUERY_TWO = "SORT_QUERY_TWO";
+export const SORT_QUERY = "SORT_QUERY";

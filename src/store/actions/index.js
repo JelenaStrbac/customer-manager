@@ -35,4 +35,4 @@ export {
   customerDelete,
 } from "./customers";
 
-export { searchQuery, sortQueryOne, sortQueryTwo } from "./tools";
+export { searchQuery, sortQuery } from "./tools";
