@@ -53,7 +53,7 @@ const Filter = (props) => {
             type: "checkbox",
           },
           {
-            label: "IT",
+            label: "Finance",
             type: "checkbox",
           },
           {
@@ -61,7 +61,7 @@ const Filter = (props) => {
             type: "checkbox",
           },
           {
-            label: "Finance",
+            label: "IT",
             type: "checkbox",
           },
           {

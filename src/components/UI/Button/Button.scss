@@ -32,3 +32,8 @@ $lightestBlue: #1580de;
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.Button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

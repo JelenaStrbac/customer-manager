@@ -14,7 +14,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "text",
         label: "Company name",
-        placeholder: "Kompanija d.o.o.",
+        placeholder: "e.g. Company LLC",
       },
       value: "",
       validation: {
@@ -28,7 +28,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "url",
         label: "Website",
-        placeholder: "www.kompanija.com",
+        placeholder: "e.g. https://www.company.com",
       },
       value: "",
       validation: {
@@ -42,7 +42,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "number",
         label: "Registration number",
-        placeholder: "111222334",
+        placeholder: "e.g. 111222334",
       },
       value: "",
       validation: {
@@ -57,7 +57,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "text",
         label: "Address",
-        placeholder: "Petra Petrovica 1, Beograd",
+        placeholder: "e.g. 19 First Street",
       },
       value: "",
       validation: {
@@ -71,7 +71,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "phone",
         label: "Phone",
-        placeholder: "011/1111-222",
+        placeholder: "e.g. 011/1111-222",
       },
       value: "",
       validation: {
@@ -85,7 +85,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "email",
         label: "Email",
-        placeholder: "kompanija@mail.com",
+        placeholder: "e.g. company@mail.com",
       },
       value: "",
       validation: {
@@ -95,16 +95,174 @@ const CustomerForm = (props) => {
       valid: false,
       touched: false,
     },
+    industry: {
+      elementType: "select",
+      elementConfig: {
+        type: "number",
+        label: "Industry",
+        obj: [
+          "--Select from dropdown--",
+          "Education",
+          "Finance",
+          "Health",
+          "IT",
+          "Production",
+          "Other",
+        ],
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    size: {
+      elementType: "select",
+      elementConfig: {
+        type: "number",
+        label: "Company Size",
+        obj: ["--Select from dropdown--", "Micro", "Small", "Medium", "Large"],
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    employees: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Number of Employees",
+        placeholder: "e.g. 50 or 100",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    totalRevenue: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Total revenue",
+        placeholder: "e.g. 100,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    totalExpenses: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Total expenses",
+        placeholder: "e.g. 90,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    operatingRevenue: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Operating revenue (Turnover)",
+        placeholder: "e.g. 95,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    operatingExpenses: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Operating expenses",
+        placeholder: "e.g. 85,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    taxation: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Tax (Corporate Income Tax)",
+        placeholder: "e.g. 5,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    assets: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Total assets",
+        placeholder: "e.g. 1,000,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    equity: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Shareholder's equity",
+        placeholder: "e.g. 100,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    liabilities: {
+      elementType: "input",
+      elementConfig: {
+        type: "number",
+        label: "Total liabilities",
+        placeholder: "e.g. 900,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+    },
   });
 
-  const initialFormValuesRef = useRef(props.initialFormValues)
-  
+  /// form valditity
+  const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect(() => {
-    if (initialFormValuesRef.current) {
-      initialFormValuesHandlerRef.current();
-    }
-  }, []);
+  /// setting initial data for customer editing
 
   const initialFormValuesHandler = () => {
     const initialCustomerFormForEditing = {
@@ -113,11 +271,32 @@ const CustomerForm = (props) => {
     for (let formElementIdentifier in initialCustomerFormForEditing) {
       initialCustomerFormForEditing[formElementIdentifier].value =
         props.initialFormValues[formElementIdentifier];
-    }
-    setCustomerForm(initialCustomerFormForEditing);
-  };
-  const initialFormValuesHandlerRef = useRef(initialFormValuesHandler)
 
+      initialCustomerFormForEditing[
+        formElementIdentifier
+      ].valid = checkValidity(
+        initialCustomerFormForEditing[formElementIdentifier].value,
+        initialCustomerFormForEditing[formElementIdentifier].validation
+      );
+    }
+    let formIsValid = true;
+    for (let inputIdentifier in initialCustomerFormForEditing) {
+      formIsValid = initialCustomerFormForEditing[inputIdentifier].valid && formIsValid;
+    }
+
+    setCustomerForm(initialCustomerFormForEditing);
+    setFormIsValid(formIsValid);
+  };
+  const initialFormValuesHandlerRef = useRef(initialFormValuesHandler);
+  const initialFormValuesRef = useRef(props.initialFormValues);
+
+  useEffect(() => {
+    if (initialFormValuesRef.current) {
+      initialFormValuesHandlerRef.current();
+    }
+  }, []);
+
+  /// input change handler
   const inputChangedHandler = (e, inputIdentifier) => {
     const updatedCustomerForm = {
       ...customerForm,
@@ -139,6 +318,7 @@ const CustomerForm = (props) => {
       formIsValid = updatedCustomerForm[inputIdentifier].valid && formIsValid;
     }
     setCustomerForm(updatedCustomerForm);
+    setFormIsValid(formIsValid);
   };
 
   const onSubmit = (e) => {
@@ -155,9 +335,10 @@ const CustomerForm = (props) => {
       userId: props.userId,
     };
 
-    props.onSubmit(data, props.token, props.id);
+    props.onSubmit(data, props.token, props.id); /// from customer create & customer edit post request
   };
 
+  /// setting data structure
   const formElementsArray = [];
   for (let key in customerForm) {
     formElementsArray.push({
@@ -166,13 +347,17 @@ const CustomerForm = (props) => {
     });
   }
 
-  let form = (
-    <form className="Form" autoComplete="off" onSubmit={onSubmit}>
-      <div className="CustomerFormContainer">
-        <div className="TableNav">MAIN INFO</div>
+  const mainInfoArray = formElementsArray.slice(0, 6);
+  const industryInfoArray = formElementsArray.slice(6, 9);
+  const financialInfoArray = formElementsArray.slice(9, 17);
+
+  const formPart = (title, array) => {
+    return (
+      <>
+        <div className="TableNav">{title}</div>
         <table>
           <tbody>
-            {formElementsArray.map((el, idx) => {
+            {array.map((el, idx) => {
               return (
                 <tr key={idx}>
                   <td>{el.config.elementConfig.label}:</td>
@@ -195,7 +380,17 @@ const CustomerForm = (props) => {
             })}
           </tbody>
         </table>
-        <Button>SAVE</Button>
+      </>
+    );
+  };
+
+  let form = (
+    <form className="Form" autoComplete="off" onSubmit={onSubmit}>
+      <div className="CustomerFormContainer">
+        {formPart("MAIN INFO", mainInfoArray)}
+        {formPart("INDUSTRY AND CLASSIFICATION", industryInfoArray)}
+        {formPart("FINANCIAL INFO", financialInfoArray)}
+        <Button disabled={!formIsValid}>SAVE</Button>
       </div>
     </form>
   );

@@ -202,3 +202,17 @@
   // height: 3rem;
   overflow-y: scroll;
 }
+
+.InputSelect {
+  width: 100%;
+  border: none;
+  color: rgba(0, 0, 0, 0.6); 
+}
+
+.InputSelect:focus {
+  outline: none;
+}
+
+.InputSelect:first-child {
+  color: #9c9a9b;
+}

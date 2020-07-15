@@ -43,21 +43,25 @@ const CustomersList = (props) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "search":
-        return {
-          customers: (state.customers.length !== 0 && props.searchQuery
+        let watchArrForSearching =
+          state.customers.length !== 0 && props.searchQuery
             ? state.customers
-            : props.allCustomers
-          ).filter((el) =>
-            el.customerData.companyName
-              .toLowerCase()
-              .includes(props.searchQuery)
-          ),
+            : props.allCustomers;
+
+        let searchArr = watchArrForSearching.filter((el) =>
+          el.customerData.companyName.toLowerCase().includes(props.searchQuery)
+        );
+        console.log(searchArr);
+        return {
+          ...state,
+          customers: searchArr,
         };
       case "sort":
         let watchArrForSorting =
-          state.customers.length !== 0 && props.sortQuery
+          state.customers.length !== 0 && (props.sortQuery || props.searchQuery)
             ? state.customers
             : props.allCustomers;
+        console.log(watchArrForSorting);
         let sortedArr =
           props.sortQuery === "az"
             ? sortAsc(watchArrForSorting, "companyName")
@@ -66,7 +70,7 @@ const CustomersList = (props) => {
             : props.sortQuery === "asc"
             ? sortAsc(watchArrForSorting, "address")
             : sortDesc(watchArrForSorting, "address");
-
+        console.log(sortedArr);
         return {
           ...state,
           customers: sortedArr,
@@ -79,22 +83,37 @@ const CustomersList = (props) => {
   const [state, dispatch] = useReducer(reducer, { customers: [] });
 
   useEffect(() => {
+    // debugger;
     dispatch({ type: "search" });
-  }, [props.searchQuery]);
-
-  useEffect(() => {
     dispatch({ type: "sort" });
-  }, [props.sortQuery]);
+  }, [props.tools]);
 
-  console.log(props.allCustomers);
-  console.log(state);
-  // console.log(props.searchQuery);
+  // useEffect(() => {
+  //   // debugger;
+  //   dispatch({ type: "sort" });
+  // }, [props.tools]);
 
+  // useEffect(() => {
+  //   // debugger;
+  //   dispatch({ type: "search" });
+  // }, [props.searchQuery]);
+
+  // useEffect(() => {
+  //   // debugger
+  //   dispatch({ type: "sort" });
+  // }, [props.sortQuery]);
+
+  // console.log(props.allCustomers);
+  // console.log(state);
+
+  // debugger
   let showAllCustomers = null;
   let customersArrayForMap = state.customers.length
     ? state.customers
     : props.allCustomers;
+  console.log(state.customers);
   if (customersArrayForMap) {
+    // debugger;
     showAllCustomers = customersArrayForMap.map((el) => (
       <Customer
         key={el.id}
@@ -131,6 +150,7 @@ const mapStateToProps = (state) => {
     isLoading: state.customers.loading,
     searchQuery: state.tools.searchQuery,
     sortQuery: state.tools.sortQuery,
+    tools: state.tools,
   };
 };
 

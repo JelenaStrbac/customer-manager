@@ -12,10 +12,10 @@ const Search = (props) => {
   const inputChangeHandler = (e) => {
     search(e.target.value);
   };
-  //   const inputChangeHandler = (e) => {
-  //     e.preventDefault();
-  //     props.onSearch(e.target.value);
-  //   };
+    // const inputChangeHandler = (e) => {
+    //   e.preventDefault();
+    //   props.onSearch(e.target.value);
+    // };
 
   return (
     <div className="SearchBar">
