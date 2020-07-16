@@ -15,3 +15,18 @@ export const sortQuery = (query) => {
     query,
   };
 };
+
+// filter
+export const filterQueryOne = (query) => {
+  return {
+    type: actionTypes.FILTER_QUERY_ONE,
+    query,
+  };
+};
+
+export const filterQueryTwo = (query) => {
+  return {
+    type: actionTypes.FILTER_QUERY_TWO,
+    query,
+  };
+};

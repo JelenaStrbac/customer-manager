@@ -13,10 +13,7 @@ const Sort = (props) => {
         <span>Sort</span>
       </div>
       <div className="Select">
-        <select
-          defaultValue=""
-          onChange={(e) => props.onSort(e.target.value)}
-        >
+        <select defaultValue="" onChange={(e) => props.onSort(e.target.value)}>
           <option value="" disabled>
             Sort by:
           </option>

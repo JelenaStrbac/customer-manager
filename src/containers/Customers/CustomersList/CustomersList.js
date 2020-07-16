@@ -62,7 +62,7 @@ const CustomersList = (props) => {
         let searchArr = watchArrForSearching.filter((el) =>
           el.customerData.companyName.toLowerCase().includes(props.searchQuery)
         );
-        console.log(searchArr);
+        // console.log(searchArr);
         return {
           ...state,
           customers: searchArr,
@@ -72,7 +72,7 @@ const CustomersList = (props) => {
           state.customers.length !== 0 && (props.sortQuery || props.searchQuery)
             ? state.customers
             : props.allCustomers;
-        console.log(watchArrForSorting);
+        // console.log(watchArrForSorting);
         let sortedArr =
           props.sortQuery === "az"
             ? sortAsc(watchArrForSorting, "companyName")
@@ -81,7 +81,7 @@ const CustomersList = (props) => {
             : props.sortQuery === "asc"
             ? sortAscNum(watchArrForSorting, "operatingRevenue")
             : sortDescNum(watchArrForSorting, "operatingRevenue");
-        console.log(sortedArr);
+        // console.log(sortedArr);
         return {
           ...state,
           customers: sortedArr,
@@ -122,7 +122,7 @@ const CustomersList = (props) => {
   let customersArrayForMap = state.customers.length
     ? state.customers
     : props.allCustomers;
-  console.log(state.customers);
+  // console.log(state.customers);
   if (customersArrayForMap) {
     showAllCustomers = customersArrayForMap.map((el) => (
       <Customer
