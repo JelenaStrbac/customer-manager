@@ -43,15 +43,29 @@ const fetchCustomersStart = (state, action) => {
 };
 
 const fetchCustomersSuccess = (state, action) => {
-  action.allCustomers.map(el => ['totalRevenue', 'totalExpenses', 'operatingRevenue', 'operatingExpenses', 'taxation', 'assets', 'equity', 'liabilities'].forEach(k => el.customerData[k] = parseInt(el.customerData[k])))
+  let res = action.allCustomers.map((el) => {
+    const obj =  { ...el, customerData: { ...el.customerData } };;
+    [
+      "totalRevenue",
+      "totalExpenses",
+      "operatingRevenue",
+      "operatingExpenses",
+      "taxation",
+      "assets",
+      "equity",
+      "liabilities",
+    ].forEach((k) =>   
+      obj.customerData[k] = parseInt(obj.customerData[k])
+    );
+    return obj;
+  });
+  // action.allCustomers.map(el => ['totalRevenue', 'totalExpenses', 'operatingRevenue', 'operatingExpenses', 'taxation', 'assets', 'equity', 'liabilities'].map(k => el.customerData[k] = parseInt(el.customerData[k])))
   return {
     ...state,
     loading: false,
-    allCustomers: action.allCustomers,
+    allCustomers: res,
   };
 };
-
-// .map(el => el.map(el => {...el, Object.keys(el.customerData): parseInt(Object.values(el.customerData)})))
 
 const fetchCustomersFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
