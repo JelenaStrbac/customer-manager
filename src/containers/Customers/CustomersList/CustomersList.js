@@ -31,6 +31,17 @@ const sortDesc = (arr, field) => {
   });
 };
 
+const sortAscNum = (arr, field) => {
+  return arr.sort(
+    (a, b) => parseInt(a.customerData[field]) - parseInt(b.customerData[field])
+  );
+};
+const sortDescNum = (arr, field) => {
+  return arr.sort(
+    (a, b) => parseInt(b.customerData[field]) - parseInt(a.customerData[field])
+  );
+};
+
 const CustomersList = (props) => {
   const fetchAllCustomersRef = useRef(props.fetchAllCustomers);
   const tokenRef = useRef(props.token);
@@ -68,8 +79,8 @@ const CustomersList = (props) => {
             : props.sortQuery === "za"
             ? sortDesc(watchArrForSorting, "companyName")
             : props.sortQuery === "asc"
-            ? sortAsc(watchArrForSorting, "address")
-            : sortDesc(watchArrForSorting, "address");
+            ? sortAscNum(watchArrForSorting, "operatingRevenue")
+            : sortDescNum(watchArrForSorting, "operatingRevenue");
         console.log(sortedArr);
         return {
           ...state,
@@ -113,7 +124,6 @@ const CustomersList = (props) => {
     : props.allCustomers;
   console.log(state.customers);
   if (customersArrayForMap) {
-    // debugger;
     showAllCustomers = customersArrayForMap.map((el) => (
       <Customer
         key={el.id}
@@ -121,6 +131,7 @@ const CustomersList = (props) => {
         name={el.customerData.companyName}
         website={el.customerData.website}
         address={el.customerData.address}
+        operatingRevenue={el.customerData.operatingRevenue}
       />
     ));
   }

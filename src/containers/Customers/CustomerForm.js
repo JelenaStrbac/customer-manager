@@ -390,6 +390,7 @@ const CustomerForm = (props) => {
         {formPart("MAIN INFO", mainInfoArray)}
         {formPart("INDUSTRY AND CLASSIFICATION", industryInfoArray)}
         {formPart("FINANCIAL INFO", financialInfoArray)}
+        {/* <Button>SAVE</Button> */}
         <Button disabled={!formIsValid}>SAVE</Button>
       </div>
     </form>

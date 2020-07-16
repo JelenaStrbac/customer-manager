@@ -43,12 +43,15 @@ const fetchCustomersStart = (state, action) => {
 };
 
 const fetchCustomersSuccess = (state, action) => {
+  action.allCustomers.map(el => ['totalRevenue', 'totalExpenses', 'operatingRevenue', 'operatingExpenses', 'taxation', 'assets', 'equity', 'liabilities'].forEach(k => el.customerData[k] = parseInt(el.customerData[k])))
   return {
     ...state,
     loading: false,
     allCustomers: action.allCustomers,
   };
 };
+
+// .map(el => el.map(el => {...el, Object.keys(el.customerData): parseInt(Object.values(el.customerData)})))
 
 const fetchCustomersFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
@@ -110,7 +113,7 @@ const deleteCustomerSuccess = (state, action) => {
     ...state,
     loading: false,
     allCustomers: state.allCustomers.filter(
-      (el) => el.id === action.customerId
+      (el) => el.id !== action.customerId
     ),
     isDeletedSuccessfully: true,
   };

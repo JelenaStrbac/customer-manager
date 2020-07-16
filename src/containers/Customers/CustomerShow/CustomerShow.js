@@ -75,7 +75,6 @@ const mapStateToProps = (state) => {
   return {
     particularCustomer: state.customers.particularCustomer,
     token: state.auth.idToken,
-    userId: state.auth.userId, // proveriti da se ovo obrise
     isLoading: state.customers.loading,
   };
 };
