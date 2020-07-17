@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useReducer } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -17,124 +17,63 @@ const CustomersList = (props) => {
     fetchAllCustomersRef.current(tokenRef.current, userIdRef.current);
   }, []);
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "search":
-        let watchArrForSearching =
-          state.customers.length !== 0 && props.searchQuery
-            ? state.customers
-            : props.allCustomers;
 
-        let searchArr = watchArrForSearching.filter((el) =>
-          el.customerData.companyName.toLowerCase().includes(props.searchQuery)
+  const [resultArr, setResultArr] = useState([])
+  const handleFilteringAndSorting = () => {
+    let filteredCustomersArray = props.allCustomers
+      .filter((el) =>
+        el.customerData.companyName.toLowerCase().includes(props.searchQuery)
+      )
+      .filter((elm, i, arr) =>
+        props.filterQueryOne.length
+          ? props.filterQueryOne.some((k) => k.includes(elm.customerData.size))
+          : arr
+      )
+      .filter((elem, idx, array) =>
+        props.filterQueryTwo.length
+          ? props.filterQueryTwo.some((k) => k.includes(elem.customerData.industry))
+          : array
+      )
+
+    let sortArr = [];
+    switch (props.sortQuery) {
+      case "az":
+        sortArr = sorts.sortAsc(filteredCustomersArray, "companyName");
+        break;
+      case "za":
+        sortArr = sorts.sortDesc(filteredCustomersArray, "companyName");
+        break;
+      case "asc":
+        sortArr = sorts.sortAscNum(
+          filteredCustomersArray,
+          "operatingRevenue"
         );
-        // console.log(searchArr);
-        return {
-          ...state,
-          customers: searchArr,
-        };
-      case "sort":
-        let watchArrForSorting =
-          state.customers.length !== 0 && (props.sortQuery || props.searchQuery)
-            ? state.customers
-            : props.allCustomers;
-        // console.log(watchArrForSorting);
-        let sortedArr = [];
-        switch (props.sortQuery) {
-          case "az":
-            sortedArr = sorts.sortAsc(watchArrForSorting, "companyName");
-            break;
-          case "za":
-            sortedArr = sorts.sortDesc(watchArrForSorting, "companyName");
-            break;
-          case "asc":
-            sortedArr = sorts.sortAscNum(
-              watchArrForSorting,
-              "operatingRevenue"
-            );
-            break;
-          case "des":
-            sortedArr = sorts.sortDescNum(
-              watchArrForSorting,
-              "operatingRevenue"
-            );
-            break;
-          default:
-            sortedArr = watchArrForSorting;
-        }
-        return {
-          ...state,
-          customers: sortedArr,
-        };
-      case "filterOne":
-        let watchArrForFilteringOne =
-          state.customers.length !== 0 && props.filterQueryOne
-            ? state.customers
-            : props.allCustomers;
-
-        let filterArrOne = [];
-        if (props.filterQueryOne) {
-          filterArrOne = watchArrForFilteringOne.filter((el) =>
-            props.filterQueryOne.some((k) => k.includes(el.customerData.size))
-          );
-          // filterArrOne = watchArrForFilteringOne.filter((el) =>
-          //   props.filterQueryOne.some((elm) => el.customerData.size === elm)
-          // );
-        }
-        // console.log(filterArrOne);
-        // console.log(props.filterQueryOne);
-        return {
-          ...state,
-          customers: filterArrOne,
-        };
-      case "filterTwo":
-        let watchArrForFilteringTwo =
-          state.customers.length !== 0 &&
-          (props.filterQueryTwo ||
-            props.filterQueryOne ||
-            props.sortQuery ||
-            props.searchQuery)
-            ? state.customers
-            : props.allCustomers;
-
-        let filterArrTwo = [];
-        if (props.filterQueryTwo) {
-          filterArrTwo = watchArrForFilteringTwo.filter((el) =>
-            props.filterQueryTwo.some((k) =>
-              k.includes(el.customerData.industry)
-            )
-          );
-        }
-        console.log(filterArrTwo);
-        console.log(props.filterQueryTwo);
-        return {
-          ...state,
-          customers: filterArrTwo,
-        };
+        break;
+      case "des":
+        sortArr = sorts.sortDescNum(
+          filteredCustomersArray,
+          "operatingRevenue"
+        );
+        break;
       default:
-        return state;
+        sortArr = filteredCustomersArray;
     }
+    // console.log("sortirano unutra", sortArr);
+    setResultArr(sortArr)
   };
-  // console.log(props.allCustomers)
-  const [state, dispatch] = useReducer(reducer, { customers: [] });
 
+  // const handleFilteringAndSortingRef = useRef(handleFilteringAndSorting)
   useEffect(() => {
-    // debugger;
-    dispatch({ type: "search" });
-    dispatch({ type: "sort" });
-    dispatch({ type: "filterOne" });
-    dispatch({ type: "filterTwo" });
-  }, [props.tools]);
+    handleFilteringAndSorting();
+    // handleFilteringAndSortingRef.current();
+  }, [props.tools]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // console.log(props.allCustomers);
-  // console.log(state);
+  // console.log('sortirano napolju', resultArr)
 
-  // debugger
+
   let showAllCustomers = null;
-  let customersArrayForMap = state.customers.length
-    ? state.customers
-    : props.allCustomers;
-  // console.log(state.customers);
+  let customersArrayForMap = resultArr.length ? resultArr : props.allCustomers;
+
   if (customersArrayForMap) {
     showAllCustomers = customersArrayForMap.map((el) => (
       <Customer
@@ -142,7 +81,6 @@ const CustomersList = (props) => {
         id={el.id}
         name={el.customerData.companyName}
         website={el.customerData.website}
-        // address={el.customerData.address}
         operatingRevenue={el.customerData.operatingRevenue}
         size={el.customerData.size}
         industry={el.customerData.industry}
@@ -296,3 +234,246 @@ export default connect(mapStateToProps, mapDispatchToProps)(CustomersList);
 // console.log(checked[0].includes(test[0].customerData.size));
 // console.log(arr);
 // console.log(test);
+
+/////********************/////
+
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "search":
+//       let watchArrForSearching =
+//         state.customers.length !== 0 && props.searchQuery
+//           ? state.customers
+//           : props.allCustomers;
+
+//       let searchArr = watchArrForSearching.filter((el) =>
+//         el.customerData.companyName.toLowerCase().includes(props.searchQuery)
+//       );
+//       console.log("1. SEARCH state.customers", state.customers);
+//       console.log("1. array for searching", watchArrForSearching);
+//       return {
+//         ...state,
+//         customers: searchArr,
+//       };
+
+//     case "sort":
+//       let watchArrForSorting =
+//         state.customers.length !== 0 && (props.sortQuery || props.searchQuery)
+//           ? state.customers
+//           : props.allCustomers;
+
+//       console.log("2. SORT state.customers", state.customers);
+//       console.log("2. array for sorting", watchArrForSorting);
+
+//       let sortedArr = [];
+//       switch (props.sortQuery) {
+//         case "az":
+//           sortedArr = sorts.sortAsc(watchArrForSorting, "companyName");
+//           break;
+//         case "za":
+//           sortedArr = sorts.sortDesc(watchArrForSorting, "companyName");
+//           break;
+//         case "asc":
+//           sortedArr = sorts.sortAscNum(
+//             watchArrForSorting,
+//             "operatingRevenue"
+//           );
+//           break;
+//         case "des":
+//           sortedArr = sorts.sortDescNum(
+//             watchArrForSorting,
+//             "operatingRevenue"
+//           );
+//           break;
+//         default:
+//           sortedArr = watchArrForSorting;
+//       }
+//       return {
+//         ...state,
+//         customers: sortedArr,
+//       };
+//     case "filterOne":
+//       let watchArrForFilteringOne =
+//         state.customers.length !== 0 && props.filterQueryOne
+//           ? state.customers
+//           : props.allCustomers;
+
+//       console.log("3. FILTERone state.customers", state.customers);
+//       console.log("3. array for filOne", watchArrForFilteringOne);
+
+//       let filterArrOne = [];
+//       if (props.filterQueryOne.length) {
+//         console.log("ja sam ovde");
+//         filterArrOne = watchArrForFilteringOne.filter((el) =>
+//           props.filterQueryOne.some((k) => k.includes(el.customerData.size))
+//         );
+//       } else {
+//         filterArrOne = watchArrForFilteringOne;
+//       }
+//       console.log("filter arr one", filterArrOne);
+//       // console.log(props.filterQueryOne);
+//       return {
+//         ...state,
+//         customers: filterArrOne,
+//       };
+//     // case "filterTwo":
+//     //   let watchArrForFilteringTwo =
+//     //     state.customers.length !== 0 &&
+//     //     (props.filterQueryTwo ||
+//     //       props.filterQueryOne)
+//     //       ? state.customers
+//     //       : props.allCustomers;
+
+//     //       // (props.filterQueryTwo ||
+//     //       //   props.filterQueryOne ||
+//     //       //   props.sortQuery ||
+//     //       //   props.searchQuery)
+
+//     //   let filterArrTwo = [];
+//     //   if (props.filterQueryTwo) {
+//     //     filterArrTwo = watchArrForFilteringTwo.filter((el) =>
+//     //       props.filterQueryTwo.some((k) =>
+//     //         k.includes(el.customerData.industry)
+//     //       )
+//     //     );
+//     //   }
+//     //   // console.log(filterArrTwo);
+//     //   // console.log(props.filterQueryTwo);
+//     //   return {
+//     //     ...state,
+//     //     customers: filterArrTwo,
+//     //   };
+//     default:
+//       console.log(state);
+//       return state;
+//   }
+// };
+
+// let result = props.allCustomers
+//   .filter((el) =>
+//     el.customerData.companyName.toLowerCase().includes(props.searchQuery)
+//   )
+//   .filter((elm) =>
+//     props.filterQueryOne.some((k) => k.includes(elm.customerData.size))
+//   )
+//   .filter((elem) =>
+//     props.filterQueryTwo.some((j) => j.includes(elem.customerData.size))
+//   );
+
+//   console.log('TESTIRAAAAAM', result)
+
+// // console.log(props.allCustomers)
+// const [state, dispatch] = useReducer(reducer, { customers: [] });
+
+// useEffect(() => {
+//   // debugger;
+//   dispatch({ type: "search" });
+//   dispatch({ type: "sort" });
+//   dispatch({ type: "filterOne" });
+//   dispatch({ type: "filterTwo" });
+// }, [props.tools]);
+
+// // console.log(props.allCustomers);
+// // console.log(state);
+
+// console.log("PRED prikaz", state.customers);
+// console.log("PRED prikaz", state.customers);
+//   // debugger
+//   let showAllCustomers = null;
+//   let customersArrayForMap = state.customers.length
+//     ? state.customers
+//     : props.allCustomers;
+//   // console.log(customersArrayForMap)
+//   if (customersArrayForMap) {
+//     showAllCustomers = customersArrayForMap.map((el) => (
+//       <Customer
+//         key={el.id}
+//         id={el.id}
+//         name={el.customerData.companyName}
+//         website={el.customerData.website}
+//         operatingRevenue={el.customerData.operatingRevenue}
+//         size={el.customerData.size}
+//         industry={el.customerData.industry}
+//       />
+//     ));
+//   }
+
+
+// const test = [
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "OTPISANI jer je FIca car",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Medium",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "MALO",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Small",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "MALO opet",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Medium",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+// ];
+// let wordArr = ["Medium"];
+// let word = "";
+// let testFilter = test
+//   .filter((el) => el.customerData.companyName.toLowerCase().includes(word))
+//   .filter((elm, idx, arr) => wordArr.length ? wordArr.some((k) => k.includes(elm.customerData.size)) : arr)
+
+
+// console.log("test", testFilter);
