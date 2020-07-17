@@ -4,43 +4,9 @@ import { connect } from "react-redux";
 
 import "./CustomersList.scss";
 import * as actions from "../../../store/actions";
+import * as sorts from "../../../components/helper/SortingFunctions";
 import Customer from "../../../components/Customers/Customer";
 import Spinner from "../../../components/UI/Spinner/Spinner";
-
-const sortAsc = (arr, field) => {
-  return arr.sort((a, b) => {
-    if (a.customerData[field] > b.customerData[field]) {
-      return 1;
-    }
-    if (b.customerData[field] > a.customerData[field]) {
-      return -1;
-    }
-    return 0;
-  });
-};
-
-const sortDesc = (arr, field) => {
-  return arr.sort((a, b) => {
-    if (a.customerData[field] > b.customerData[field]) {
-      return -1;
-    }
-    if (b.customerData[field] > a.customerData[field]) {
-      return 1;
-    }
-    return 0;
-  });
-};
-
-const sortAscNum = (arr, field) => {
-  return arr.sort(
-    (a, b) => parseInt(a.customerData[field]) - parseInt(b.customerData[field])
-  );
-};
-const sortDescNum = (arr, field) => {
-  return arr.sort(
-    (a, b) => parseInt(b.customerData[field]) - parseInt(a.customerData[field])
-  );
-};
 
 const CustomersList = (props) => {
   const fetchAllCustomersRef = useRef(props.fetchAllCustomers);
@@ -73,46 +39,92 @@ const CustomersList = (props) => {
             ? state.customers
             : props.allCustomers;
         // console.log(watchArrForSorting);
-        let sortedArr =
-          props.sortQuery === "az"
-            ? sortAsc(watchArrForSorting, "companyName")
-            : props.sortQuery === "za"
-            ? sortDesc(watchArrForSorting, "companyName")
-            : props.sortQuery === "asc"
-            ? sortAscNum(watchArrForSorting, "operatingRevenue")
-            : sortDescNum(watchArrForSorting, "operatingRevenue");
-        // console.log(sortedArr);
+        let sortedArr = [];
+        switch (props.sortQuery) {
+          case "az":
+            sortedArr = sorts.sortAsc(watchArrForSorting, "companyName");
+            break;
+          case "za":
+            sortedArr = sorts.sortDesc(watchArrForSorting, "companyName");
+            break;
+          case "asc":
+            sortedArr = sorts.sortAscNum(
+              watchArrForSorting,
+              "operatingRevenue"
+            );
+            break;
+          case "des":
+            sortedArr = sorts.sortDescNum(
+              watchArrForSorting,
+              "operatingRevenue"
+            );
+            break;
+          default:
+            sortedArr = watchArrForSorting;
+        }
         return {
           ...state,
           customers: sortedArr,
+        };
+      case "filterOne":
+        let watchArrForFilteringOne =
+          state.customers.length !== 0 && props.filterQueryOne
+            ? state.customers
+            : props.allCustomers;
+
+        let filterArrOne = [];
+        if (props.filterQueryOne) {
+          filterArrOne = watchArrForFilteringOne.filter((el) =>
+            props.filterQueryOne.some((k) => k.includes(el.customerData.size))
+          );
+          // filterArrOne = watchArrForFilteringOne.filter((el) =>
+          //   props.filterQueryOne.some((elm) => el.customerData.size === elm)
+          // );
+        }
+        // console.log(filterArrOne);
+        // console.log(props.filterQueryOne);
+        return {
+          ...state,
+          customers: filterArrOne,
+        };
+      case "filterTwo":
+        let watchArrForFilteringTwo =
+          state.customers.length !== 0 &&
+          (props.filterQueryTwo ||
+            props.filterQueryOne ||
+            props.sortQuery ||
+            props.searchQuery)
+            ? state.customers
+            : props.allCustomers;
+
+        let filterArrTwo = [];
+        if (props.filterQueryTwo) {
+          filterArrTwo = watchArrForFilteringTwo.filter((el) =>
+            props.filterQueryTwo.some((k) =>
+              k.includes(el.customerData.industry)
+            )
+          );
+        }
+        console.log(filterArrTwo);
+        console.log(props.filterQueryTwo);
+        return {
+          ...state,
+          customers: filterArrTwo,
         };
       default:
         return state;
     }
   };
-
+  // console.log(props.allCustomers)
   const [state, dispatch] = useReducer(reducer, { customers: [] });
 
   useEffect(() => {
     // debugger;
     dispatch({ type: "search" });
     dispatch({ type: "sort" });
+    dispatch({ type: "filterOne" });
+    dispatch({ type: "filterTwo" });
   }, [props.tools]);
-
-  // useEffect(() => {
-  //   // debugger;
-  //   dispatch({ type: "sort" });
-  // }, [props.tools]);
-
-  // useEffect(() => {
-  //   // debugger;
-  //   dispatch({ type: "search" });
-  // }, [props.searchQuery]);
-
-  // useEffect(() => {
-  //   // debugger
-  //   dispatch({ type: "sort" });
-  // }, [props.sortQuery]);
 
   // console.log(props.allCustomers);
   // console.log(state);
@@ -130,8 +142,10 @@ const CustomersList = (props) => {
         id={el.id}
         name={el.customerData.companyName}
         website={el.customerData.website}
-        address={el.customerData.address}
+        // address={el.customerData.address}
         operatingRevenue={el.customerData.operatingRevenue}
+        size={el.customerData.size}
+        industry={el.customerData.industry}
       />
     ));
   }
@@ -161,6 +175,8 @@ const mapStateToProps = (state) => {
     isLoading: state.customers.loading,
     searchQuery: state.tools.searchQuery,
     sortQuery: state.tools.sortQuery,
+    filterQueryOne: state.tools.filterQueryOne,
+    filterQueryTwo: state.tools.filterQueryTwo,
     tools: state.tools,
   };
 };
@@ -173,3 +189,110 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomersList);
+
+// let sortedArr =
+//   props.sortQuery === "az"
+//     ? sorts.sortAsc(watchArrForSorting, "companyName")
+//     : props.sortQuery === "za"
+//     ? sorts.sortDesc(watchArrForSorting, "companyName")
+//     : props.sortQuery === "asc"
+//     ? sorts.sortAscNum(watchArrForSorting, "operatingRevenue")
+//     : sorts.sortDescNum(watchArrForSorting, "operatingRevenue");
+
+// console.log(sortedArr);
+
+// useEffect(() => {
+//   // debugger;
+//   dispatch({ type: "sort" });
+// }, [props.tools]);
+
+// useEffect(() => {
+//   // debugger;
+//   dispatch({ type: "search" });
+// }, [props.searchQuery]);
+
+// useEffect(() => {
+//   // debugger
+//   dispatch({ type: "sort" });
+// }, [props.sortQuery]);
+
+// const test = [
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "OTPISANI jer je FIca car",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Medium",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "MALO",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Small",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+//   {
+//     customerData: {
+//       address: "bla bla bla",
+//       assets: 100000,
+//       companyName: "MALO opet",
+//       email: "test@mail.com",
+//       employees: "50",
+//       equity: 10000,
+//       industry: "Education",
+//       liabilities: 90000,
+//       operatingExpenses: 2000,
+//       operatingRevenue: 3000,
+//       phone: "011/999999999",
+//       regNumber: "777777777",
+//       size: "Small",
+//       taxation: 200,
+//       totalExpenses: 9000,
+//       totalRevenue: 10,
+//       website: "https://test.com",
+//     },
+//     id: "-MBnsjHzG5lOOD42DExI",
+//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
+//   },
+// ];
+// const checked = ["Small", "Large"];
+
+// const arr = test.filter((el) =>
+//   checked.some((k) => k.includes(el.customerData.size))
+// );
+
+// console.log(checked[0].includes(test[0].customerData.size));
+// console.log(arr);
+// console.log(test);

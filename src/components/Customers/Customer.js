@@ -9,8 +9,12 @@ const Customer = (props) => {
   <div className="Customer">
       <h3>{props.name}</h3>
       <a href={props.website} target="_blank" rel="noopener noreferrer">{props.website}</a>
-      <div>{props.address}</div>
-      <div>Operating revenue: {props.operatingRevenue}</div>
+      <br></br>
+      <div><b>Size:</b> {props.size}</div>
+      <br></br>
+      <div><b>Industry:</b> {props.industry}</div>
+      <br></br>
+      <div><b>Operating revenue:</b> {props.operatingRevenue}</div>
       <Link to={`/show/${props.id}`} className="Button">VIEW</Link>
       </div>
       );
