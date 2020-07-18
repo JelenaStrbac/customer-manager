@@ -28,7 +28,7 @@ const Checkboxes = (props) => {
         <div className="Checkboxes-main">
           {props.checkboxes.map((el) => (
             <label key={el.name} className="Container">
-              {el.name}
+              <div>{el.name}</div>
               <Checkbox
                 name={el.name}
                 checked={checkedItems[el.name]}

@@ -7,8 +7,10 @@ import * as actions from "../../../store/actions";
 import * as sorts from "../../../components/helper/SortingFunctions";
 import Customer from "../../../components/Customers/Customer";
 import Spinner from "../../../components/UI/Spinner/Spinner";
+import Pagination from "../../Tools/Pagination/Pagination";
 
 const CustomersList = (props) => {
+  //// 1. fetching of customers
   const fetchAllCustomersRef = useRef(props.fetchAllCustomers);
   const tokenRef = useRef(props.token);
   const userIdRef = useRef(props.userId);
@@ -17,8 +19,9 @@ const CustomersList = (props) => {
     fetchAllCustomersRef.current(tokenRef.current, userIdRef.current);
   }, []);
 
+  //// 2. search, filter and sort
+  const [resultArr, setResultArr] = useState([]);
 
-  const [resultArr, setResultArr] = useState([])
   const handleFilteringAndSorting = () => {
     let filteredCustomersArray = props.allCustomers
       .filter((el) =>
@@ -31,9 +34,11 @@ const CustomersList = (props) => {
       )
       .filter((elem, idx, array) =>
         props.filterQueryTwo.length
-          ? props.filterQueryTwo.some((k) => k.includes(elem.customerData.industry))
+          ? props.filterQueryTwo.some((k) =>
+              k.includes(elem.customerData.industry)
+            )
           : array
-      )
+      );
 
     let sortArr = [];
     switch (props.sortQuery) {
@@ -44,22 +49,19 @@ const CustomersList = (props) => {
         sortArr = sorts.sortDesc(filteredCustomersArray, "companyName");
         break;
       case "asc":
-        sortArr = sorts.sortAscNum(
-          filteredCustomersArray,
-          "operatingRevenue"
-        );
+        sortArr = sorts.sortAscNum(filteredCustomersArray, "operatingRevenue");
         break;
       case "des":
-        sortArr = sorts.sortDescNum(
-          filteredCustomersArray,
-          "operatingRevenue"
-        );
+        sortArr = sorts.sortDescNum(filteredCustomersArray, "operatingRevenue");
         break;
       default:
         sortArr = filteredCustomersArray;
     }
     // console.log("sortirano unutra", sortArr);
-    setResultArr(sortArr)
+    setResultArr(sortArr);
+    setPaginationDetails({...paginationDetails, data: sortArr, pageCount: Math.ceil(
+      sortArr.length / paginationDetails.perPage
+    )})
   };
 
   // const handleFilteringAndSortingRef = useRef(handleFilteringAndSorting)
@@ -70,12 +72,42 @@ const CustomersList = (props) => {
 
   // console.log('sortirano napolju', resultArr)
 
+  //// 3. pagination
+  const [paginationDetails, setPaginationDetails] = useState({
+    offset: 0,
+    data: [],
+    perPage: 6,
+    currentPage: 0,
+    pageCount: 0
+  });
+
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * paginationDetails.perPage;
+
+    setPaginationDetails({
+      ...paginationDetails,
+      currentPage: selectedPage,
+      offset: offset,
+    });
+  };
+
+  useEffect(() => {
+    setPaginationDetails({...paginationDetails, data: props.allCustomers, pageCount: Math.ceil(
+      props.allCustomers.length / paginationDetails.perPage
+    )})
+  }, [props.allCustomers]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  console.log(paginationDetails);
+
 
   let showAllCustomers = null;
-  let customersArrayForMap = resultArr.length ? resultArr : props.allCustomers;
-
-  if (customersArrayForMap) {
-    showAllCustomers = customersArrayForMap.map((el) => (
+  const customersArrayForMap = resultArr.length ? resultArr : props.allCustomers;
+  const slice = customersArrayForMap.slice(paginationDetails.offset, (paginationDetails.offset + paginationDetails.perPage))
+  console.log(slice)
+  console.log(customersArrayForMap)
+  if (slice) {
+    showAllCustomers = slice.map((el) => (
       <Customer
         key={el.id}
         id={el.id}
@@ -98,6 +130,10 @@ const CustomersList = (props) => {
         <div className="Plus">+</div>
         <div>Add customer</div>
       </Link>
+      <Pagination
+        pageCount={paginationDetails.pageCount}
+        handlePageClick={handlePageClick}
+      />
       <div className="CustomersBreakdown">
         {showAllCustomers ? showAllCustomers : null}
       </div>
@@ -397,7 +433,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(CustomersList);
 //     ));
 //   }
 
-
 // const test = [
 //   {
 //     customerData: {
@@ -474,6 +509,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(CustomersList);
 // let testFilter = test
 //   .filter((el) => el.customerData.companyName.toLowerCase().includes(word))
 //   .filter((elm, idx, arr) => wordArr.length ? wordArr.some((k) => k.includes(elm.customerData.size)) : arr)
-
 
 // console.log("test", testFilter);

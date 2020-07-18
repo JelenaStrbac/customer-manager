@@ -11,7 +11,8 @@
 
 /* Checkbox style */
 .Container {
-  display: block;
+  display: flex;
+  align-items: center;
   position: relative;
   padding-left: 3rem;
   margin-bottom: 1.5rem;
@@ -35,7 +36,6 @@
 /* Create a custom checkbox */
 .Checkmark {
   position: absolute;
-  top: 0;
   left: 0;
   height: 1.8rem;
   width: 1.8rem;
@@ -112,4 +112,8 @@
   padding: 0.5rem;
   margin-top: 1rem;
   overflow-y: scroll;
+}
+
+.BorderCheckbox .LabelCheckbox {
+  margin-bottom: 1.5rem;
 }
