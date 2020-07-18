@@ -76,7 +76,7 @@ const CustomersList = (props) => {
   const [paginationDetails, setPaginationDetails] = useState({
     offset: 0,
     data: [],
-    perPage: 6,
+    perPage: 4,
     currentPage: 0,
     pageCount: 0
   });

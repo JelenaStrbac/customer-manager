@@ -30,6 +30,7 @@ $lightestBlue: #1580de;
   cursor: pointer;
   width: 25%;
   background-color: rgb(255, 255, 255);
+  margin-bottom: 6rem;
 }
 
 .AddCustomerButton:hover {
@@ -41,7 +42,7 @@ $lightestBlue: #1580de;
 }
 
 .CustomersBreakdown {
-  margin-top: 8rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
