@@ -39,10 +39,20 @@ const CustomerDelete = (props) => {
       </Link>
     </React.Fragment>
   );
-
+  console.log(props.history);
+  debugger;
   return (
     <div className="CustomerDelete">
-      {props.isDeletedSuccessfully ? <Redirect to="/" /> : null}
+      {/* {props.isDeletedSuccessfully ? history.push("/") : null} */}
+      {/* {props.isDeletedSuccessfully ? <Redirect to="/" /> : null} */}
+      {props.isDeletedSuccessfully ? (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: { from: props.location },
+          }}
+        />
+      ) : null}
       <Modal
         content={content}
         actions={actions}

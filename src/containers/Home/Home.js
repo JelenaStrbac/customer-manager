@@ -20,7 +20,7 @@ const Home = () => {
           <Route path="/" exact component={CustomersList} />
           <Route path="/new" exact component={CustomerCreate} />
           <Route path="/edit/:id" exact component={CustomerEdit} />
-          <Route path="/delete/:id" exact component={CustomerDelete} />
+          {/* <Route path="/delete/:id" exact component={CustomerDelete} /> */}
           <Route path="/show/:id" exact component={CustomerShow} />
           <Redirect to="/" />
         </Switch>
