@@ -41,7 +41,7 @@ $--theme-color-fg-rgb: 71, 98, 130;
 
 .Navbar {
   grid-area: Navbar;
-  min-height: 8rem;
+  min-height: 6rem;
   padding: 1rem 2rem;
   margin: 0 1rem;
   border-bottom: 1px solid $--theme-color-fg-default-border;
@@ -52,7 +52,7 @@ $--theme-color-fg-rgb: 71, 98, 130;
 
 .Navbar h1 {
   color: $--theme-color-fg-primary;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-top: 1rem;
 }

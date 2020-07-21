@@ -79,7 +79,7 @@ const CustomersList = (props) => {
   const [paginationDetails, setPaginationDetails] = useState({
     offset: 0,
     data: [],
-    perPage: 4,
+    perPage: 10,
     currentPage: 0,
     pageCount: 0,
   });
@@ -127,6 +127,8 @@ const CustomersList = (props) => {
         operatingRevenue={el.customerData.operatingRevenue}
         size={el.customerData.size}
         industry={el.customerData.industry}
+        phone={el.customerData.phone}
+        email={el.customerData.email}
       />
     ));
   }

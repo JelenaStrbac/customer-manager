@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  // padding: 1rem 0rem 1.5rem 3rem;
   padding-left: 3rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
@@ -22,6 +23,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.Container:hover {
+  color: white;
 }
 
 /* Hide the browser's default checkbox */

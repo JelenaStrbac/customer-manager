@@ -1,5 +1,6 @@
 $--theme-color-fg-default-border: #c3cfdd;
 $middleOrange: #ffa000;
+$lightestBlue: #1580de;
 
 .Pagination {
     display: flex;
@@ -12,8 +13,8 @@ $middleOrange: #ffa000;
   outline: none;
 }
 .pagination > .active > a {
-  background-color: $middleOrange;
-  border-color: $middleOrange;
+  background-color: $lightestBlue;
+  border-color: $lightestBlue;
   color: #fff;
 }
 .pagination > li > a {
@@ -30,13 +31,13 @@ $middleOrange: #ffa000;
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: $middleOrange;
-  border-color: $middleOrange;
+  background-color: $lightestBlue;
+  border-color: $lightestBlue;
   outline: none;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: rgba(0, 0, 0, 0.6);
+  color: $lightestBlue;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span,

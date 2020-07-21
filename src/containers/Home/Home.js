@@ -6,7 +6,7 @@ import Toolbar from "../Toolbar/Toolbar";
 import CustomersList from "../Customers/CustomersList/CustomersList";
 import CustomerCreate from "../Customers/CustomerCreate/CustomerCreate";
 import CustomerEdit from "../Customers/CustomerEdit/CustomerEdit";
-import CustomerDelete from "../Customers/CustomerDelete/CustomerDelete";
+// import CustomerDelete from "../Customers/CustomerDelete/CustomerDelete";
 import CustomerShow from "../Customers/CustomerShow/CustomerShow";
 import Navbar from "../Navbar/Navbar";
 

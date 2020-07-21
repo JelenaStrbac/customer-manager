@@ -1,10 +1,15 @@
+$--theme-color-fg-default-border: #c3cfdd;
+
 .SearchBar {
     display: flex;
     align-items: center;
     display: flex;
     justify-items: flex-end;
     justify-content: flex-end;
+    // width: 30%;
     padding-right: 8rem;
+    // border: 0.5px solid $--theme-color-fg-default-border;
+    color: rgba(0, 0, 0, 0.4);
   }
   
   .SearchBar .Input {
@@ -15,7 +20,14 @@
   .SearchBar .Label::after {
     transition: none;
   }
+
+  .SearchBar .InputElement {
+    font-size: 1rem;
+  }
   
   .fa-search {
-    color: #9c9a9b;
+    // color: #9c9a9b;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1rem;
+    // color: $--theme-color-fg-default-border;
   }
