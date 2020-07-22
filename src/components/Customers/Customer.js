@@ -22,7 +22,7 @@ const Customer = (props) => {
     }
     setActiveSelected(e.target.className);
   };
-  console.log(activeSelected);
+
 
   let content;
   switch (showContent) {
@@ -54,10 +54,10 @@ const Customer = (props) => {
       content = (
         <div className="CustomerContent">
           <div>
-            <b>Operating revenue</b> {props.operatingRevenue}
+            <b>Operating revenue</b> {props.operatingRevenue.toLocaleString()}
           </div>
           <div>
-            <b>Operating expenses:</b> {props.operatingRevenue}
+            <b>Operating expenses:</b> {props.operatingRevenue.toLocaleString()}
           </div>
         </div>
       );

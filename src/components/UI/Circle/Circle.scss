@@ -1,0 +1,36 @@
+$middleOrange: #ffa000;
+$mintGreen: #46d4b4;
+$lightestBlue: #1580de;
+
+// 1.
+.SvgCircle_One {
+  animation: fillOne 1s linear forwards;
+}
+
+@keyframes fillOne {
+  100% {
+    fill: $middleOrange;
+  }
+}
+
+// 2.
+.SvgCircle_Two {
+  animation: fillTwo 1s linear forwards;
+}
+
+@keyframes fillTwo {
+  100% {
+    fill: $mintGreen;
+  }
+}
+
+// 3.
+.SvgCircle_Three {
+  animation: fillThree 1s linear forwards;
+}
+
+@keyframes fillThree {
+  100% {
+    fill: $lightestBlue;
+  }
+}

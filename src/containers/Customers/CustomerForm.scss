@@ -17,6 +17,10 @@ $darkerBlue: #083053;
 $lightBlue: #0e5491;
 $lightestBlue: #1580de;
 
+$middleOrange: #ffa000;
+$mintGreen: #46d4b4;
+$lightestBlue: #1580de;
+
 .CustomerForm {
   grid-area: Customer;
   padding: 2rem;
@@ -25,7 +29,6 @@ $lightestBlue: #1580de;
 .CustomerFormContainer {
     width: 60%;
     border: 0.5px solid $--theme-color-fg-default-border;
-    border-radius: 0.8rem;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
     display: flex;
     flex-direction: column;
@@ -42,21 +45,28 @@ $lightestBlue: #1580de;
     font-weight: 500;
     border-bottom: 0.5px solid $--theme-color-fg-default-border;
     border-top: 0.5px solid $--theme-color-fg-default-border;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .TableNav:first-child {
-    border-top-left-radius: 0.8rem;
-    border-top-right-radius: 0.8rem;
+    // border-top-left-radius: 0.8rem;
+    // border-top-right-radius: 0.8rem;
     border-top: none;
 }
 
-table {
+.TableForm {
     width: 100%;
     padding: 1rem 1rem 3rem 3rem;
 }
 
-td:first-child {
-    width: 40%;
+.FirstTd {
+    width: 5%;
+    vertical-align: bottom;
+}
+.SecondTd {
+    width: 30%;
     vertical-align: bottom;
 }
 
@@ -72,4 +82,15 @@ td:first-child {
     font-size: 1rem;
     font-style: italic;
     color: rgba(0, 0, 0, 0.2);
+}
+
+.color {
+    height: 1.3rem;
+    width: 0.2rem;
+    margin-right: 0.5rem;
+}
+
+.ColorTitle {
+    display: flex;
+    align-items: flex-end;
 }

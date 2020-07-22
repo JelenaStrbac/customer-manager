@@ -1,0 +1,20 @@
+
+
+.Tr b {
+  font-weight: 400;
+  // font-size: 0.8rem;
+}
+
+.Tr {
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.3rem;
+
+    :first-child {
+      width: 40%;
+    }
+    :last-child {
+      width: 60%;
+    }
+  }
+
+

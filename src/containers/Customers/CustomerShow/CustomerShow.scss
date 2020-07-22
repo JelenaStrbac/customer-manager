@@ -1,3 +1,9 @@
+$--theme-color-fg-default-border: #c3cfdd;
+
+$middleOrange: #ffa000;
+$mintGreen: #46d4b4;
+$lightestBlue: #1580de;
+
 .CustomerShow {
   grid-area: Customer;
   padding: 2rem;
@@ -5,4 +11,73 @@
 
 .Delete {
   background-color: red;
+}
+
+.CustomerShowContainer {
+  width: 70%;
+
+}
+
+
+.MainTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 0.5px solid $--theme-color-fg-default-border;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+
+}
+
+.MainTitle>div {
+  // font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+
+.CustomerShow_Buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CustomerShow_Buttons>button,
+.CustomerShow_Buttons .Button {
+  margin-top: 0;
+}
+
+.CustomerShow_Buttons .Button {
+  margin-right: 0.5rem;
+}
+
+.MainInfoTable {
+  // width: 60%;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.8rem;
+  width: 40%;
+  // padding: 1rem;
+  border: 0.5px solid $--theme-color-fg-default-border;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  background-color: rgb(255, 255, 255);
+}
+
+.MainInfoTable_Title {
+  background-color: rgb(250, 250, 250);
+  font-weight: 500;
+  border-bottom: 0.5px solid $--theme-color-fg-default-border;
+  // font-weight: 400;
+  padding: 0.8rem;
+}
+
+.Info_and_Industry {
+  display: flex;
+  width: 100%;
+}
+
+.MainInfoTable:first-child {
+  margin-right: 1rem;
+  width: 60%;
 }

@@ -3,6 +3,7 @@ $--theme-color-fg-primary: #1b3a57;
 $darkestBlue: #051e34;
 $lightestBlue: #1580de;
 $middleOrange: #ffa000;
+$mintGreen: #46d4b4;
 
 .Customer {
   border: 0.5px solid $--theme-color-fg-default-border;
@@ -104,7 +105,7 @@ $middleOrange: #ffa000;
   width: 100%;
 }
 .BorderTwo {
-  background-color: #46d4b4;
+  background-color: $mintGreen;
   width: 100%;
 }
 .BorderThree {
@@ -113,7 +114,7 @@ $middleOrange: #ffa000;
 }
 
 .BorderUnderline {
-  background-image: linear-gradient(to right,  $middleOrange, #46d4b4, $lightestBlue);
+  background-image: linear-gradient(to right,  $middleOrange, $mintGreen, $lightestBlue);
   height: 0.1rem;
   width: 100%;
   transform: translateX(-100%);

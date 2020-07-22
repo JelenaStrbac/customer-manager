@@ -6,6 +6,7 @@ import Input from "../../components/UI/Input/Input";
 import { checkValidity } from "../../components/helper/CheckValidity";
 import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Circle from "../../components/UI/Circle/Circle";
 
 const CustomerForm = (props) => {
   const [customerForm, setCustomerForm] = useState({
@@ -19,6 +20,8 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        minLength: 2,
+        maxLength: 20,
       },
       valid: false,
       touched: false,
@@ -47,7 +50,7 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
-        minLength: 8,
+        length: 8,
       },
       valid: false,
       touched: false,
@@ -62,6 +65,8 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        minLength: 2,
+        maxLength: 20,
       },
       valid: false,
       touched: false,
@@ -71,11 +76,12 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "phone",
         label: "Phone",
-        placeholder: "e.g. 011/1111-222",
+        placeholder: "e.g. +381 11 1234567",
       },
       value: "",
       validation: {
         required: true,
+        isPhone: true,
       },
       valid: false,
       touched: false,
@@ -141,6 +147,7 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
@@ -155,12 +162,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     totalExpenses: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Total expenses",
@@ -169,12 +177,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     operatingRevenue: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Operating revenue (Turnover)",
@@ -183,12 +192,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     operatingExpenses: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Operating expenses",
@@ -197,12 +207,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     taxation: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Tax (Corporate Income Tax)",
@@ -211,12 +222,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     assets: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Total assets",
@@ -225,12 +237,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     equity: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Shareholder's equity",
@@ -239,12 +252,13 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
     },
     liabilities: {
-      elementType: "input",
+      elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Total liabilities",
@@ -253,6 +267,7 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
+        isPositive: true,
       },
       valid: false,
       touched: false,
@@ -281,7 +296,8 @@ const CustomerForm = (props) => {
     }
     let formIsValid = true;
     for (let inputIdentifier in initialCustomerFormForEditing) {
-      formIsValid = initialCustomerFormForEditing[inputIdentifier].valid && formIsValid;
+      formIsValid =
+        initialCustomerFormForEditing[inputIdentifier].valid && formIsValid;
     }
 
     setCustomerForm(initialCustomerFormForEditing);
@@ -303,6 +319,8 @@ const CustomerForm = (props) => {
     };
     const updatedFormElement = { ...updatedCustomerForm[inputIdentifier] };
     updatedFormElement.value = e.target.value;
+
+    console.log(e.target);
 
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
@@ -330,6 +348,22 @@ const CustomerForm = (props) => {
         customerForm[formElementIdentifier].value;
     }
 
+    [
+      "totalRevenue",
+      "totalExpenses",
+      "operatingRevenue",
+      "operatingExpenses",
+      "taxation",
+      "assets",
+      "equity",
+      "liabilities",
+    ].forEach((k) =>
+      typeof formData[k] !== "number"
+        ? (formData[k] = parseInt(formData[k].replace(",", "")))
+        : null
+    );
+
+    // console.log(formData);
     const data = {
       customerData: formData,
       userId: props.userId,
@@ -351,16 +385,46 @@ const CustomerForm = (props) => {
   const industryInfoArray = formElementsArray.slice(6, 9);
   const financialInfoArray = formElementsArray.slice(9, 17);
 
-  const formPart = (title, array) => {
+  /// checking validity for writting steps
+  const settingValidity = (arr) => {
+    const validityArray = [];
+    arr.map((el) => validityArray.push(el.config.valid));
+
+    let resultValidity = {};
+    validityArray.forEach(
+      (el) => (resultValidity[el] = (resultValidity[el] || 0) + 1)
+    );
+
+    return resultValidity;
+  };
+
+  const formPart = (title, array, color) => {
+    const resultValidity = settingValidity(array);
+    const total = Object.values(resultValidity).reduce(
+      (acc, curr) => acc + curr
+    );
+    const progress = resultValidity.true ? resultValidity.true : 0;
+
     return (
       <>
-        <div className="TableNav">{title}</div>
-        <table>
+        <div className="TableNav">
+          <div className="ColorTitle">
+            <div className="color" style={{ backgroundColor: color }}></div>
+            <div>{title}</div>
+          </div>
+          <div>
+            {progress} / {total}
+          </div>
+        </div>
+        <table className="TableForm">
           <tbody>
             {array.map((el, idx) => {
               return (
                 <tr key={idx}>
-                  <td>{el.config.elementConfig.label}:</td>
+                  <td className="FirstTd">
+                    <Circle valid={el.config.valid} color={color} />
+                  </td>
+                  <td className="SecondTd">{el.config.elementConfig.label}:</td>
                   <td>
                     <Input
                       key={el.id}
@@ -387,9 +451,9 @@ const CustomerForm = (props) => {
   let form = (
     <form className="Form" autoComplete="off" onSubmit={onSubmit}>
       <div className="CustomerFormContainer">
-        {formPart("MAIN INFO", mainInfoArray)}
-        {formPart("INDUSTRY AND CLASSIFICATION", industryInfoArray)}
-        {formPart("FINANCIAL INFO", financialInfoArray)}
+        {formPart("MAIN INFO", mainInfoArray, "#ffa000")}
+        {formPart("INDUSTRY AND CLASSIFICATION", industryInfoArray, "#46d4b4")}
+        {formPart("FINANCIAL INFO", financialInfoArray, "#1580de")}
         {/* <Button>SAVE</Button> */}
         <Button disabled={!formIsValid}>SAVE</Button>
       </div>

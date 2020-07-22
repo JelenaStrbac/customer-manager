@@ -77,10 +77,28 @@ const fetchCustomerStart = (state, action) => {
 };
 
 const fetchCustomerSuccess = (state, action) => {
+  let res =  { ...action.particularCustomer, customerData: { ...action.particularCustomer.customerData } };;
+    [
+      "totalRevenue",
+      "totalExpenses",
+      "operatingRevenue",
+      "operatingExpenses",
+      "taxation",
+      "assets",
+      "equity",
+      "liabilities",
+    ].forEach((k) =>   
+    res.customerData[k] = parseInt(res.customerData[k])
+    // res.customerData[k] = parseInt(res.customerData[k].replace(",", ""))
+    );
+
+
+
   return {
     ...state,
     loading: false,
-    particularCustomer: action.particularCustomer,
+    particularCustomer: res,
+    // particularCustomer: action.particularCustomer,
   };
 };
 

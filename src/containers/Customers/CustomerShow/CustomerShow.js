@@ -6,6 +6,8 @@ import "./CustomerShow.scss";
 import * as actions from "../../../store/actions";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Modal from "../../../components/UI/Modal/Modal";
+import TableRow from "../../../components/UI/Table/TableRow/TableRow";
+import Table from "../../../components/UI/Table/Table";
 
 const CustomerShow = (props) => {
   //// modal for deleting customer
@@ -29,45 +31,42 @@ const CustomerShow = (props) => {
     fetchOneCustomerRef.current(tokenRef.current, idRef.current);
   }, []);
 
+  // const {companyName, website, regNumber, address, phone, email} = props.particularCustomer.customerData
+  console.log(props.particularCustomer);
+
   //// showing particular customer
   let particularCustomerShow = null;
   if (props.particularCustomer) {
     particularCustomerShow = (
-      <div className="CustomerFormContainer">
-        <div className="TableNav">
-          {props.particularCustomer.customerData.companyName}
-          <Link to={`/edit/${idRef.current}`} className="Button">
-            EDIT
-          </Link>
-          <button className="Button Delete" onClick={openModal}>
-            DELETE
-          </button>
+      <div className="CustomerShowContainer">
+        <div className="MainTitle">
+          <div>{props.particularCustomer.customerData.companyName}</div>
+          <div className="CustomerShow_Buttons">
+            <Link to={`/edit/${idRef.current}`} className="Button">
+              EDIT
+            </Link>
+            <button className="Button Delete" onClick={openModal}>
+              DELETE
+            </button>
+          </div>
         </div>
-        <div className="TableNavGrey">MAIN INFO</div>
-        <table>
-          <tbody>
-            <tr>
-              <td>Website:</td>
-              <td>{props.particularCustomer.customerData.website}</td>
-            </tr>
-            <tr>
-              <td>Registration number:</td>
-              <td>{props.particularCustomer.customerData.regNumber}</td>
-            </tr>
-            <tr>
-              <td>Address:</td>
-              <td>{props.particularCustomer.customerData.address}</td>
-            </tr>
-            <tr>
-              <td>Phone:</td>
-              <td>{props.particularCustomer.customerData.phone}</td>
-            </tr>
-            <tr>
-              <td>Email:</td>
-              <td>{props.particularCustomer.customerData.email}</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div className="Info_and_Industry">
+              <Table title="MAIN INFO">
+                <TableRow label="Website" data={props.particularCustomer.customerData.website}/>
+                <TableRow label="Reg. number" data={props.particularCustomer.customerData.regNumber}/>
+                <TableRow label="Address" data={props.particularCustomer.customerData.address}/>
+                <TableRow label="Phone" data={props.particularCustomer.customerData.phone}/>
+                <TableRow label="Email" data={props.particularCustomer.customerData.email}/>
+              </Table>
+            
+            <Table title="INDUSTRY">
+              <TableRow label="Industry" data={props.particularCustomer.customerData.industry}/>
+              <TableRow label="Company size" data={props.particularCustomer.customerData.size}/>
+              <TableRow label="Employees" data={props.particularCustomer.customerData.employees}/>
+            </Table>
+        </div>
+        
       </div>
     );
   }
