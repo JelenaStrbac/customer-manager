@@ -23,7 +23,6 @@ $lightestBlue: #1580de;
   width: 70%;
 }
 
-
 .MainTitle {
   display: flex;
   align-items: center;
@@ -35,7 +34,7 @@ $lightestBlue: #1580de;
   margin-bottom: 2rem;
 }
 
-.MainTitle>div {
+.MainTitle > div {
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.4rem;
   letter-spacing: 0.1rem;
@@ -47,7 +46,7 @@ $lightestBlue: #1580de;
   justify-content: space-between;
 }
 
-.CustomerShow_Buttons>button,
+.CustomerShow_Buttons > button,
 .CustomerShow_Buttons .Button {
   margin-top: 0;
 }
@@ -62,12 +61,12 @@ $lightestBlue: #1580de;
   width: 100%;
 }
 
-.Info_and_Industry>div:first-child {
+.Info_and_Industry > div:first-child {
   margin-right: 2rem;
   width: 60%;
 }
 
-.Info_and_Industry>div:nth-child(2) {
+.Info_and_Industry > div:nth-child(2) {
   width: 40%;
 }
 
@@ -100,29 +99,36 @@ $lightestBlue: #1580de;
   width: 100%;
 }
 
-.First_TBody>tr:nth-child(2)>td:nth-child(2),
-.First_TBody>tr:nth-child(5)>td:nth-child(2),
-.First_TBody>tr:nth-child(8)>td:nth-child(2),
-.First_TBody>tr:nth-child(10)>td:nth-child(2),
-.Second_TBody>tr:nth-child(2)>td:nth-child(2),
-.Second_TBody>tr:nth-child(6)>td:nth-child(2) {
+.First_TBody > tr:nth-child(2) > td:nth-child(2),
+.First_TBody > tr:nth-child(5) > td:nth-child(2),
+.First_TBody > tr:nth-child(8) > td:nth-child(2),
+.First_TBody > tr:nth-child(11) > td:nth-child(2),
+.Second_TBody > tr:nth-child(2) > td:nth-child(2),
+.Second_TBody > tr:nth-child(6) > td:nth-child(2) {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
-.First_TBody>tr:nth-child(3)>td,
-.First_TBody>tr:nth-child(3)>td>b,
-.First_TBody>tr:nth-child(6)>td,
-.First_TBody>tr:nth-child(6)>td>b,
-.First_TBody>tr:nth-child(9)>td,
-.First_TBody>tr:nth-child(9)>td>b,
-.First_TBody>tr:nth-child(11)>td,
-.First_TBody>tr:nth-child(11)>td>b,
-.Second_TBody>tr:nth-child(3)>td,
-.Second_TBody>tr:nth-child(3)>td>b,
-.Second_TBody>tr:nth-child(7)>td,
-.Second_TBody>tr:nth-child(7)>td>b {
+.First_TBody > tr:nth-child(3) > td,
+.First_TBody > tr:nth-child(3) > td > b,
+.First_TBody > tr:nth-child(6) > td,
+.First_TBody > tr:nth-child(6) > td > b,
+.First_TBody > tr:nth-child(9) > td,
+.First_TBody > tr:nth-child(9) > td > b,
+.First_TBody > tr:nth-child(10) > td,
+.First_TBody > tr:nth-child(10) > td > b,
+.First_TBody > tr:nth-child(12) > td,
+.First_TBody > tr:nth-child(12) > td > b,
+.Second_TBody > tr:nth-child(3) > td,
+.Second_TBody > tr:nth-child(3) > td > b,
+.Second_TBody > tr:nth-child(7) > td,
+.Second_TBody > tr:nth-child(7) > td > b {
   font-weight: 400;
   padding-left: 0.3rem;
+}
+
+.First_TBody > tr:nth-child(10) > td,
+.First_TBody > tr:nth-child(10) > td > b {
+  padding-top: 0.8rem;
 }
 
 .Report_TBody .FirstTableData {
@@ -130,19 +136,12 @@ $lightestBlue: #1580de;
   margin-right: 2rem;
 }
 
-.Report_TBody .FirstTableData>b {
+.Report_TBody .FirstTableData > b {
   font-weight: 300;
 }
 
 .Report_TBody .SecondTableData {
   text-align: right;
-}
-
-.CustomerShowContainer_Right {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
 }
 
 .Ratios {
@@ -154,25 +153,31 @@ $lightestBlue: #1580de;
   display: flex;
 }
 
-.Ratios_Main>table:first-child {
+.Ratios_Main > table:first-child {
   margin-right: 2rem;
 }
-.Ratios_Main .FirstTableData>b {
+.Ratios_Main .FirstTableData > b {
   padding-left: 0.3rem;
 }
 
-.Ratios_Main .Left_TBody>tr:nth-child(1)>td>b, 
-.Ratios_Main .Left_TBody>tr:nth-child(4)>td>b,
-.Ratios_Main .Right_TBody>tr:nth-child(1)>td>b,
-.Ratios_Main .Right_TBody>tr:nth-child(3)>td>b {
+.Ratios_Main .Left_TBody > tr:nth-child(1) > td > b,
+.Ratios_Main .Left_TBody > tr:nth-child(4) > td > b,
+.Ratios_Main .Right_TBody > tr:nth-child(1) > td > b,
+.Ratios_Main .Right_TBody > tr:nth-child(3) > td > b {
   font-weight: 400;
   padding-left: 0;
 }
 
+.CustomerShowContainer_Right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 2rem;
+}
 
 .HighlightData {
-  padding: 3rem 2rem;
-  margin-bottom: 0.5rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,7 +199,7 @@ $lightestBlue: #1580de;
   align-items: flex-start;
 }
 
-.HighlightData_Data>div {
+.HighlightData_Data > div {
   font-size: 2.4rem;
   font-weight: 100;
 }
@@ -203,27 +208,25 @@ $lightestBlue: #1580de;
   padding-top: 0.3rem;
 }
 
-.HighlightData_Data:hover {
-  color: white;
-}
-
 $darkestBlue: #051e34;
 $darkerBlue: #083053;
 $lightBlue: #0e5491;
 $lightestBlue: #1580de;
 
 .One {
-  background-image: linear-gradient( $lightestBlue, $lightBlue)
+  background-image: linear-gradient($lightestBlue, $lightBlue);
+  padding: 3rem 2rem;
 }
 
 .Two {
-  background-image: linear-gradient( $lightBlue, $darkerBlue)
+  background-image: linear-gradient($lightBlue, $darkerBlue);
 }
 
 .Three {
-  background-image: linear-gradient( $darkerBlue, $--theme-color-fg-primary)
+  background-image: linear-gradient($darkerBlue, $--theme-color-fg-primary);
 }
 
 .Four {
-  background-image: linear-gradient( $--theme-color-fg-primary, $darkestBlue)
+  background-image: linear-gradient($--theme-color-fg-primary, $darkestBlue);
+  padding: 3rem 2rem;
 }

@@ -8,6 +8,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Modal from "../../../components/UI/Modal/Modal";
 import TableRow from "../../../components/UI/Table/TableRow/TableRow";
 import Table from "../../../components/UI/Table/Table";
+import ProfitabilityCircle from "../../../components/UI/Circle/ProfitabilityCircle";
 
 const CustomerShow = (props) => {
   //// modal for deleting customer
@@ -49,8 +50,8 @@ const CustomerShow = (props) => {
     fixedAssetsTurnoverRatio = operatingRevenue / fixedAssets;
     totalAssetsTurnoverRatio = operatingRevenue / totalAssets;
     debtToEquityRatio = (longTermLiabilities + shortTermLiabilities) / equity;
-    ebitMargin = ((ebit / operatingRevenue) * 100) > 0 ? `${((ebit / operatingRevenue) * 100).toFixed(2)}%` : `n.a.`;
-    profitMargin = ((netIncome / operatingRevenue) * 100) > 0 ? `${((netIncome / operatingRevenue) * 100).toFixed(2)}%` : `n.a.`;
+    ebitMargin = (ebit / operatingRevenue) * 100;
+    profitMargin = (netIncome / operatingRevenue) * 100;
     roa = ((netIncome / totalAssets) * 100) > 0 ? `${((netIncome / totalAssets) * 100).toFixed(2)}%` : `n.a.`;
     roe = ((netIncome / equity) * 100) > 0 ? `${((netIncome / equity) * 100).toFixed(2)}%` : `n.a.`;
   }
@@ -107,6 +108,7 @@ const CustomerShow = (props) => {
                     <TableRow label="Extr. and other revenue" data={otherRevenue.toLocaleString() || otherRevenue}/>
                     <TableRow label="Extr. and other expenses" data={`-${otherExpenses.toLocaleString() || otherExpenses}`}/>
                     <TableRow label="Extr. and other P/L" data={otherResult.toLocaleString()}/>
+                    <TableRow label="P/L prior taxation" data={netIncomePriorTax.toLocaleString()}/>
                     <TableRow label="Taxation" data={`-${taxation.toLocaleString() || taxation}`}/>
                     <TableRow label="P/L for period [=Net income]" data={netIncome.toLocaleString()}/>
                   </tbody>
@@ -151,8 +153,8 @@ const CustomerShow = (props) => {
                     <TableRow label="Debt Equity Ratio" data={debtToEquityRatio.toFixed(2)}/>
     
                     <TableRow label="Profitability" />
-                    <TableRow label="EBIT margin" data={ebitMargin}/>
-                    <TableRow label="Profit margin" data={profitMargin}/>
+                    <TableRow label="EBIT margin" data={ebitMargin > 0 ? `${ebitMargin.toFixed(2)}%` : `n.a.`}/>
+                    <TableRow label="Profit margin" data={profitMargin > 0 ? `${profitMargin.toFixed(2)}%` : `n.a.`}/>
                     <TableRow label="Return on Assets [=ROA]" data={roa}/>
                     <TableRow label="Return on Equity [=ROE]" data={roe}/> 
                   </tbody>
@@ -166,25 +168,25 @@ const CustomerShow = (props) => {
           <div className="HighlightData One">
             <div className="HighlightData_Data">
               <span className="Currency">RSD</span>
-              <div>{`${(operatingRevenue / 1000000).toFixed(2)} mil.`}</div>
+              <div>{`${(operatingRevenue / 1000000).toFixed(2)}mil.`}</div>
             </div>
             <div className="HighlightData_Title">TURNOVER</div>
           </div>
           <div className="HighlightData Two">
             <div className="HighlightData_Data">
-              <div>{ebitMargin}</div>
+              <div><ProfitabilityCircle percent={ebitMargin} colorOne="#ffa20021" colorTwo="#ffa000"/></div>
             </div>
             <div className="HighlightData_Title">EBIT margin</div>
           </div>
           <div className="HighlightData Three">
             <div className="HighlightData_Data">
-              <div>{profitMargin}</div>
+              <div><ProfitabilityCircle percent={profitMargin} colorOne="#46d4b31f" colorTwo="#46d4b4"/></div>
             </div>
             <div className="HighlightData_Title">PROFIT margin</div>
           </div>
           <div className="HighlightData Four">
             <div className="HighlightData_Data">
-              <div>{debtToEquityRatio}</div>
+              <div>{debtToEquityRatio.toFixed(2)}</div>
             </div>
             <div className="HighlightData_Title">DEBT EQUITY RATIO</div>
           </div>
