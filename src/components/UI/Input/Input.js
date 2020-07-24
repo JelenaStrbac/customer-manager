@@ -8,12 +8,9 @@ const input = (props) => {
   const inputClasses = ["InputElement"];
 
   const labelClass = ["Label"];
-  if (props.invalid && props.shouldValidate && props.touched) {
-    inputClasses.push("Invalid");
-  }
 
   const contentClass = ["Content"];
-  if (!props.invalid) {
+  if (props.value) {
     contentClass.push("SmallLetter");
   }
 
@@ -44,7 +41,6 @@ const input = (props) => {
               numeralThousandsGroupStyle: "thousand",
             }}
             className={inputClasses.join(" ")}
-            // {...props.elementConfig}
             value={props.value}
             onChange={props.changed}
             placeholder={props.placeholder}
