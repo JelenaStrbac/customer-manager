@@ -51,7 +51,7 @@ const fetchCustomersSuccess = (state, action) => {
       "financialRevenue",
       "financialExpenses",
       "otherRevenue",
-      "ootherExpenses",
+      "otherExpenses",
       "taxation",
       "fixedAssets",
       "currentAssets",
@@ -63,7 +63,7 @@ const fetchCustomersSuccess = (state, action) => {
     );
     return obj;
   });
-  // action.allCustomers.map(el => ['totalRevenue', 'totalExpenses', 'operatingRevenue', 'operatingExpenses', 'taxation', 'assets', 'equity', 'liabilities'].map(k => el.customerData[k] = parseInt(el.customerData[k])))
+  
   return {
     ...state,
     loading: false,
@@ -88,7 +88,7 @@ const fetchCustomerSuccess = (state, action) => {
     "financialRevenue",
     "financialExpenses",
     "otherRevenue",
-    "ootherExpenses",
+    "otherExpenses",
     "taxation",
     "fixedAssets",
     "currentAssets",
@@ -97,7 +97,6 @@ const fetchCustomerSuccess = (state, action) => {
     "shortTermLiabilities",
   ].forEach((k) =>   
     res.customerData[k] = parseInt(res.customerData[k])
-    // res.customerData[k] = parseInt(res.customerData[k].replace(",", ""))
     );
 
 
@@ -105,8 +104,8 @@ const fetchCustomerSuccess = (state, action) => {
   return {
     ...state,
     loading: false,
-    // particularCustomer: res,
-    particularCustomer: action.particularCustomer,
+    particularCustomer: res,
+    // particularCustomer: action.particularCustomer,
   };
 };
 

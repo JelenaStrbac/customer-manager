@@ -78,6 +78,7 @@ const input = (props) => {
       inputElement = (
         <>
           <select className="InputSelect" onChange={props.changed} value={props.value}>
+            <option value="" disabled>---Select from dropdown---</option>
             {props.elementConfig.obj.map((el) => (
               <option key={el} value={el} >
                 {el}

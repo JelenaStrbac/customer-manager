@@ -16,6 +16,14 @@ $lightestBlue: #1580de;
   padding: 2rem;
 }
 
+.AddCustomerButton_Container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 1fr;
+  justify-content: space-evenly;
+  grid-gap: 2rem;
+}
+
 .AddCustomerButton {
   text-decoration: none;
   border: 0.5px solid $--theme-color-fg-default-border;
@@ -25,18 +33,18 @@ $lightestBlue: #1580de;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 2rem;
+  padding: 1.4rem 2rem;
   color: $lightestBlue;
   cursor: pointer;
-  width: 15%;
+  width: 100%;
   // width: 10rem;
   // height: 10rem;
   background-color: rgb(255, 255, 255);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .AddCustomerButton:hover {
-  background-color: rgb(252, 252, 252);
+  background-color: rgba(252, 252, 252, 0.87);
 }
 
 .Plus {

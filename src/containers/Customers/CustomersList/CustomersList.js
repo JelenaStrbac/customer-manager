@@ -139,10 +139,12 @@ const CustomersList = (props) => {
 
   return (
     <div className="CustomersList">
-      <Link to="/new" className="AddCustomerButton">
-        <div className="Plus">+</div>
-        <div>Add customer</div>
-      </Link>
+      <div className="AddCustomerButton_Container">
+        <Link to="/new" className="AddCustomerButton">
+          <div className="Plus">+</div>
+          <div>Add customer</div>
+        </Link>
+      </div>
       <Pagination
         pageCount={paginationDetails.pageCount}
         handlePageClick={handlePageClick}

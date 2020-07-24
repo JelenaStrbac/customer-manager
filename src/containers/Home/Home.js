@@ -9,6 +9,7 @@ import CustomerEdit from "../Customers/CustomerEdit/CustomerEdit";
 // import CustomerDelete from "../Customers/CustomerDelete/CustomerDelete";
 import CustomerShow from "../Customers/CustomerShow/CustomerShow";
 import Navbar from "../Navbar/Navbar";
+import Documentation from "../../components/Documentation/Documentation";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
           <Route path="/edit/:id" exact component={CustomerEdit} />
           {/* <Route path="/delete/:id" exact component={CustomerDelete} /> */}
           <Route path="/show/:id" exact component={CustomerShow} />
+          <Route path="/documentation" exact component={Documentation} />
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>

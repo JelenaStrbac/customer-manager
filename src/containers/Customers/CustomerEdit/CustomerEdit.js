@@ -23,7 +23,6 @@ const CustomerEdit = (props) => {
   return (
     <div className="CustomerEdit">
       {props.isEditedSuccessfully ? <Redirect to="/" /> : null}
-      CustomerEdit
       <CustomerForm initialFormValues={props.particularCustomer.customerData} id={idRef.current} onSubmit={onSubmit}/>
     </div>
   );

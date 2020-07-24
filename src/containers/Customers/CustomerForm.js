@@ -107,7 +107,6 @@ const CustomerForm = (props) => {
         type: "number",
         label: "Industry",
         obj: [
-          "--Select from dropdown--",
           "Education",
           "Finance",
           "Health",
@@ -128,7 +127,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "number",
         label: "Company Size",
-        obj: ["--Select from dropdown--", "Micro", "Small", "Medium", "Large"],
+        obj: ["Micro", "Small", "Medium", "Large"],
       },
       value: "",
       validation: {

@@ -44,7 +44,7 @@ const CustomerShow = (props) => {
     netIncomePriorTax = ebit + finResult + otherResult;
     netIncome = netIncomePriorTax - taxation;
     totalAssets = fixedAssets + currentAssets;
-    totalFunds = longTermLiabilities + shortTermLiabilities;
+    totalFunds = equity + longTermLiabilities + shortTermLiabilities;
     currentRatio = currentAssets / shortTermLiabilities;
     noa = currentAssets - shortTermLiabilities;
     fixedAssetsTurnoverRatio = operatingRevenue / fixedAssets;
