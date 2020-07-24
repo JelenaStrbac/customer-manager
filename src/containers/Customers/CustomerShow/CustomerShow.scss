@@ -1,4 +1,6 @@
 $--theme-color-fg-default-border: #c3cfdd;
+$--theme-color-fg-primary: #1b3a57;
+$darkestBlue: #051e34;
 
 $middleOrange: #ffa000;
 $mintGreen: #46d4b4;
@@ -14,8 +16,11 @@ $lightestBlue: #1580de;
 }
 
 .CustomerShowContainer {
-  width: 70%;
+  display: flex;
+}
 
+.CustomerShowContainer_Left {
+  width: 70%;
 }
 
 
@@ -27,12 +32,10 @@ $lightestBlue: #1580de;
   border: 0.5px solid $--theme-color-fg-default-border;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   background-color: rgb(255, 255, 255);
-  margin-bottom: 1rem;
-
+  margin-bottom: 2rem;
 }
 
 .MainTitle>div {
-  // font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.4rem;
   letter-spacing: 0.1rem;
@@ -53,31 +56,174 @@ $lightestBlue: #1580de;
   margin-right: 0.5rem;
 }
 
-.MainInfoTable {
-  // width: 60%;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 0.8rem;
-  width: 40%;
-  // padding: 1rem;
-  border: 0.5px solid $--theme-color-fg-default-border;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
-  background-color: rgb(255, 255, 255);
-}
-
-.MainInfoTable_Title {
-  background-color: rgb(250, 250, 250);
-  font-weight: 500;
-  border-bottom: 0.5px solid $--theme-color-fg-default-border;
-  // font-weight: 400;
-  padding: 0.8rem;
-}
-
 .Info_and_Industry {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
-.MainInfoTable:first-child {
-  margin-right: 1rem;
+.Info_and_Industry>div:first-child {
+  margin-right: 2rem;
   width: 60%;
+}
+
+.Info_and_Industry>div:nth-child(2) {
+  width: 40%;
+}
+
+.Finance {
+  margin-top: 2rem;
+}
+
+.Reports {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+}
+
+.Report_Title {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.Report_First,
+.Report_Second {
+  width: 50%;
+}
+
+.Report_First {
+  margin-right: 2rem;
+}
+
+.Report_Table {
+  padding-left: 1rem;
+  width: 100%;
+}
+
+.First_TBody>tr:nth-child(2)>td:nth-child(2),
+.First_TBody>tr:nth-child(5)>td:nth-child(2),
+.First_TBody>tr:nth-child(8)>td:nth-child(2),
+.First_TBody>tr:nth-child(10)>td:nth-child(2),
+.Second_TBody>tr:nth-child(2)>td:nth-child(2),
+.Second_TBody>tr:nth-child(6)>td:nth-child(2) {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.First_TBody>tr:nth-child(3)>td,
+.First_TBody>tr:nth-child(3)>td>b,
+.First_TBody>tr:nth-child(6)>td,
+.First_TBody>tr:nth-child(6)>td>b,
+.First_TBody>tr:nth-child(9)>td,
+.First_TBody>tr:nth-child(9)>td>b,
+.First_TBody>tr:nth-child(11)>td,
+.First_TBody>tr:nth-child(11)>td>b,
+.Second_TBody>tr:nth-child(3)>td,
+.Second_TBody>tr:nth-child(3)>td>b,
+.Second_TBody>tr:nth-child(7)>td,
+.Second_TBody>tr:nth-child(7)>td>b {
+  font-weight: 400;
+  padding-left: 0.3rem;
+}
+
+.Report_TBody .FirstTableData {
+  width: 70%;
+  margin-right: 2rem;
+}
+
+.Report_TBody .FirstTableData>b {
+  font-weight: 300;
+}
+
+.Report_TBody .SecondTableData {
+  text-align: right;
+}
+
+.CustomerShowContainer_Right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.Ratios {
+  width: 100%;
+  padding: 1rem;
+}
+
+.Ratios_Main {
+  display: flex;
+}
+
+.Ratios_Main>table:first-child {
+  margin-right: 2rem;
+}
+.Ratios_Main .FirstTableData>b {
+  padding-left: 0.3rem;
+}
+
+.Ratios_Main .Left_TBody>tr:nth-child(1)>td>b, 
+.Ratios_Main .Left_TBody>tr:nth-child(4)>td>b,
+.Ratios_Main .Right_TBody>tr:nth-child(1)>td>b,
+.Ratios_Main .Right_TBody>tr:nth-child(3)>td>b {
+  font-weight: 400;
+  padding-left: 0;
+}
+
+
+.HighlightData {
+  padding: 3rem 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid $--theme-color-fg-default-border;
+  font-weight: 100;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.HighlightData_Title {
+  letter-spacing: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.HighlightData_Data {
+  display: flex;
+  align-items: flex-start;
+}
+
+.HighlightData_Data>div {
+  font-size: 2.4rem;
+  font-weight: 100;
+}
+
+.Currency {
+  padding-top: 0.3rem;
+}
+
+.HighlightData_Data:hover {
+  color: white;
+}
+
+$darkestBlue: #051e34;
+$darkerBlue: #083053;
+$lightBlue: #0e5491;
+$lightestBlue: #1580de;
+
+.One {
+  background-image: linear-gradient( $lightestBlue, $lightBlue)
+}
+
+.Two {
+  background-image: linear-gradient( $lightBlue, $darkerBlue)
+}
+
+.Three {
+  background-image: linear-gradient( $darkerBlue, $--theme-color-fg-primary)
+}
+
+.Four {
+  background-image: linear-gradient( $--theme-color-fg-primary, $darkestBlue)
 }

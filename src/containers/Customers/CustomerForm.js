@@ -20,8 +20,8 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
-        minLength: 2,
-        maxLength: 20,
+        minLength: 3,
+        maxLength: 30,
       },
       valid: false,
       touched: false,
@@ -65,8 +65,8 @@ const CustomerForm = (props) => {
       value: "",
       validation: {
         required: true,
-        minLength: 2,
-        maxLength: 20,
+        minLength: 3,
+        maxLength: 30,
       },
       valid: false,
       touched: false,
@@ -152,42 +152,12 @@ const CustomerForm = (props) => {
       valid: false,
       touched: false,
     },
-    totalRevenue: {
-      elementType: "inputFormated",
-      elementConfig: {
-        type: "number",
-        label: "Total revenue",
-        placeholder: "e.g. 100,000",
-      },
-      value: "",
-      validation: {
-        required: true,
-        isPositive: true,
-      },
-      valid: false,
-      touched: false,
-    },
-    totalExpenses: {
-      elementType: "inputFormated",
-      elementConfig: {
-        type: "number",
-        label: "Total expenses",
-        placeholder: "e.g. 90,000",
-      },
-      value: "",
-      validation: {
-        required: true,
-        isPositive: true,
-      },
-      valid: false,
-      touched: false,
-    },
     operatingRevenue: {
       elementType: "inputFormated",
       elementConfig: {
         type: "number",
         label: "Operating revenue (Turnover)",
-        placeholder: "e.g. 95,000",
+        placeholder: "e.g. 100,000",
       },
       value: "",
       validation: {
@@ -212,6 +182,66 @@ const CustomerForm = (props) => {
       valid: false,
       touched: false,
     },
+    financialRevenue: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Financial revenue",
+        placeholder: "e.g. 10,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    financialExpenses: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Financial expenses",
+        placeholder: "e.g. 8,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    otherRevenue: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Extraordinary and other revenue",
+        placeholder: "e.g. 1,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    otherExpenses: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Extraordinary and other expenses",
+        placeholder: "e.g. 700",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
     taxation: {
       elementType: "inputFormated",
       elementConfig: {
@@ -227,11 +257,26 @@ const CustomerForm = (props) => {
       valid: false,
       touched: false,
     },
-    assets: {
+    fixedAssets: {
       elementType: "inputFormated",
       elementConfig: {
         type: "number",
-        label: "Total assets",
+        label: "Fixed assets",
+        placeholder: "e.g. 1,000,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    currentAssets: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Current assets",
         placeholder: "e.g. 1,000,000",
       },
       value: "",
@@ -257,11 +302,26 @@ const CustomerForm = (props) => {
       valid: false,
       touched: false,
     },
-    liabilities: {
+    longTermLiabilities: {
       elementType: "inputFormated",
       elementConfig: {
         type: "number",
-        label: "Total liabilities",
+        label: "Long term liabilities",
+        placeholder: "e.g. 900,000",
+      },
+      value: "",
+      validation: {
+        required: true,
+        isPositive: true,
+      },
+      valid: false,
+      touched: false,
+    },
+    shortTermLiabilities: {
+      elementType: "inputFormated",
+      elementConfig: {
+        type: "number",
+        label: "Short term liabilities",
         placeholder: "e.g. 900,000",
       },
       value: "",
@@ -278,7 +338,6 @@ const CustomerForm = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   /// setting initial data for customer editing
-
   const initialFormValuesHandler = () => {
     const initialCustomerFormForEditing = {
       ...customerForm,
@@ -320,8 +379,6 @@ const CustomerForm = (props) => {
     const updatedFormElement = { ...updatedCustomerForm[inputIdentifier] };
     updatedFormElement.value = e.target.value;
 
-    console.log(e.target);
-
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
       updatedFormElement.validation,
@@ -349,14 +406,18 @@ const CustomerForm = (props) => {
     }
 
     [
-      "totalRevenue",
-      "totalExpenses",
       "operatingRevenue",
       "operatingExpenses",
+      "financialRevenue",
+      "financialExpenses",
+      "otherRevenue",
+      "otherExpenses",
       "taxation",
-      "assets",
+      "fixedAssets",
+      "currentAssets",
       "equity",
-      "liabilities",
+      "longTermLiabilities",
+      "shortTermLiabilities",
     ].forEach((k) =>
       typeof formData[k] !== "number"
         ? (formData[k] = parseInt(formData[k].replace(",", "")))
@@ -383,7 +444,7 @@ const CustomerForm = (props) => {
 
   const mainInfoArray = formElementsArray.slice(0, 6);
   const industryInfoArray = formElementsArray.slice(6, 9);
-  const financialInfoArray = formElementsArray.slice(9, 17);
+  const financialInfoArray = formElementsArray.slice(9, 21);
 
   /// checking validity for writting steps
   const settingValidity = (arr) => {

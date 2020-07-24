@@ -7,6 +7,7 @@ import Auth from "./containers/Auth/Auth";
 import Home from "./containers/Home/Home";
 import PrivateRoute from "./components/helper/PrivateRoute";
 import * as actions from "./store/actions";
+// import CustomerShow from "./containers/Customers/CustomerShow/CustomerShow";
 
 const App = (props) => {
   const onAutoLoginRef = useRef(props.onAutoLogin)
@@ -20,6 +21,7 @@ const App = (props) => {
       <div className="App">
         <Switch>
           <Route path="/auth" exact component={Auth} />
+          {/* <Route path="/show/:id" exact component={CustomerShow} /> */}
           <PrivateRoute
             isAuthenticated={props.isAuthenticated}
             path="/"

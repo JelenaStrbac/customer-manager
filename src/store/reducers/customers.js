@@ -46,14 +46,18 @@ const fetchCustomersSuccess = (state, action) => {
   let res = action.allCustomers.map((el) => {
     const obj =  { ...el, customerData: { ...el.customerData } };;
     [
-      "totalRevenue",
-      "totalExpenses",
       "operatingRevenue",
       "operatingExpenses",
+      "financialRevenue",
+      "financialExpenses",
+      "otherRevenue",
+      "ootherExpenses",
       "taxation",
-      "assets",
+      "fixedAssets",
+      "currentAssets",
       "equity",
-      "liabilities",
+      "longTermLiabilities",
+      "shortTermLiabilities",
     ].forEach((k) =>   
       obj.customerData[k] = parseInt(obj.customerData[k])
     );
@@ -78,16 +82,20 @@ const fetchCustomerStart = (state, action) => {
 
 const fetchCustomerSuccess = (state, action) => {
   let res =  { ...action.particularCustomer, customerData: { ...action.particularCustomer.customerData } };;
-    [
-      "totalRevenue",
-      "totalExpenses",
-      "operatingRevenue",
-      "operatingExpenses",
-      "taxation",
-      "assets",
-      "equity",
-      "liabilities",
-    ].forEach((k) =>   
+  [
+    "operatingRevenue",
+    "operatingExpenses",
+    "financialRevenue",
+    "financialExpenses",
+    "otherRevenue",
+    "ootherExpenses",
+    "taxation",
+    "fixedAssets",
+    "currentAssets",
+    "equity",
+    "longTermLiabilities",
+    "shortTermLiabilities",
+  ].forEach((k) =>   
     res.customerData[k] = parseInt(res.customerData[k])
     // res.customerData[k] = parseInt(res.customerData[k].replace(",", ""))
     );
@@ -97,8 +105,8 @@ const fetchCustomerSuccess = (state, action) => {
   return {
     ...state,
     loading: false,
-    particularCustomer: res,
-    // particularCustomer: action.particularCustomer,
+    // particularCustomer: res,
+    particularCustomer: action.particularCustomer,
   };
 };
 

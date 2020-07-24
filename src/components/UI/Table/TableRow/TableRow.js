@@ -5,10 +5,10 @@ import "./TableRow.scss";
 const TableRow = (props) => {
   return (
     <tr className="Tr">
-      <td>
-        <b>{props.label}:</b>
+      <td className="FirstTableData">
+        <b>{props.label}</b>
       </td>
-      <td>{props.data}</td>
+      <td className="SecondTableData">{props.data}</td>
     </tr>
   );
 };
