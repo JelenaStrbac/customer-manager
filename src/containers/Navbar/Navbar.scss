@@ -50,7 +50,7 @@ $--theme-color-fg-rgb: 71, 98, 130;
   justify-content: flex-end;
 }
 
-.Navbar h1 {
+.Navbar>h1 {
   color: $--theme-color-fg-primary;
   font-size: 1.8rem;
   font-weight: 400;
