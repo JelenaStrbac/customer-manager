@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, all } from "redux-saga/effects";
+import { takeLatest, all } from "redux-saga/effects";
 
 import * as actionTypes from "../actions/actionTypes";
 import {
@@ -17,10 +17,12 @@ import {
 } from "./customers";
 
 export function* watchAuthSaga() {
-  yield takeEvery(actionTypes.AUTH_USER, authUserSaga);
-  yield takeEvery(actionTypes.AUTH_CHECK_TIMEOUT, checkAuthTimeoutSaga);
-  yield takeEvery(actionTypes.AUTH_INITIATE_LOGOUT, logoutSaga);
-  yield takeEvery(actionTypes.AUTH_CHECK_STATE, authCheckStateSaga);
+  yield all([
+    takeLatest(actionTypes.AUTH_USER, authUserSaga),
+    takeLatest(actionTypes.AUTH_CHECK_TIMEOUT, checkAuthTimeoutSaga),
+    takeLatest(actionTypes.AUTH_INITIATE_LOGOUT, logoutSaga),
+    takeLatest(actionTypes.AUTH_CHECK_STATE, authCheckStateSaga),
+  ]);
 }
 
 export function* watchCustomerSaga() {
@@ -32,9 +34,3 @@ export function* watchCustomerSaga() {
     takeLatest(actionTypes.DELETE_CUSTOMER, customerDeleteSaga),
   ]);
 }
-// export function* watchCustomerSaga() {
-//   yield takeLatest(actionTypes.ADD_CUSTOMER, customerAddSaga);
-//   yield takeLatest(actionTypes.FETCH_ALL_CUSTOMERS, fetchAllCustomersSaga);
-//   yield takeLatest(actionTypes.FETCH_ONE_CUSTOMER, fetchOneCustomerSaga);
-//   yield takeLatest(actionTypes.EDIT_CUSTOMER, customerEditSaga);
-// }

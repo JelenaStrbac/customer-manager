@@ -1,4 +1,4 @@
-import { put } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import axios from "../../axios";
 
 import * as actions from "../actions";
@@ -9,10 +9,10 @@ export function* customerAddSaga(action) {
   yield put(actions.customerStart());
 
   try {
-    const response = yield axios.post(
+    const response = yield call (() => (axios.post(
       `/customers.json?auth=${action.token}`,
       action.customerData
-    );
+    )))
 
     // SUCCESS
     yield put(actions.customerSuccess(response.data.name, action.customerData));
@@ -20,7 +20,7 @@ export function* customerAddSaga(action) {
     yield put(actions.customerFinished());
   } catch (error) {
     // FAIL
-    yield put(actions.customerFail(error.response.data.error));
+    yield put(actions.customerFail('Something went wrong'));
   }
 }
 

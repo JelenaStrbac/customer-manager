@@ -13,7 +13,7 @@ const Logout = (props) => {
   return (
     <div className="Logout">
       <Button clicked={onClickHandler}>LOGOUT</Button>
-      {props.isAuthenticated ? <Redirect to="/auth" /> : null}
+      {!props.isAuthenticated ? <Redirect to="/auth" /> : null}
     </div>
   );
 };
