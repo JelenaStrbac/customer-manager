@@ -96,7 +96,7 @@ const CustomerShow = (props) => {
           <div className="MainInfoTable_Title">FINANCE</div>
           <div className="Reports">
               <div className="Report_First">
-                <div className="Report_Title">Income Statement</div>
+                <div className="Report_Title"><div>Income Statement</div> <div>[in RSD thousand]</div></div>
                 <table className="Report_Table">
                   <tbody className="Report_TBody First_TBody">
                     <TableRow label="Operating revenue" data={operatingRevenue.toLocaleString() || operatingRevenue}/>
@@ -116,7 +116,7 @@ const CustomerShow = (props) => {
               </div>
 
               <div className="Report_Second">
-                <div className="Report_Title">Balance Sheet</div>
+                <div className="Report_Title"><div>Balance Sheet</div> <div>[in RSD thousand]</div></div>
                 <table className="Report_Table">
                   <tbody className="Report_TBody Second_TBody">
                     <TableRow label="Fixed assets" data={fixedAssets.toLocaleString() || fixedAssets}/>
@@ -168,7 +168,7 @@ const CustomerShow = (props) => {
           <div className="HighlightData One">
             <div className="HighlightData_Data">
               <span className="Currency">RSD</span>
-              <div>{`${(operatingRevenue / 1000000).toFixed(2)}mil.`}</div>
+              <div>{`${(operatingRevenue / 1000).toFixed(2)}mil.`}</div>
             </div>
             <div className="HighlightData_Title">TURNOVER</div>
           </div>

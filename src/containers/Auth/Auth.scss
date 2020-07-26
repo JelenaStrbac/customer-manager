@@ -3,9 +3,6 @@ $darkerBlue: #083053;
 $lightBlue: #0e5491;
 $lightestBlue: #1580de;
 
-$normalBlue: #1a73e8;
-$lightenBlue: #64b5f6;
-
 $darkOrange: #f57c00;
 $middleOrange: #ffa000;
 $lightOrange: #ffca28;
@@ -79,7 +76,8 @@ $white: #fff;
 
 .Welcome {
   // background-color: $lightestBlue;
-  background-image: linear-gradient( #1580dec9, #1580dec9), url(../../paper.jpg);
+  background-image: linear-gradient( #1580dec9, #1580dec9), url(/images/paper.jpg);
+  // background-image: linear-gradient( #1580dec9, #1580dec9), url(../../paper.jpg);
   background-attachment: fixed;
   background-position: left 5%;
   background-size: contain;

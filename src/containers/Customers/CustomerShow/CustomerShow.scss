@@ -1,5 +1,5 @@
-$--theme-color-fg-default-border: #c3cfdd;
-$--theme-color-fg-primary: #1b3a57;
+$--default-border: #c3cfdd;
+$--color-primary: #1b3a57;
 $darkestBlue: #051e34;
 
 $middleOrange: #ffa000;
@@ -28,7 +28,7 @@ $lightestBlue: #1580de;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  border: 0.5px solid $--theme-color-fg-default-border;
+  border: 0.5px solid $--default-border;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   background-color: rgb(255, 255, 255);
   margin-bottom: 2rem;
@@ -82,7 +82,14 @@ $lightestBlue: #1580de;
 
 .Report_Title {
   margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+}
+
+.Report_Title > div:first-child {
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .Report_First,
@@ -182,7 +189,7 @@ $lightestBlue: #1580de;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 0.5px solid $--theme-color-fg-default-border;
+  border: 0.5px solid $--default-border;
   font-weight: 100;
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.7);
@@ -223,10 +230,10 @@ $lightestBlue: #1580de;
 }
 
 .Three {
-  background-image: linear-gradient($darkerBlue, $--theme-color-fg-primary);
+  background-image: linear-gradient($darkerBlue, $--color-primary);
 }
 
 .Four {
-  background-image: linear-gradient($--theme-color-fg-primary, $darkestBlue);
+  background-image: linear-gradient($--color-primary, $darkestBlue);
   padding: 3rem 2rem;
 }

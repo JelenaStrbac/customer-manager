@@ -1,10 +1,10 @@
-$--theme-color-fg-default-border: #c3cfdd;
+$--default-border: #c3cfdd;
 $middleOrange: #ffa000;
 $lightestBlue: #1580de;
 
 .Pagination {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .pagination {
@@ -18,7 +18,7 @@ $lightestBlue: #1580de;
   color: #fff;
 }
 .pagination > li > a {
-  border: 1px solid $--theme-color-fg-default-border;
+  border: 1px solid $--default-border;
   background-color: white;
   padding: 5px 10px;
   outline: none;
@@ -47,9 +47,9 @@ $lightestBlue: #1580de;
 }
 
 .pagination > .disabled > a {
-    color: rgba(0, 0, 0, 0.3); 
+  color: rgba(0, 0, 0, 0.3);
 }
 
- .Pagination .fa {
-    font-size: 1rem;
+.Pagination .fa {
+  font-size: 1rem;
 }

@@ -125,6 +125,7 @@ const CustomersList = (props) => {
         name={el.customerData.companyName}
         website={el.customerData.website}
         operatingRevenue={el.customerData.operatingRevenue}
+        operatingExpenses={el.customerData.operatingExpenses}
         size={el.customerData.size}
         industry={el.customerData.industry}
         phone={el.customerData.phone}
@@ -174,90 +175,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomersList);
-
-// const test = [
-//   {
-//     customerData: {
-//       address: "bla bla bla",
-//       assets: 100000,
-//       companyName: "OTPISANI jer je FIca car",
-//       email: "test@mail.com",
-//       employees: "50",
-//       equity: 10000,
-//       industry: "Education",
-//       liabilities: 90000,
-//       operatingExpenses: 2000,
-//       operatingRevenue: 3000,
-//       phone: "011/999999999",
-//       regNumber: "777777777",
-//       size: "Medium",
-//       taxation: 200,
-//       totalExpenses: 9000,
-//       totalRevenue: 10,
-//       website: "https://test.com",
-//     },
-//     id: "-MBnsjHzG5lOOD42DExI",
-//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
-//   },
-//   {
-//     customerData: {
-//       address: "bla bla bla",
-//       assets: 100000,
-//       companyName: "MALO",
-//       email: "test@mail.com",
-//       employees: "50",
-//       equity: 10000,
-//       industry: "Education",
-//       liabilities: 90000,
-//       operatingExpenses: 2000,
-//       operatingRevenue: 3000,
-//       phone: "011/999999999",
-//       regNumber: "777777777",
-//       size: "Small",
-//       taxation: 200,
-//       totalExpenses: 9000,
-//       totalRevenue: 10,
-//       website: "https://test.com",
-//     },
-//     id: "-MBnsjHzG5lOOD42DExI",
-//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
-//   },
-//   {
-//     customerData: {
-//       address: "bla bla bla",
-//       assets: 100000,
-//       companyName: "MALO opet",
-//       email: "test@mail.com",
-//       employees: "50",
-//       equity: 10000,
-//       industry: "Education",
-//       liabilities: 90000,
-//       operatingExpenses: 2000,
-//       operatingRevenue: 3000,
-//       phone: "011/999999999",
-//       regNumber: "777777777",
-//       size: "Medium",
-//       taxation: 200,
-//       totalExpenses: 9000,
-//       totalRevenue: 10,
-//       website: "https://test.com",
-//     },
-//     id: "-MBnsjHzG5lOOD42DExI",
-//     userId: "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2",
-//   },
-// ];
-// let wordArr = ["Medium"];
-// let word = "";
-// let testFilter = test
-//   .filter((el) => el.customerData.companyName.toLowerCase().includes(word))
-//   .filter((elm, idx, arr) => wordArr.length ? wordArr.some((k) => k.includes(elm.customerData.size)) : arr)
-
-// console.log("test", testFilter);
-
-// const checked = ["Small", "Large"];
-
-// const arr = test.filter((el) =>
-//   checked.some((k) => k.includes(el.customerData.size))
-// );
-
-// console.log(checked[0].includes(test[0].customerData.size));

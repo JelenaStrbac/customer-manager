@@ -1,7 +1,7 @@
-$--theme-color-fg-primary: #1b3a57;
-$--theme-color-fg-secondary: #476282;
-$--theme-color-fg-tertiary: #476282;
-$--theme-color-fg-default-border: #c3cfdd;
+$--color-primary: #1b3a57;
+$--color-secondary: #476282;
+$--color-tertiary: #476282;
+$--default-border: #c3cfdd;
 
 $middleOrange: #ffa000;
 $mintGreen: #46d4b4;
@@ -14,7 +14,7 @@ $lightestBlue: #1580de;
 }
 
 .Documentation h2 {
-  color: $--theme-color-fg-primary;
+  color: $--color-primary;
   font-size: 1.4rem;
   font-weight: 400;
   margin: 2.5rem 0rem 1rem 0rem;
@@ -29,7 +29,7 @@ $lightestBlue: #1580de;
 }
 
 .Documentation h3 {
-  color: $--theme-color-fg-secondary;
+  color: $--color-secondary;
   font-size: 1.2rem;
   font-weight: 400;
   margin: 1rem 0rem;
@@ -53,7 +53,7 @@ $lightestBlue: #1580de;
 .Documentation a {
   text-decoration: none;
   cursor: pointer;
-  color: $--theme-color-fg-tertiary;
+  color: $--color-tertiary;
   font-weight: 400;
 }
 
@@ -70,7 +70,7 @@ $lightestBlue: #1580de;
   display: flex;
   align-items: center;
   padding: 1rem;
-  border: 0.5px solid $--theme-color-fg-default-border;
+  border: 0.5px solid $--default-border;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   background-color: rgb(255, 255, 255);
 }
@@ -83,7 +83,7 @@ $lightestBlue: #1580de;
 }
 
 .Documentation .Reports {
-  border: 0.5px solid $--theme-color-fg-default-border;
+  border: 0.5px solid $--default-border;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   background-color: rgb(255, 255, 255);
 }

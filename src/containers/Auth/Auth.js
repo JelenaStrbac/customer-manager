@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import "./Auth.css";
 import "./Auth.scss";
 import Input from "../../components/UI/Input/Input";
 import { checkValidity } from "../../components/helper/CheckValidity";

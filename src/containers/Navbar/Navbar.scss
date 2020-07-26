@@ -1,57 +1,22 @@
-$blueGray20: #f5f7f8;
-$blueGray100: #cfd8dc;
-$blueGray300: #90a4ae;
-$blueGray400: #78909c;
-$blueGray600: #546e7a;
-$--fire-color-old-navy-50: #c5cad9;
-$--fire-color-old-navy-100: #a5b0c4;
-$--fire-color-old-navy-200: #8a9bb2;
-$--fire-color-old-navy-300: #657992;
-$--fire-color-old-navy-400: #4c5f77;
-$--fire-color-old-navy-500: #37475d;
-$--fire-color-old-navy-600: #2e3a4d;
-$--fire-color-old-navy-700: #262f3d;
-$--fire-color-old-navy-800: #19212b;
-$--fire-color-old-navy-900: #121820;
-$--fire-color-old-navy-a100: #8298bd;
-$--fire-color-old-navy-a200: #6883ac;
-$--fire-color-old-navy-a400: #3b577d;
-$--fire-color-old-navy-a700: #042a4a;
-$--fire-color-navy-10: #f6f7f9;
-$--fire-color-navy-20: #e5eaf0;
-$--fire-color-navy-30: #d4dce7;
-$--fire-color-navy-40: #c3cfdd;
-$--fire-color-navy-50: #b2c1d4;
-$--fire-color-navy-100: #8ea1b9;
-$--fire-color-navy-200: #6b829d;
-$--fire-color-navy-300: #476282;
-$--fire-color-navy-400: #385574;
-$--fire-color-navy-500: #2a4865;
-$--fire-color-navy-600: #1b3a57;
-$--fire-color-navy-700: #0c2d48;
-$--fire-color-navy-800: #051e34;
-
-$--theme-color-bg: #f6f7f9;
-$--theme-color-fg-primary: #1b3a57;
-$--theme-color-fg-secondary: #476282;
-$--theme-color-fg-tertiary: #476282;
-$--theme-color-fg-disabled: #8ea1b9;
-$--theme-color-fg-default-border: #c3cfdd;
-$--theme-color-fg-rgb: 71, 98, 130;
+$--color-primary: #1b3a57;
+$--color-secondary: #476282;
+$--color-tertiary: #476282;
+$--color-disabled: #8ea1b9;
+$--default-border: #c3cfdd;
 
 .Navbar {
   grid-area: Navbar;
   min-height: 6rem;
   padding: 1rem 2rem;
   margin: 0 1rem;
-  border-bottom: 1px solid $--theme-color-fg-default-border;
+  border-bottom: 1px solid $--default-border;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.Navbar>h1 {
-  color: $--theme-color-fg-primary;
+.Navbar > h1 {
+  color: $--color-primary;
   font-size: 1.8rem;
   font-weight: 400;
 }
@@ -63,10 +28,8 @@ $--theme-color-fg-rgb: 71, 98, 130;
 
 .LogoutSign .Logout .Button {
   margin-top: 0;
-  background-color: $--theme-color-fg-secondary;
+  background-color: $--color-secondary;
   position: absolute;
   top: 10px;
   right: 10px;
 }
-
-

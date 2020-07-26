@@ -1,10 +1,8 @@
-$--theme-color-bg: #f6f7f9;
-$--theme-color-fg-primary: #1b3a57;
-$--theme-color-fg-secondary: #476282;
-$--theme-color-fg-tertiary: #476282;
-$--theme-color-fg-disabled: #8ea1b9;
-$--theme-color-fg-default-border: #c3cfdd;
-$--theme-color-fg-rgb: 71, 98, 130;
+$--color-primary: #1b3a57;
+$--color-secondary: #476282;
+$--color-tertiary: #476282;
+$--color-disabled: #8ea1b9;
+$--default-border: #c3cfdd;
 
 $darkestBlue: #051e34;
 $darkerBlue: #083053;
@@ -26,7 +24,7 @@ $lightestBlue: #1580de;
 
 .AddCustomerButton {
   text-decoration: none;
-  border: 0.5px solid $--theme-color-fg-default-border;
+  border: 0.5px solid $--default-border;
   // border-radius: 0.8rem;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   display: flex;
