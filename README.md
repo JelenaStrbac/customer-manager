@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Customer Manager
 
-## Available Scripts
+> This simple CRUD app is designed to help you to manage your customers by conducting comparative financial analysis.
 
-In the project directory, you can run:
+## How it is built?
 
-### `npm start`
+- HTML and CSS / SCSS;
+- ReactJS (React hooks and React Router DOM), Redux, Redux Saga;
+- React testing with Jest - 🔜 to be updated!
+- Firebase.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- **Login page (public)**
+    -- Login with front end validation. 
+    - Every time a user signs in, the user credentials are sent to the Firebase Authentication backend and exchanged for a Firebase ID token. Firebase ID tokens are kept in local storage (note that these tokes are short lived and last for an hour). 
+- **Home page (private)**
+    - It's paginated and contains list of all customers fetched from Firebase.
+    - Search, sort and filter tools are available.
+- **Create customer page (private)**
+-- Create customer page (private) 
+    - Contains application form divided in three sections - main info, industry and classification and financial data.
+    - Form validation provided (all fields are required, textual fields must have min 3 characters, all numerals must be positive, phone and email validation).
+- **View customer page (private)**
+    - Breakdown of particular customer's data. Beside the ones required by application form, also contains numerous financial ratios that are calculated on the basis of provided data. 
+    - Contains buttons for editing and deleting customer.
+    - By clicking on the delete button user opens a delete modal. Deleting from Firebase is permanent.
+- **Edit customer page (private)** 
+    - Shares the same application form and UI as Create customer page.
+- **Documentation page (private)** 
+    - Text with explanations how to use and interpret results obtained from the app.
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Enter login credentials and start exploring available tools.
 
-### `npm run build`
+### 1. Login Credentials
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ email: admin@admin.com
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+$ password: admin123
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. How to use available tools in this app?
 
-### `npm run eject`
+This app allows you to create, retrieve, update and delete a customer. For each customer you can keep data such as contact details, industry classification and size, as well as their financials.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### ** CREATE PARTICULAR CUSTOMER **
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- You can create customer by filling an application form. Data required by form for each particular customer can be found on Serbian Business Register Agency and includes data from official financial statements (e.g. registration number, phone, email, size, turnover, operating expenses, taxation, fixed assets, etc).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### ** VIEW, SEARCH, SORT and FILTER ALL CUSTOMERS **
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- All customers stored in database are available for view and simultaneous searching/sorting/filtering.
+- Customers can be searched by their name.
+- Sorting is allowed per customer's name or turnover (in both cases
+  ascending or descending).
+- There is possibility to filter customers per industry they
+  belong or per company size.
 
-## Learn More
+##### ** VIEW, EDIT or DELETE PARTICULAR CUSTOMER **
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- By clicking on each customer you can access to its detail overview - besides the data required by application form, you may find numerous financial ratios which can ease your analysis and help you in decision-making process.
+- For each customer there are additional options for EDIT or DELETE (please note that deleting is not reversible and that customer is permanently removed from database).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### ** READ the DOCUMENTATION PAGE **
 
-### Code Splitting
+- Read more about ratios to help you to interpret results!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Enjoy! 🚀 🚀 🚀

@@ -56,7 +56,7 @@ const CustomerShow = (props) => {
     roe = ((netIncome / equity) * 100) > 0 ? `${((netIncome / equity) * 100).toFixed(2)}%` : `n.a.`;
   }
 
-  console.log(props.particularCustomer);
+  // console.log(props.particularCustomer);
 
   //// showing particular customer
   let particularCustomerShow = null;

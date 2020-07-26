@@ -14,8 +14,8 @@ import { watchAuthSaga, watchCustomerSaga } from "./store/sagas/index";
 
 const composeEnhancers =
   process.env.NODE_ENV === "development"
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    : compose;
 
 const reducers = combineReducers({
   auth: authReducer,
@@ -34,11 +34,9 @@ sagaMiddleware.run(watchAuthSaga);
 sagaMiddleware.run(watchCustomerSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 
