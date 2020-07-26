@@ -9,10 +9,9 @@ export function* customerAddSaga(action) {
   yield put(actions.customerStart());
 
   try {
-    const response = yield call (() => (axios.post(
-      `/customers.json?auth=${action.token}`,
-      action.customerData
-    )))
+    const response = yield call(() =>
+      axios.post(`/customers.json?auth=${action.token}`, action.customerData)
+    );
 
     // SUCCESS
     yield put(actions.customerSuccess(response.data.name, action.customerData));
@@ -30,8 +29,10 @@ export function* fetchAllCustomersSaga(action) {
   yield put(actions.fetchCustomersStart());
 
   try {
-    const response = yield axios.get(
-      `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"`
+    const response = yield call(() =>
+      axios.get(
+        `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"`
+      )
     );
 
     const fetchedCustomers = [];
@@ -56,11 +57,10 @@ export function* fetchOneCustomerSaga(action) {
   yield put(actions.fetchCustomerStart());
 
   try {
-    const response = yield axios.get(
-      //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"$key"&equalTo="${action.id}"`
-      //   `/customers.json?auth=${action.token}&orderBy="userId"&equalTo="${action.userId}"&"id"&equalTo="${action.id}"`
-      `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
-      //   `/customers/${action.id}.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
+    const response = yield call(() =>
+      axios.get(
+        `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
+      )
     );
     let fetchedCustomer = {};
     for (let key in response.data) {
@@ -84,11 +84,11 @@ export function* customerEditSaga(action) {
   yield put(actions.editCustomerStart());
 
   try {
-    const response = yield axios.patch(
-      //   `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`,
-      // `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}/"`,
-      `/customers/${action.id}/.json?auth=${action.token}`,
-      action.customerData
+    const response = yield call(() =>
+      axios.patch(
+        `/customers/${action.id}/.json?auth=${action.token}`,
+        action.customerData
+      )
     );
 
     // SUCCESS
@@ -101,17 +101,15 @@ export function* customerEditSaga(action) {
   }
 }
 
-// ("https://[PROJECT_ID].firebaseio.com/users/jack/name/.json"); PATCH
-// ("https://[PROJECT_ID].firebaseio.com/users/jack/name.json"); GET
-// ("https://[PROJECT_ID].firebaseio.com/users/jack/name/last.json"); DELETE
-
 /// 5.
 export function* customerDeleteSaga(action) {
   // START
   yield put(actions.deleteCustomerStart());
 
   try {
-    yield axios.delete(`/customers/${action.id}/.json?auth=${action.token}`);
+    yield call(() =>
+      axios.delete(`/customers/${action.id}/.json?auth=${action.token}`)
+    );
 
     // SUCCESS
     yield put(actions.deleteCustomerSuccess(action.id));
