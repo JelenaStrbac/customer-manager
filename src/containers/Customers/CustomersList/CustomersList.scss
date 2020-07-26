@@ -1,10 +1,8 @@
-$--theme-color-bg: #f6f7f9;
-$--theme-color-fg-primary: #1b3a57;
-$--theme-color-fg-secondary: #476282;
-$--theme-color-fg-tertiary: #476282;
-$--theme-color-fg-disabled: #8ea1b9;
-$--theme-color-fg-default-border: #c3cfdd;
-$--theme-color-fg-rgb: 71, 98, 130;
+$--color-primary: #1b3a57;
+$--color-secondary: #476282;
+$--color-tertiary: #476282;
+$--color-disabled: #8ea1b9;
+$--default-border: #c3cfdd;
 
 $darkestBlue: #051e34;
 $darkerBlue: #083053;
@@ -16,37 +14,52 @@ $lightestBlue: #1580de;
   padding: 2rem;
 }
 
+.AddCustomerButton_Container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 1fr;
+  justify-content: space-evenly;
+  grid-gap: 2rem;
+}
+
 .AddCustomerButton {
   text-decoration: none;
-  border: 0.5px solid $--theme-color-fg-default-border;
-  border-radius: 0.8rem;
+  border: 0.5px solid $--default-border;
+  // border-radius: 0.8rem;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 1.4rem 2rem;
   color: $lightestBlue;
   cursor: pointer;
-  width: 25%;
+  width: 100%;
+  // width: 10rem;
+  // height: 10rem;
   background-color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
 }
 
 .AddCustomerButton:hover {
-  background-color: rgb(252, 252, 252);
+  background-color: rgba(252, 252, 252, 0.87);
 }
 
 .Plus {
   font-size: 4rem;
 }
 
+.AddCustomerButton div {
+  text-align: center;
+}
+
 .CustomersBreakdown {
-  margin-top: 8rem;
+  margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 1fr;
   justify-content: space-evenly;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
 }
 
 @media only screen and (max-width: 480px) {

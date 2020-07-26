@@ -18,7 +18,7 @@ const Toolbar = () => {
         <Link to="/" className="ToolbarIcon">
           <Icon icon="home" /> Home
         </Link>
-        <Link to="/" className="ToolbarIcon">
+        <Link to="/documentation" className="ToolbarIcon">
           <Icon icon="file" /> Documentation
         </Link>
       </div>

@@ -1,0 +1,26 @@
+.Tr b {
+  font-weight: 400;
+}
+
+.Tr {
+  // display: flex;
+  color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin-bottom: 0.3rem;
+
+  // > td:first-child {
+  //   width: 40%;
+  // }
+  // > td:last-child {
+  //   width: 60%;
+  // }
+}
+
+.FirstTableData {
+  margin-right: 2rem;
+  // width: 40%;
+}
+
+.SecondTableData {
+  width: 60%;
+}

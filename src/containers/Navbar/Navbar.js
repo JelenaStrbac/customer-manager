@@ -18,6 +18,9 @@ const Navbar = () => {
     case "/new":
       title = "Add New Customer";
       break;
+    case "/documentation":
+      title = "Documentation";
+      break;
     default:
       title = "Browse Your Customer"; //TODO:ovde staviti ime customera
   }

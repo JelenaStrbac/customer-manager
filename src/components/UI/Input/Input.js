@@ -1,4 +1,5 @@
 import React from "react";
+import Cleave from "cleave.js/react";
 
 import "./Input.scss";
 
@@ -7,12 +8,9 @@ const input = (props) => {
   const inputClasses = ["InputElement"];
 
   const labelClass = ["Label"];
-  if (props.invalid && props.shouldValidate && props.touched) {
-    inputClasses.push("Invalid");
-  }
 
   const contentClass = ["Content"];
-  if (!props.invalid) {
+  if (props.value) {
     contentClass.push("SmallLetter");
   }
 
@@ -24,6 +22,25 @@ const input = (props) => {
             autoComplete="off"
             className={inputClasses.join(" ")}
             {...props.elementConfig}
+            value={props.value}
+            onChange={props.changed}
+            placeholder={props.placeholder}
+          />
+          <label className={labelClass.join(" ")}>
+            <span className={contentClass.join(" ")}>{props.label}</span>
+          </label>
+        </>
+      );
+      break;
+    case "inputFormated":
+      inputElement = (
+        <>
+          <Cleave
+            options={{
+              numeral: true,
+              numeralThousandsGroupStyle: "thousand",
+            }}
+            className={inputClasses.join(" ")}
             value={props.value}
             onChange={props.changed}
             placeholder={props.placeholder}
@@ -55,6 +72,23 @@ const input = (props) => {
             </div>
           ))}
         </div>
+      );
+      break;
+    case "select":
+      inputElement = (
+        <>
+          <select className="InputSelect" onChange={props.changed} value={props.value}>
+            <option value="" disabled>---Select from dropdown---</option>
+            {props.elementConfig.obj.map((el) => (
+              <option key={el} value={el} >
+                {el}
+              </option>
+            ))}
+          </select>
+          <label className={labelClass.join(" ")}>
+            <span className={contentClass.join(" ")}>{props.label}</span>
+          </label>
+        </>
       );
       break;
     default:

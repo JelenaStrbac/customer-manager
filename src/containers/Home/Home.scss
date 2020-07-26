@@ -1,27 +1,20 @@
 $blueGray20: #f5f7f8;
-$blueGray100: #cfd8dc;
-$blueGray300: #90a4ae;
-$blueGray400: #78909c;
-$blueGray600: #546e7a;
 
-$--theme-color-bg: #f6f7f9;
-$--theme-color-fg-primary: #1b3a57;
-$--theme-color-fg-secondary: #476282;
-$--theme-color-fg-tertiary: #476282;
-$--theme-color-fg-disabled: #8ea1b9;
-$--theme-color-fg-default-border: #c3cfdd;
-$--theme-color-fg-rgb: 71, 98, 130;
-
+$--color-primary: #1b3a57;
+$--color-secondary: #476282;
+$--color-tertiary: #476282;
+$--color-disabled: #8ea1b9;
+$--default-border: #c3cfdd;
 
 .Home {
-    display: grid;
-    grid-template-areas:
-        "Toolbar Navbar Navbar Navbar"
-        "Toolbar Customer Customer Customer"
-        "Toolbar Customer Customer Customer";
-    grid-template-columns: 20% 1fr 1fr 1fr;
-    grid-template-rows: min-content 1fr 1fr;
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: $blueGray20;
+  display: grid;
+  grid-template-areas:
+    "Toolbar Navbar Navbar Navbar"
+    "Toolbar Customer Customer Customer"
+    "Toolbar Customer Customer Customer";
+  grid-template-columns: 20% 1fr 1fr 1fr;
+  grid-template-rows: min-content 1fr 1fr;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: $blueGray20;
 }

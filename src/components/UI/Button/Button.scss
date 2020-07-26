@@ -7,7 +7,7 @@ $lightestBlue: #1580de;
   border: none;
   border-radius: 5px;
   color: white;
-  padding: 15px 32px;
+  padding: 0.8rem 1.6rem;
   text-align: center;
   text-decoration: none;
   display: flex;
@@ -29,6 +29,11 @@ $lightestBlue: #1580de;
 }
 
 .Disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.Button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import "./Auth.css";
 import "./Auth.scss";
 import Input from "../../components/UI/Input/Input";
 import { checkValidity } from "../../components/helper/CheckValidity";
@@ -111,6 +110,23 @@ const Auth = (props) => {
     form = <Spinner />;
   }
 
+  let error;
+  if (props.error) {
+    switch (props.error.message) {
+      case "EMAIL_NOT_FOUND":
+        error = "Sorry, we couldn't find an account with that email address.";
+        break;
+      case "INVALID_PASSWORD":
+        error = "Sorry, this password is not right.";
+        break;
+      case "USER_DISABLED":
+        error = "Sorry, you don't have permission to access.";
+        break;
+      default:
+        error = "Sorry, something went wrong.";
+    }
+  }
+
   return (
     <div className="Auth">
       {props.isAuthenticated ? <Redirect to="/" /> : null}
@@ -127,7 +143,7 @@ const Auth = (props) => {
             <span className="LoginText">Login</span> to your account
           </div>
           {props.error ? (
-            <ErrorMessage>{props.error.message}</ErrorMessage>
+            <ErrorMessage>{error}</ErrorMessage>
           ) : null}
           {form}
         </div>

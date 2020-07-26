@@ -1,37 +1,55 @@
-import React, { useEffect, useRef, useReducer } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./CustomersList.scss";
 import * as actions from "../../../store/actions";
+import * as sorts from "../../../components/helper/SortingFunctions";
 import Customer from "../../../components/Customers/Customer";
 import Spinner from "../../../components/UI/Spinner/Spinner";
+import Pagination from "../../Tools/Pagination/Pagination";
 
-const sortAsc = (arr, field) => {
-  return arr.sort((a, b) => {
-    if (a.customerData[field] > b.customerData[field]) {
-      return 1;
-    }
-    if (b.customerData[field] > a.customerData[field]) {
-      return -1;
-    }
-    return 0;
-  });
-};
+const handleFilteringAndSorting = (tools, allCustomers) => {
+  const { searchQuery, sortQuery, filterQueryOne, filterQueryTwo } = tools;
 
-const sortDesc = (arr, field) => {
-  return arr.sort((a, b) => {
-    if (a.customerData[field] > b.customerData[field]) {
-      return -1;
-    }
-    if (b.customerData[field] > a.customerData[field]) {
-      return 1;
-    }
-    return 0;
-  });
+  let filteredCustomersArray = allCustomers
+    .filter((el) =>
+      el.customerData.companyName.toLowerCase().includes(searchQuery)
+    )
+    .filter((elm, i, arr) =>
+      filterQueryOne.length
+        ? filterQueryOne.some((k) => k.includes(elm.customerData.size))
+        : arr
+    )
+    .filter((elem, idx, array) =>
+      filterQueryTwo.length
+        ? filterQueryTwo.some((k) => k.includes(elem.customerData.industry))
+        : array
+    );
+
+  let sortArr = [];
+  switch (sortQuery) {
+    case "az":
+      sortArr = sorts.sortAsc(filteredCustomersArray, "companyName");
+      break;
+    case "za":
+      sortArr = sorts.sortDesc(filteredCustomersArray, "companyName");
+      break;
+    case "asc":
+      sortArr = sorts.sortAscNum(filteredCustomersArray, "operatingRevenue");
+      break;
+    case "des":
+      sortArr = sorts.sortDescNum(filteredCustomersArray, "operatingRevenue");
+      break;
+    default:
+      sortArr = filteredCustomersArray;
+  }
+  // console.log("sortirano unutra", sortArr);
+  return sortArr;
 };
 
 const CustomersList = (props) => {
+  //// 1. fetching of customers
   const fetchAllCustomersRef = useRef(props.fetchAllCustomers);
   const tokenRef = useRef(props.token);
   const userIdRef = useRef(props.userId);
@@ -40,68 +58,78 @@ const CustomersList = (props) => {
     fetchAllCustomersRef.current(tokenRef.current, userIdRef.current);
   }, []);
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "search":
-        return {
-          customers: (state.customers.length !== 0 && props.searchQuery
-            ? state.customers
-            : props.allCustomers
-          ).filter((el) =>
-            el.customerData.companyName
-              .toLowerCase()
-              .includes(props.searchQuery)
-          ),
-        };
-      case "sort":
-        let watchArrForSorting =
-          state.customers.length !== 0 && props.sortQuery
-            ? state.customers
-            : props.allCustomers;
-        let sortedArr =
-          props.sortQuery === "az"
-            ? sortAsc(watchArrForSorting, "companyName")
-            : props.sortQuery === "za"
-            ? sortDesc(watchArrForSorting, "companyName")
-            : props.sortQuery === "asc"
-            ? sortAsc(watchArrForSorting, "address")
-            : sortDesc(watchArrForSorting, "address");
+  //// 2. search, filter and sort
+  const [resultArr, setResultArr] = useState([]);
 
-        return {
-          ...state,
-          customers: sortedArr,
-        };
-      default:
-        return state;
-    }
+  // const handleFilteringAndSortingRef = useRef(handleFilteringAndSorting)
+  useEffect(() => {
+    const sortArr = handleFilteringAndSorting(props.tools, props.allCustomers);
+
+    setResultArr(sortArr);
+    setPaginationDetails((currentPaginatedResult) => ({
+      ...currentPaginatedResult,
+      data: sortArr,
+      pageCount: Math.ceil(sortArr.length / currentPaginatedResult.perPage),
+    }));
+  }, [props.tools, props.allCustomers]);
+
+  // console.log('sortirano napolju', resultArr)
+
+  //// 3. pagination
+  const [paginationDetails, setPaginationDetails] = useState({
+    offset: 0,
+    data: [],
+    perPage: 10,
+    currentPage: 0,
+    pageCount: 0,
+  });
+
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * paginationDetails.perPage;
+
+    setPaginationDetails({
+      ...paginationDetails,
+      currentPage: selectedPage,
+      offset: offset,
+    });
   };
 
-  const [state, dispatch] = useReducer(reducer, { customers: [] });
-
   useEffect(() => {
-    dispatch({ type: "search" });
-  }, [props.searchQuery]);
+    setPaginationDetails({
+      ...paginationDetails,
+      data: props.allCustomers,
+      pageCount: Math.ceil(
+        props.allCustomers.length / paginationDetails.perPage
+      ),
+    });
+  }, [props.allCustomers]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    dispatch({ type: "sort" });
-  }, [props.sortQuery]);
-
-  console.log(props.allCustomers);
-  console.log(state);
-  // console.log(props.searchQuery);
+  // console.log(paginationDetails);
 
   let showAllCustomers = null;
-  let customersArrayForMap = state.customers.length
-    ? state.customers
+  const customersArrayForMap = Object.values(props.tools).some((el) => el)
+    ? resultArr
     : props.allCustomers;
-  if (customersArrayForMap) {
-    showAllCustomers = customersArrayForMap.map((el) => (
+  const slice = customersArrayForMap.slice(
+    paginationDetails.offset,
+    paginationDetails.offset + paginationDetails.perPage
+  );
+  // console.log(slice);
+  // console.log(customersArrayForMap);
+  if (slice) {
+    showAllCustomers = slice.map((el) => (
       <Customer
         key={el.id}
         id={el.id}
         name={el.customerData.companyName}
         website={el.customerData.website}
-        address={el.customerData.address}
+        operatingRevenue={el.customerData.operatingRevenue}
+        operatingExpenses={el.customerData.operatingExpenses}
+        size={el.customerData.size}
+        industry={el.customerData.industry}
+        phone={el.customerData.phone}
+        email={el.customerData.email}
       />
     ));
   }
@@ -112,10 +140,16 @@ const CustomersList = (props) => {
 
   return (
     <div className="CustomersList">
-      <Link to="/new" className="AddCustomerButton">
-        <div className="Plus">+</div>
-        <div>Add customer</div>
-      </Link>
+      <div className="AddCustomerButton_Container">
+        <Link to="/new" className="AddCustomerButton">
+          <div className="Plus">+</div>
+          <div>Add customer</div>
+        </Link>
+      </div>
+      <Pagination
+        pageCount={paginationDetails.pageCount}
+        handlePageClick={handlePageClick}
+      />
       <div className="CustomersBreakdown">
         {showAllCustomers ? showAllCustomers : null}
       </div>
@@ -129,8 +163,7 @@ const mapStateToProps = (state) => {
     token: state.auth.idToken,
     userId: state.auth.userId,
     isLoading: state.customers.loading,
-    searchQuery: state.tools.searchQuery,
-    sortQuery: state.tools.sortQuery,
+    tools: state.tools,
   };
 };
 

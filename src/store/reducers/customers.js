@@ -43,10 +43,31 @@ const fetchCustomersStart = (state, action) => {
 };
 
 const fetchCustomersSuccess = (state, action) => {
+  let res = action.allCustomers.map((el) => {
+    const obj =  { ...el, customerData: { ...el.customerData } };;
+    [
+      "operatingRevenue",
+      "operatingExpenses",
+      "financialRevenue",
+      "financialExpenses",
+      "otherRevenue",
+      "otherExpenses",
+      "taxation",
+      "fixedAssets",
+      "currentAssets",
+      "equity",
+      "longTermLiabilities",
+      "shortTermLiabilities",
+    ].forEach((k) =>   
+      obj.customerData[k] = parseInt(obj.customerData[k])
+    );
+    return obj;
+  });
+  
   return {
     ...state,
     loading: false,
-    allCustomers: action.allCustomers,
+    allCustomers: res,
   };
 };
 
@@ -60,10 +81,31 @@ const fetchCustomerStart = (state, action) => {
 };
 
 const fetchCustomerSuccess = (state, action) => {
+  let res =  { ...action.particularCustomer, customerData: { ...action.particularCustomer.customerData } };;
+  [
+    "operatingRevenue",
+    "operatingExpenses",
+    "financialRevenue",
+    "financialExpenses",
+    "otherRevenue",
+    "otherExpenses",
+    "taxation",
+    "fixedAssets",
+    "currentAssets",
+    "equity",
+    "longTermLiabilities",
+    "shortTermLiabilities",
+  ].forEach((k) =>   
+    res.customerData[k] = parseInt(res.customerData[k])
+    );
+
+
+
   return {
     ...state,
     loading: false,
-    particularCustomer: action.particularCustomer,
+    particularCustomer: res,
+    // particularCustomer: action.particularCustomer,
   };
 };
 
@@ -110,7 +152,7 @@ const deleteCustomerSuccess = (state, action) => {
     ...state,
     loading: false,
     allCustomers: state.allCustomers.filter(
-      (el) => el.id === action.customerId
+      (el) => el.id !== action.customerId
     ),
     isDeletedSuccessfully: true,
   };
