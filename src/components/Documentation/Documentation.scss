@@ -96,3 +96,20 @@ $lightestBlue: #1580de;
   flex-direction: column;
   align-items: flex-start;
 }
+
+.Documentation .Report_Title {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 480px)  {
+  .Documentation .Reports {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Documentation .Report_First, 
+  .Documentation .Report_Second {
+    width: 100%;
+  }
+}

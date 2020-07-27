@@ -21,7 +21,6 @@ $lightestBlue: #1580de;
   transition: transform 0.5s ease;
 }
 
-
 .Toolbar .Logo {
   position: relative;
   padding-bottom: 2rem;
@@ -58,7 +57,7 @@ $lightestBlue: #1580de;
   margin-top: 60px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .OpenedMobileToolbar {
     transform: translateX(0);
     z-index: 999999;

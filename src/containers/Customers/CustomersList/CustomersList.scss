@@ -65,11 +65,11 @@ $lightestBlue: #1580de;
   grid-gap: 2rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .CustomersList {
     padding: 2rem 3rem;
   }
-  
+
   .CustomersBreakdown,
   .AddCustomerButton_Container {
     grid-template-columns: repeat(1, 1fr);
@@ -83,7 +83,7 @@ $lightestBlue: #1580de;
     padding: 1rem;
   }
 
-  .LogoutSign, 
+  .LogoutSign,
   .LogoutSign .Button {
     display: none;
   }
@@ -93,19 +93,29 @@ $lightestBlue: #1580de;
   }
 }
 
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-
-
-
-// @media only screen and (max-width: 768px) {
-//   .CustomersBreakdown {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
-// @media only screen and (max-width: 1024px) {
-//   .CustomersBreakdown {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-// }
+@media only screen and (min-width: 1920px) {
+  .AddCustomerButton {
+    margin-bottom: 10rem;
+  }
+}

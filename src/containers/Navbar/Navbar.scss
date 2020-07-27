@@ -47,7 +47,7 @@ $blueGray20: #f5f7f8;
   right: 10px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .Navbar {
     background-color: $blueGray20;
     width: 100%;
@@ -73,7 +73,7 @@ $blueGray20: #f5f7f8;
     display: inline-block;
   }
 
-  .LogoutSign, 
+  .LogoutSign,
   .LogoutSign .Button {
     display: none;
   }

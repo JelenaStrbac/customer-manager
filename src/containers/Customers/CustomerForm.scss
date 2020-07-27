@@ -87,7 +87,7 @@ $lightestBlue: #1580de;
   align-items: flex-end;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .CustomerFormContainer {
     width: 100%;
   }
@@ -105,8 +105,8 @@ $lightestBlue: #1580de;
     width: 40%;
   }
 
-  .CustomerFormContainer .TableForm .ThirdTd .Input>input,
-  .CustomerFormContainer .TableForm .ThirdTd .Input>select,
+  .CustomerFormContainer .TableForm .ThirdTd .Input > input,
+  .CustomerFormContainer .TableForm .ThirdTd .Input > select,
   .CustomerForm input::placeholder {
     font-size: 0.9rem;
   }
