@@ -6,7 +6,7 @@ import * as actions from "../actions";
 /// 1.
 export function* customerAddSaga(action) {
   // START
-  yield put(actions.customerStart());
+  yield put(actions.addCustomerStart());
 
   try {
     const response = yield call(() =>
@@ -14,12 +14,12 @@ export function* customerAddSaga(action) {
     );
 
     // SUCCESS
-    yield put(actions.customerSuccess(response.data.name, action.customerData));
+    yield put(actions.addCustomerSuccess(response.data.name, action.customerData));
     // FINISHED
-    yield put(actions.customerFinished());
+    yield put(actions.addCustomerFinished());
   } catch (error) {
     // FAIL
-    yield put(actions.customerFail('Something went wrong'));
+    yield put(actions.addCustomerFail('Something went wrong'));
   }
 }
 

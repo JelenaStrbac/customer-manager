@@ -10,10 +10,10 @@ export {
 } from "./auth";
 
 export {
-  customerStart,
-  customerSuccess,
-  customerFail,
-  customerFinished,
+  addCustomerStart,
+  addCustomerSuccess,
+  addCustomerFail,
+  addCustomerFinished,
   customerAdd,
   fetchCustomersStart,
   fetchCustomersSuccess,

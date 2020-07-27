@@ -1,13 +1,13 @@
 import * as actionTypes from "./actionTypes";
 
 // 1. adding new customer
-export const customerStart = () => {
+export const addCustomerStart = () => {
   return {
     type: actionTypes.ADD_CUSTOMER_START,
   };
 };
 
-export const customerSuccess = (id, customerData) => {
+export const addCustomerSuccess = (id, customerData) => {
   return {
     type: actionTypes.ADD_CUSTOMER_SUCCESS,
     customerId: id,
@@ -15,19 +15,19 @@ export const customerSuccess = (id, customerData) => {
   };
 };
 
-export const customerFail = (error) => {
+export const addCustomerFail = (error) => {
   return {
     type: actionTypes.ADD_CUSTOMER_FAIL,
     error,
   };
 };
 
-export const customerFinished = () => {
+export const addCustomerFinished = () => {
   return {
     type: actionTypes.ADD_CUSTOMER_FINISHED,
   };
 };
-
+// ---> main one
 export const customerAdd = (customerData, token) => {
   return {
     type: actionTypes.ADD_CUSTOMER,
@@ -57,6 +57,7 @@ export const fetchCustomersFail = (error) => {
   };
 };
 
+// ---> main one
 export const fetchAllCustomers = (token, userId) => {
   return {
     type: actionTypes.FETCH_ALL_CUSTOMERS,
@@ -86,6 +87,7 @@ export const fetchCustomerFail = (error) => {
   };
 };
 
+// ---> main one
 export const fetchOneCustomer = (token, id) => {
   return {
     type: actionTypes.FETCH_ONE_CUSTOMER,
@@ -122,6 +124,7 @@ export const editCustomerFinished = () => {
   };
 };
 
+// ---> main one
 export const customerEdit = (customerData, token, id) => {
   return {
     type: actionTypes.EDIT_CUSTOMER,
@@ -131,38 +134,38 @@ export const customerEdit = (customerData, token, id) => {
   };
 };
 
-
 // 5. deleting customer
 export const deleteCustomerStart = () => {
-    return {
-      type: actionTypes.DELETE_CUSTOMER_START,
-    };
+  return {
+    type: actionTypes.DELETE_CUSTOMER_START,
   };
-  
-  export const deleteCustomerSuccess = (id) => {
-    return {
-      type: actionTypes.DELETE_CUSTOMER_SUCCESS,
-      customerId: id,
-    };
+};
+
+export const deleteCustomerSuccess = (id) => {
+  return {
+    type: actionTypes.DELETE_CUSTOMER_SUCCESS,
+    customerId: id,
   };
-  
-  export const deleteCustomerFail = (error) => {
-    return {
-      type: actionTypes.DELETE_CUSTOMER_FAIL,
-      error,
-    };
+};
+
+export const deleteCustomerFail = (error) => {
+  return {
+    type: actionTypes.DELETE_CUSTOMER_FAIL,
+    error,
   };
-  
-  export const deleteCustomerFinished = () => {
-    return {
-      type: actionTypes.DELETE_CUSTOMER_FINISHED,
-    };
+};
+
+export const deleteCustomerFinished = () => {
+  return {
+    type: actionTypes.DELETE_CUSTOMER_FINISHED,
   };
-  
-  export const customerDelete = (token, id) => {
-    return {
-      type: actionTypes.DELETE_CUSTOMER,
-      token,
-      id,
-    };
+};
+
+// ---> main one
+export const customerDelete = (token, id) => {
+  return {
+    type: actionTypes.DELETE_CUSTOMER,
+    token,
+    id,
   };
+};

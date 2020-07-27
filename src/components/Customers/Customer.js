@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 import "./Customer.scss";
-// import Icon from "../UI/Icon/Icon";
 
 const Customer = (props) => {
+  // default state for each customer card is 'one' which stands for contact details
   const [showContent, setShowContent] = useState("one");
   const [activeSelected, setActiveSelected] = useState(
     "CustomerIcon fa fa-address-card"
@@ -53,7 +53,8 @@ const Customer = (props) => {
       content = (
         <div className="CustomerContent">
           <div>
-            <b>Turnover:</b> {`RSD ${(props.operatingRevenue / 1000).toFixed(1)}mil.`}
+            <b>Turnover:</b>{" "}
+            {`RSD ${(props.operatingRevenue / 1000).toFixed(1)} mil.`}
           </div>
           <div>
             <b>EBIT margin:</b>{" "}

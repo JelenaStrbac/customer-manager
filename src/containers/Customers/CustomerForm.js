@@ -106,14 +106,7 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "number",
         label: "Industry",
-        obj: [
-          "Education",
-          "Finance",
-          "Health",
-          "IT",
-          "Production",
-          "Other",
-        ],
+        obj: ["Education", "Finance", "Health", "IT", "Production", "Other"],
       },
       value: "",
       validation: {
@@ -343,7 +336,7 @@ const CustomerForm = (props) => {
     };
     for (let formElementIdentifier in initialCustomerFormForEditing) {
       initialCustomerFormForEditing[formElementIdentifier].value =
-        props.initialFormValues[formElementIdentifier];
+        props.initialFormValues[formElementIdentifier]; //setting that it is equal to ones passed from props (props are comming from CustomerEdit and are fetched from Redux store)
 
       initialCustomerFormForEditing[
         formElementIdentifier
@@ -357,7 +350,6 @@ const CustomerForm = (props) => {
       formIsValid =
         initialCustomerFormForEditing[inputIdentifier].valid && formIsValid;
     }
-
     setCustomerForm(initialCustomerFormForEditing);
     setFormIsValid(formIsValid);
   };
@@ -367,7 +359,7 @@ const CustomerForm = (props) => {
   useEffect(() => {
     if (initialFormValuesRef.current) {
       initialFormValuesHandlerRef.current();
-    }
+    } //on mount of this component check if there is props.initialFormValues => if yes (called from edit page), if not (called from create page)
   }, []);
 
   /// input change handler
@@ -380,8 +372,7 @@ const CustomerForm = (props) => {
 
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
-      updatedFormElement.validation,
-      e
+      updatedFormElement.validation
     );
 
     updatedFormElement.touched = true;
@@ -421,9 +412,8 @@ const CustomerForm = (props) => {
       typeof formData[k] !== "number"
         ? (formData[k] = parseInt(formData[k].replace(",", "")))
         : null
-    );
+    ); // goal to submit numbers
 
-    // console.log(formData);
     const data = {
       customerData: formData,
       userId: props.userId,
@@ -441,6 +431,7 @@ const CustomerForm = (props) => {
     });
   }
 
+  // slicing for three main parts to check progress
   const mainInfoArray = formElementsArray.slice(0, 6);
   const industryInfoArray = formElementsArray.slice(6, 9);
   const financialInfoArray = formElementsArray.slice(9, 21);
@@ -514,7 +505,6 @@ const CustomerForm = (props) => {
         {formPart("MAIN INFO", mainInfoArray, "#ffa000")}
         {formPart("INDUSTRY AND CLASSIFICATION", industryInfoArray, "#46d4b4")}
         {formPart("FINANCIAL INFO", financialInfoArray, "#1580de")}
-        {/* <Button>SAVE</Button> */}
         <Button disabled={!formIsValid}>SAVE</Button>
       </div>
     </form>

@@ -32,7 +32,6 @@ const mapStateToProps = (state) => {
   return {
     particularCustomer: state.customers.particularCustomer,
     token: state.auth.idToken,
-    isLoading: state.customers.loading,
     isEditedSuccessfully: state.customers.isEditedSuccessfully,
   };
 };

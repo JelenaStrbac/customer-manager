@@ -56,7 +56,6 @@ const Auth = (props) => {
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
       updatedFormElement.validation,
-      e
     );
 
     updatedFormElement.touched = true;

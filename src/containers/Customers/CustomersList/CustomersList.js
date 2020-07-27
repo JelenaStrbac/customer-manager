@@ -10,7 +10,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Pagination from "../../Tools/Pagination/Pagination";
 
 const handleFilteringAndSorting = (tools, allCustomers) => {
-  const { searchQuery, sortQuery, filterQueryOne, filterQueryTwo } = tools;
+  const { searchQuery, sortQuery, filterQueryOne, filterQueryTwo } = tools; // tools destructured from props
 
   let filteredCustomersArray = allCustomers
     .filter((el) =>
@@ -44,7 +44,6 @@ const handleFilteringAndSorting = (tools, allCustomers) => {
     default:
       sortArr = filteredCustomersArray;
   }
-  // console.log("sortirano unutra", sortArr);
   return sortArr;
 };
 
@@ -61,7 +60,6 @@ const CustomersList = (props) => {
   //// 2. search, filter and sort
   const [resultArr, setResultArr] = useState([]);
 
-  // const handleFilteringAndSortingRef = useRef(handleFilteringAndSorting)
   useEffect(() => {
     const sortArr = handleFilteringAndSorting(props.tools, props.allCustomers);
 
@@ -72,8 +70,6 @@ const CustomersList = (props) => {
       pageCount: Math.ceil(sortArr.length / currentPaginatedResult.perPage),
     }));
   }, [props.tools, props.allCustomers]);
-
-  // console.log('sortirano napolju', resultArr)
 
   //// 3. pagination
   const [paginationDetails, setPaginationDetails] = useState({
@@ -96,27 +92,24 @@ const CustomersList = (props) => {
   };
 
   useEffect(() => {
-    setPaginationDetails({
-      ...paginationDetails,
+    setPaginationDetails((currentPaginatedResult) => ({
+      ...currentPaginatedResult,
       data: props.allCustomers,
       pageCount: Math.ceil(
-        props.allCustomers.length / paginationDetails.perPage
+        props.allCustomers.length / currentPaginatedResult.perPage
       ),
-    });
-  }, [props.allCustomers]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // console.log(paginationDetails);
+    }));
+  }, [props.allCustomers]);
 
   let showAllCustomers = null;
-  const customersArrayForMap = Object.values(props.tools).some((el) => el)
+  const customersArrayForMap = Object.values(props.tools).some((el) => el) // check if there is anything in Redux store in tools obj (any query)
     ? resultArr
     : props.allCustomers;
   const slice = customersArrayForMap.slice(
     paginationDetails.offset,
     paginationDetails.offset + paginationDetails.perPage
   );
-  // console.log(slice);
-  // console.log(customersArrayForMap);
+
   if (slice) {
     showAllCustomers = slice.map((el) => (
       <Customer
@@ -146,12 +139,14 @@ const CustomersList = (props) => {
           <div>Add customer</div>
         </Link>
       </div>
-      <Pagination
-        pageCount={paginationDetails.pageCount}
-        handlePageClick={handlePageClick}
-      />
-      <div className="CustomersBreakdown">
-        {showAllCustomers ? showAllCustomers : null}
+      <div>
+        <Pagination
+          pageCount={paginationDetails.pageCount}
+          handlePageClick={handlePageClick}
+        />
+        <div className="CustomersBreakdown">
+          {showAllCustomers ? showAllCustomers : null}
+        </div>
       </div>
     </div>
   );

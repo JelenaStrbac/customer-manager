@@ -3,8 +3,6 @@ import { useLocation } from "react-router-dom";
 
 import "./Navbar.scss";
 import Logout from "../Auth/Logout/Logout";
-// import Input from "../../components/UI/Input/Input";
-// import Icon from "../../components/UI/Icon/Icon";
 import Search from "../Tools/Search/Search";
 
 const Navbar = () => {
@@ -22,7 +20,7 @@ const Navbar = () => {
       title = "Documentation";
       break;
     default:
-      title = "Browse Your Customer"; //TODO:ovde staviti ime customera
+      title = "Browse Your Customer";
   }
 
   return (

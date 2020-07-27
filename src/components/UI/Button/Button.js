@@ -7,7 +7,6 @@ const Button = (props) => {
     <button
       disabled={props.disabled}
       onClick={props.clicked}
-      // className={`Button ${props.btnType}`}
       className="Button"
     >
       {props.children}

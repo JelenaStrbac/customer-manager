@@ -24,7 +24,7 @@ const Toolbar = () => {
       </div>
       {location.pathname === "/" ? (
         <>
-          <Sort /> <Filter /> 
+          <Sort /> <Filter />
         </>
       ) : null}
     </div>
