@@ -7,7 +7,9 @@ const ProfitabilityCircle = (props) => {
   const stroke = 8;
   const normalizedRadius = radius - stroke * 2; //normalizovani precnik bez debljine ivica
   const circumference = normalizedRadius * 2 * Math.PI; //obim kruga
-  const strokeDashoffset = circumference - ((props.percent > 0 ? props.percent : 0)/ 100) * circumference;
+  const strokeDashoffset =
+    circumference -
+    ((props.percent > 0 ? props.percent : 0) / 100) * circumference;
 
   return (
     <svg height={radius * 2} width={radius * 2}>

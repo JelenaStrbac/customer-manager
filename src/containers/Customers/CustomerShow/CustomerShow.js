@@ -56,8 +56,6 @@ const CustomerShow = (props) => {
     roe = ((netIncome / equity) * 100) > 0 ? `${((netIncome / equity) * 100).toFixed(2)}%` : `n.a.`;
   }
 
-  // console.log(props.particularCustomer);
-
   //// showing particular customer
   let particularCustomerShow = null;
   if (props.particularCustomer) {
@@ -235,7 +233,7 @@ const CustomerShow = (props) => {
         show={showModal}
         content={content}
         actions={actions}
-        onDismiss={() => <Link to={`/show/${idRef.current}`} />}
+        onDismiss={closeModal}
       />
     </div>
   );

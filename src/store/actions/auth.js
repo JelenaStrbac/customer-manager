@@ -51,7 +51,7 @@ export const logoutSucced = () => {
   };
 };
 
-// 4.
+// 4. action creator for checking state
 export const authCheckState = () => {
     return {
         type: actionTypes.AUTH_CHECK_STATE,

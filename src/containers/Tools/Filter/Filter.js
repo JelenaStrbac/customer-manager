@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./Filter.scss";
 import Icon from "../../../components/UI/Icon/Icon";
-import Checkboxes from "../../../components/UI/Input/Checkbox/Checkboxes";
+import Checkboxes from "./Checkboxes/Checkboxes";
 import * as actions from "../../../store/actions";
 
 const Filter = (props) => {

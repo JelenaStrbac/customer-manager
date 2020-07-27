@@ -11,11 +11,11 @@ const initialState = {
 };
 
 // 1. adding new customer
-const customerStart = (state, action) => {
+const addCustomerStart = (state, action) => {
   return { ...state, loading: true, error: null };
 };
 
-const customerSucess = (state, action) => {
+const addCustomerSucess = (state, action) => {
   const newCustomer = {
     ...action.customerData,
     id: action.customerId,
@@ -29,11 +29,11 @@ const customerSucess = (state, action) => {
   };
 };
 
-const customerFail = (state, action) => {
+const addCustomerFail = (state, action) => {
   return { ...state, loading: false, error: action.error };
 };
 
-const customerFinished = (state, action) => {
+const addCustomerFinished = (state, action) => {
   return { ...state, isAddedSuccessfully: false };
 };
 
@@ -99,13 +99,10 @@ const fetchCustomerSuccess = (state, action) => {
     res.customerData[k] = parseInt(res.customerData[k])
     );
 
-
-
   return {
     ...state,
     loading: false,
     particularCustomer: res,
-    // particularCustomer: action.particularCustomer,
   };
 };
 
@@ -170,13 +167,13 @@ const deleteCustomerFinished = (state, action) => {
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_CUSTOMER_START:
-      return customerStart(state, action);
+      return addCustomerStart(state, action);
     case actionTypes.ADD_CUSTOMER_SUCCESS:
-      return customerSucess(state, action);
+      return addCustomerSucess(state, action);
     case actionTypes.ADD_CUSTOMER_FAIL:
-      return customerFail(state, action);
+      return addCustomerFail(state, action);
     case actionTypes.ADD_CUSTOMER_FINISHED:
-      return customerFinished(state, action);
+      return addCustomerFinished(state, action);
     case actionTypes.FETCH_CUSTOMERS_START:
       return fetchCustomersStart(state, action);
     case actionTypes.FETCH_CUSTOMERS_SUCCESS:

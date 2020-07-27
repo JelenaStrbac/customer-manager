@@ -12,6 +12,9 @@ $lightestBlue: #1580de;
 .CustomersList {
   grid-area: Customer;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
 }
 
 .AddCustomerButton_Container {

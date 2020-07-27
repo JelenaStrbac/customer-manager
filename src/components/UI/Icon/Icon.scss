@@ -2,35 +2,8 @@ $lightestBlue: #1580de;
 
 .fa {
   font-size: 1.5rem;
-  animation: pulse 2s;
 }
 
 .fa-lock {
   font-size: 1.8rem;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(21, 128, 222, 0.4);
-  }
-  70% {
-    -webkit-box-shadow: 0 0 0 10px rgba(21, 128, 222, 0);
-  }
-  100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(21, 128, 222, 0);
-  }
-}
-@keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(21, 128, 222, 0.4);
-    box-shadow: 0 0 0 0 rgba(21, 128, 222, 0.4);
-  }
-  70% {
-    -moz-box-shadow: 0 0 0 10px rgba(21, 128, 222, 0);
-    box-shadow: 0 0 0 10px rgba(21, 128, 222, 0);
-  }
-  100% {
-    -moz-box-shadow: 0 0 0 0 rgba(21, 128, 222, 0);
-    box-shadow: 0 0 0 0 rgba(21, 128, 222, 0);
-  }
 }

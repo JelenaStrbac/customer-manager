@@ -77,10 +77,16 @@ const input = (props) => {
     case "select":
       inputElement = (
         <>
-          <select className="InputSelect" onChange={props.changed} value={props.value}>
-            <option value="" disabled>---Select from dropdown---</option>
+          <select
+            className="InputSelect"
+            onChange={props.changed}
+            value={props.value}
+          >
+            <option value="" disabled>
+              ---Select from dropdown---
+            </option>
             {props.elementConfig.obj.map((el) => (
-              <option key={el} value={el} >
+              <option key={el} value={el}>
                 {el}
               </option>
             ))}

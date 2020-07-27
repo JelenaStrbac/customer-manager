@@ -9,7 +9,7 @@ import PrivateRoute from "./components/helper/PrivateRoute";
 import * as actions from "./store/actions";
 
 const App = (props) => {
-  const onAutoLoginRef = useRef(props.onAutoLogin)
+  const onAutoLoginRef = useRef(props.onAutoLogin);
 
   useEffect(() => {
     onAutoLoginRef.current();
@@ -23,7 +23,6 @@ const App = (props) => {
           <PrivateRoute
             isAuthenticated={props.isAuthenticated}
             path="/"
-            // exact
             component={Home}
           />
         </Switch>

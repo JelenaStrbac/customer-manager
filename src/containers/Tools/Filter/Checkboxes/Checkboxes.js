@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./Checkboxes.scss";
-import Checkbox from "./Checkbox";
+import Checkbox from "../../../../components/UI/Input/Checkbox/Checkbox";
 
 const Checkboxes = (props) => {
   const [checkedItems, setCheckedItems] = useState({});

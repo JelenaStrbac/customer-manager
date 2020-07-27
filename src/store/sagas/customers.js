@@ -6,20 +6,24 @@ import * as actions from "../actions";
 /// 1.
 export function* customerAddSaga(action) {
   // START
-  yield put(actions.customerStart());
+  yield put(actions.addCustomerStart());
 
   try {
     const response = yield call(() =>
       axios.post(`/customers.json?auth=${action.token}`, action.customerData)
     );
 
-    // SUCCESS
-    yield put(actions.customerSuccess(response.data.name, action.customerData));
+    if (response) {
+      // SUCCESS
+      yield put(
+        actions.addCustomerSuccess(response.data.name, action.customerData)
+      );
+    }
     // FINISHED
-    yield put(actions.customerFinished());
+    yield put(actions.addCustomerFinished());
   } catch (error) {
     // FAIL
-    yield put(actions.customerFail('Something went wrong'));
+    yield put(actions.addCustomerFail("Something went wrong"));
   }
 }
 
@@ -35,16 +39,18 @@ export function* fetchAllCustomersSaga(action) {
       )
     );
 
-    const fetchedCustomers = [];
-    for (let key in response.data) {
-      fetchedCustomers.push({
-        ...response.data[key],
-        id: key,
-      });
-    }
+    if (response) {
+      const fetchedCustomers = [];
+      for (let key in response.data) {
+        fetchedCustomers.push({
+          ...response.data[key],
+          id: key,
+        });
+      }
 
-    // SUCCESS
-    yield put(actions.fetchCustomersSuccess(fetchedCustomers));
+      // SUCCESS
+      yield put(actions.fetchCustomersSuccess(fetchedCustomers));
+    }
   } catch (error) {
     // FAIL
     yield put(actions.fetchCustomersFail(error.response.data.error));
@@ -62,16 +68,18 @@ export function* fetchOneCustomerSaga(action) {
         `/customers.json?auth=${action.token}&orderBy="$key"&equalTo="${action.id}"`
       )
     );
-    let fetchedCustomer = {};
-    for (let key in response.data) {
-      fetchedCustomer = {
-        ...response.data[key],
-        id: key,
-      };
-    }
+    if (response) {
+      let fetchedCustomer = {};
+      for (let key in response.data) {
+        fetchedCustomer = {
+          ...response.data[key],
+          id: key,
+        };
+      }
 
-    // SUCCESS
-    yield put(actions.fetchCustomerSuccess(fetchedCustomer));
+      // SUCCESS
+      yield put(actions.fetchCustomerSuccess(fetchedCustomer));
+    }
   } catch (error) {
     // FAIL
     yield put(actions.fetchCustomerFail(error.response.data.error));
@@ -90,11 +98,12 @@ export function* customerEditSaga(action) {
         action.customerData
       )
     );
-
-    // SUCCESS
-    yield put(actions.editCustomerSuccess(action.id, response.data));
-    // FINISHED
-    yield put(actions.editCustomerFinished());
+    if (response) {
+      // SUCCESS
+      yield put(actions.editCustomerSuccess(action.id, response.data));
+      // FINISHED
+      yield put(actions.editCustomerFinished());
+    }
   } catch (error) {
     // FAIL
     yield put(actions.editCustomerFail(error.response.data.error));
