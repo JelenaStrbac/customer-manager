@@ -12,13 +12,15 @@ $lightestBlue: #1580de;
   height: 100%;
   width: 20%;
   position: fixed;
-  z-index: 1;
+  z-index: 100000;
   top: 0;
   bottom: 0;
   // left: 0;
   // overflow-x: hidden;
   overflow-y: scroll;
+  transition: transform 0.5s ease;
 }
+
 
 .Toolbar .Logo {
   position: relative;
@@ -56,7 +58,13 @@ $lightestBlue: #1580de;
   margin-top: 60px;
 }
 
-// .Filter:hover,
-// .Sort:hover {
-//     background-color: rgba(221,221,221,.1);
-// }
+@media only screen and (max-width: 600px) {
+  .OpenedMobileToolbar {
+    transform: translateX(0);
+    z-index: 999999;
+    width: 70%;
+  }
+  .ClosedMobileToolbar {
+    transform: translateX(-100%);
+  }
+}

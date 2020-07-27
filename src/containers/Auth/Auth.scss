@@ -102,3 +102,31 @@ $white: #fff;
   font-weight: 100;
   font-size: 1.2rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .WelcomeAndForm {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 6rem;
+  }
+
+  .Auth {
+    padding: 2rem;
+  }
+
+  .Welcome {
+    width: 110%;
+    height: 80%;
+    clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
+  }
+
+  .WelcomeMessage {
+    font-weight: 200;
+  }
+
+  .LoginForm {
+    width: auto;
+    padding-right: 0;
+  }
+}

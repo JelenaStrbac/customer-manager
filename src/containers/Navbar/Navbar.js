@@ -5,7 +5,7 @@ import "./Navbar.scss";
 import Logout from "../Auth/Logout/Logout";
 import Search from "../Tools/Search/Search";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const location = useLocation();
 
   let title = "";
@@ -22,15 +22,17 @@ const Navbar = () => {
     default:
       title = "Browse Your Customer";
   }
-
+  console.log(props);
   return (
     <div className="Navbar">
       <div className="LogoutSign">
         <Logout />
       </div>
       {location.pathname === "/" ? <Search /> : null}
-
-      <h1>{title}</h1>
+      <div className="BurgerIcon_And_Title">
+        <i className="fa fa-bars" onClick={props.toolbarClicked}></i>
+        <h1>{title}</h1>
+      </div>
     </div>
   );
 };

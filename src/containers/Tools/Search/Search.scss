@@ -31,3 +31,23 @@ $--default-border: #c3cfdd;
   font-size: 1rem;
   // color: $--default-border;
 }
+
+@media only screen and (max-width: 600px) {
+  .SearchBar {
+    padding-right: 0;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    background-color: white;
+    border: 1px solid #c3cfdd;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+    padding-left: 0.2rem;
+  }
+
+  .SearchBar .Input {
+    width: 100%;
+  }
+
+  .SearchBar .Label {
+    border-bottom: none;
+  }
+}

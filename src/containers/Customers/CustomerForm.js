@@ -476,7 +476,7 @@ const CustomerForm = (props) => {
                     <Circle valid={el.config.valid} color={color} />
                   </td>
                   <td className="SecondTd">{el.config.elementConfig.label}:</td>
-                  <td>
+                  <td className="ThirdTd">
                     <Input
                       key={el.id}
                       elementType={el.config.elementType}

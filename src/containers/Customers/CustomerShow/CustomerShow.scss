@@ -242,3 +242,54 @@ $lightestBlue: #1580de;
   background-image: linear-gradient($--color-primary, $darkestBlue);
   padding: 3rem 2rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .CustomerShowContainer,
+  .Info_and_Industry,
+  .CustomerShowContainer .Reports,
+  .Ratios_Main,
+  .CustomerShowContainer_Left .MainTitle {
+    flex-direction: column;
+  }
+
+  .CustomerShow_Buttons {
+    margin-top: 1rem;
+  }
+
+  .CustomerShowContainer_Left,
+  .Info_and_Industry > div:nth-child(2),
+  .CustomerShowContainer_Left .Report_First,
+  .CustomerShowContainer_Left .Report_Second {
+    width: 100%;
+  }
+
+  .Info_and_Industry > div:first-child {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .CustomerShowContainer_Left .Report_First {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .CustomerShowContainer_Right {
+    margin-left: 0;
+    margin-top: 2rem;
+    width: 100%;
+    // display: grid;
+    // grid-template-areas:
+    //   "One Two"
+    //   "Three Four";
+    // grid-template-columns: 1fr 1fr;
+  }
+
+  .HighlightData {
+    margin-bottom: 1rem;
+  }
+
+  // .HighlightData_Data > div {
+  //   font-size: 1rem;
+  // }
+}

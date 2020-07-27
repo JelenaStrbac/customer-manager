@@ -65,18 +65,47 @@ $lightestBlue: #1580de;
   grid-gap: 2rem;
 }
 
-@media only screen and (max-width: 480px) {
-  .CustomersBreakdown {
+@media only screen and (max-width: 600px) {
+  .CustomersList {
+    padding: 2rem 3rem;
+  }
+  
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
     grid-template-columns: repeat(1, 1fr);
   }
-}
-@media only screen and (max-width: 768px) {
-  .CustomersBreakdown {
-    grid-template-columns: repeat(2, 1fr);
+
+  .AddCustomerButton_Container {
+    margin-bottom: 3rem;
+  }
+
+  .Navbar {
+    padding: 1rem;
+  }
+
+  .LogoutSign, 
+  .LogoutSign .Button {
+    display: none;
+  }
+
+  .SearchBar {
+    padding-right: 0;
   }
 }
-@media only screen and (max-width: 1024px) {
-  .CustomersBreakdown {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+
+
+
+
+
+
+
+// @media only screen and (max-width: 768px) {
+//   .CustomersBreakdown {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// }
+// @media only screen and (max-width: 1024px) {
+//   .CustomersBreakdown {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
