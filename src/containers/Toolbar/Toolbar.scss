@@ -7,7 +7,6 @@ $lightestBlue: #1580de;
   background-color: $darkestBlue;
   grid-area: Toolbar;
   color: rgba(255, 255, 255, 0.7);
-  // height: 100vh;
   overflow: scroll;
   height: 100%;
   width: 20%;
@@ -15,8 +14,6 @@ $lightestBlue: #1580de;
   z-index: 100000;
   top: 0;
   bottom: 0;
-  // left: 0;
-  // overflow-x: hidden;
   overflow-y: scroll;
   transition: transform 0.5s ease;
 }

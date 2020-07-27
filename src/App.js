@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import "./App.css";
 import Auth from "./containers/Auth/Auth";
 import Home from "./containers/Home/Home";
 import PrivateRoute from "./components/helper/PrivateRoute";
