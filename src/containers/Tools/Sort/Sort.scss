@@ -37,3 +37,11 @@
 .Sort select:hover {
     background-color: rgba(221,221,221,.1);
 }
+
+.Sort select option {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+select:focus {
+  outline: none;
+}

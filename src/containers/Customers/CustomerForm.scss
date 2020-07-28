@@ -68,6 +68,30 @@ $lightestBlue: #1580de;
   margin: 1rem;
 }
 
+.CustomerForm input::-webkit-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input::-moz-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input:-ms-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input::-ms-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
 .CustomerForm input::placeholder {
   font-size: 1rem;
   font-style: italic;
@@ -101,6 +125,22 @@ $lightestBlue: #1580de;
   .CustomerFormContainer .TableForm .SecondTd {
     font-size: 0.9rem;
     width: 40%;
+  }
+
+  .CustomerForm input::-webkit-input-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input::-moz-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input:-ms-input-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input::-ms-input-placeholder {
+    font-size: 0.9rem;
   }
 
   .CustomerFormContainer .TableForm .ThirdTd .Input > input,

@@ -77,7 +77,8 @@ $white: #fff;
   background-position: left 5%;
   background-size: contain;
   height: 100vh;
-  clip-path: polygon(0 0, 100% 0, 59% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 59% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 59% 100%, 0% 100%);
   width: 50%;
   height: 110%;
   display: flex;
@@ -111,7 +112,8 @@ $white: #fff;
   .Welcome {
     width: 110%;
     height: 80%;
-    clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);
   }
 
   .WelcomeMessage {
