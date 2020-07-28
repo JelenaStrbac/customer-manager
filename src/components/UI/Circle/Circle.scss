@@ -4,7 +4,14 @@ $lightestBlue: #1580de;
 
 // 1.
 .SvgCircle_One {
-  animation: fillOne 1s linear forwards;
+  -webkit-animation: fillOne 1s linear forwards;
+          animation: fillOne 1s linear forwards;
+}
+
+@-webkit-keyframes fillOne {
+  100% {
+    fill: $middleOrange;
+  }
 }
 
 @keyframes fillOne {
@@ -15,7 +22,14 @@ $lightestBlue: #1580de;
 
 // 2.
 .SvgCircle_Two {
-  animation: fillTwo 1s linear forwards;
+  -webkit-animation: fillTwo 1s linear forwards;
+          animation: fillTwo 1s linear forwards;
+}
+
+@-webkit-keyframes fillTwo {
+  100% {
+    fill: $mintGreen;
+  }
 }
 
 @keyframes fillTwo {
@@ -26,7 +40,14 @@ $lightestBlue: #1580de;
 
 // 3.
 .SvgCircle_Three {
-  animation: fillThree 1s linear forwards;
+  -webkit-animation: fillThree 1s linear forwards;
+          animation: fillThree 1s linear forwards;
+}
+
+@-webkit-keyframes fillThree {
+  100% {
+    fill: $lightestBlue;
+  }
 }
 
 @keyframes fillThree {

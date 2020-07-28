@@ -43,8 +43,6 @@ $lightestBlue: #1580de;
 }
 
 .TableNav:first-child {
-  // border-top-left-radius: 0.8rem;
-  // border-top-right-radius: 0.8rem;
   border-top: none;
 }
 
@@ -70,6 +68,30 @@ $lightestBlue: #1580de;
   margin: 1rem;
 }
 
+.CustomerForm input::-webkit-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input::-moz-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input:-ms-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.CustomerForm input::-ms-input-placeholder {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.2);
+}
+
 .CustomerForm input::placeholder {
   font-size: 1rem;
   font-style: italic;
@@ -85,4 +107,45 @@ $lightestBlue: #1580de;
 .ColorTitle {
   display: flex;
   align-items: flex-end;
+}
+
+@media only screen and (max-width: 480px) {
+  .CustomerFormContainer {
+    width: 100%;
+  }
+
+  .CustomerFormContainer .TableForm {
+    padding: 1rem;
+  }
+
+  .CustomerFormContainer .TableForm .ThirdTd .Input {
+    width: 100%;
+  }
+
+  .CustomerFormContainer .TableForm .SecondTd {
+    font-size: 0.9rem;
+    width: 40%;
+  }
+
+  .CustomerForm input::-webkit-input-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input::-moz-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input:-ms-input-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerForm input::-ms-input-placeholder {
+    font-size: 0.9rem;
+  }
+
+  .CustomerFormContainer .TableForm .ThirdTd .Input > input,
+  .CustomerFormContainer .TableForm .ThirdTd .Input > select,
+  .CustomerForm input::placeholder {
+    font-size: 0.9rem;
+  }
 }

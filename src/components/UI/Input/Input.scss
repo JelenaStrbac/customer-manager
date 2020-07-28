@@ -22,7 +22,7 @@ $lightestBlue: #1580de;
   border-bottom: 0.5px solid #d5d7d9;
 }
 
-.Invalid { 
+.Invalid {
   border-bottom: 0.5px solid red;
 }
 
@@ -90,17 +90,6 @@ $lightestBlue: #1580de;
   font-weight: 300;
   font-size: 1.2rem;
 }
-
-// .Invalid {
-//   animation: invalid 1s ease-in forwards;
-// }
-
-// @keyframes invalid {
-//   100% {
-//     border-bottom: 0.5px solid red;
-//   }
-// }
-
 
 .InputSelect {
   width: 100%;

@@ -14,7 +14,6 @@ $lightestBlue: #1580de;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
 }
 
 .AddCustomerButton_Container {
@@ -28,7 +27,6 @@ $lightestBlue: #1580de;
 .AddCustomerButton {
   text-decoration: none;
   border: 0.5px solid $--default-border;
-  // border-radius: 0.8rem;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
   display: flex;
   flex-direction: column;
@@ -38,8 +36,6 @@ $lightestBlue: #1580de;
   color: $lightestBlue;
   cursor: pointer;
   width: 100%;
-  // width: 10rem;
-  // height: 10rem;
   background-color: rgb(255, 255, 255);
   margin-bottom: 1rem;
 }
@@ -66,17 +62,56 @@ $lightestBlue: #1580de;
 }
 
 @media only screen and (max-width: 480px) {
-  .CustomersBreakdown {
+  .CustomersList {
+    padding: 2rem 3rem;
+  }
+
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .AddCustomerButton_Container {
+    margin-bottom: 3rem;
+  }
+
+  .Navbar {
+    padding: 1rem;
+  }
+
+  .LogoutSign,
+  .LogoutSign .Button {
+    display: none;
+  }
+
+  .SearchBar {
+    padding-right: 0;
+  }
 }
-@media only screen and (max-width: 768px) {
-  .CustomersBreakdown {
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media only screen and (max-width: 1024px) {
-  .CustomersBreakdown {
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .CustomersBreakdown,
+  .AddCustomerButton_Container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .AddCustomerButton {
+    margin-bottom: 10rem;
   }
 }

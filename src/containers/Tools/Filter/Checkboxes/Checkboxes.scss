@@ -58,7 +58,8 @@
 .Container input:checked ~ .Checkmark {
   background-color: #46d4b4;
   border: none;
-  animation: pulse 2s;
+  -webkit-animation: pulse 2s;
+          animation: pulse 2s;
 }
 
 /* Create the Checkmark/indicator (hidden when not checked) */
@@ -81,8 +82,6 @@
   height: 10px;
   border: 0.5px solid white;
   border-width: 0 1px 1px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
@@ -99,15 +98,12 @@
 }
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0.4);
     box-shadow: 0 0 0 0 rgba(70, 212, 180, 0.4);
   }
   70% {
-    -moz-box-shadow: 0 0 0 10px rgba(70, 212, 180, 0);
     box-shadow: 0 0 0 10px rgba(70, 212, 180, 0);
   }
   100% {
-    -moz-box-shadow: 0 0 0 0 rgba(70, 212, 180, 0);
     box-shadow: 0 0 0 0 rgba(70, 212, 180, 0);
   }
 }

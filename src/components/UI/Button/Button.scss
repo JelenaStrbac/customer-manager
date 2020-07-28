@@ -12,7 +12,6 @@ $lightestBlue: #1580de;
   text-decoration: none;
   display: flex;
   margin-top: 1.5rem;
-//   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -28,12 +27,12 @@ $lightestBlue: #1580de;
   outline: 0;
 }
 
-.Disabled {
+.Button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.Button:disabled {
+.Disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }

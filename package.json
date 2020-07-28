@@ -36,9 +36,11 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "since 2010"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "postcss-loader": "^3.0.0"
   }
 }

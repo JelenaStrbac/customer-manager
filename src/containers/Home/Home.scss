@@ -13,8 +13,19 @@ $--default-border: #c3cfdd;
     "Toolbar Customer Customer Customer"
     "Toolbar Customer Customer Customer";
   grid-template-columns: 20% 1fr 1fr 1fr;
+  grid-template-rows: -webkit-min-content 1fr 1fr;
   grid-template-rows: min-content 1fr 1fr;
   min-height: 100vh;
   min-width: 100vw;
   background-color: $blueGray20;
+}
+
+@media only screen and (max-width: 480px) {
+  .Home {
+    grid-template-areas:
+      "Navbar"
+      "Customer"
+      "Customer";
+    grid-template-columns: 1fr;
+  }
 }

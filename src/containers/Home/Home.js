@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import "./Home.scss";
@@ -9,13 +9,29 @@ import CustomerEdit from "../Customers/CustomerEdit/CustomerEdit";
 import CustomerShow from "../Customers/CustomerShow/CustomerShow";
 import Navbar from "../Navbar/Navbar";
 import Documentation from "../../components/Documentation/Documentation";
+import Backdrop from "../../components/UI/Modal/Backdrop/Backdrop";
 
 const Home = () => {
+  const [toolbarIsVisible, setToolbarIsVisible] = useState(false);
+
+  const toolbarClosedHandler = () => {
+    setToolbarIsVisible(false);
+  };
+
+  const toolbarToggleHandler = () => {
+    setToolbarIsVisible(!toolbarIsVisible);
+    console.log(toolbarIsVisible);
+  };
+
   return (
     <div className="Home">
       <BrowserRouter>
-        <Toolbar />
-        <Navbar />
+        <Backdrop
+          open={toolbarIsVisible}
+          toolbarClosedHandler={toolbarClosedHandler}
+        />
+        <Toolbar open={toolbarIsVisible} />
+        <Navbar toolbarClicked={toolbarToggleHandler} />
         <Switch>
           <Route path="/" exact component={CustomersList} />
           <Route path="/new" exact component={CustomerCreate} />
