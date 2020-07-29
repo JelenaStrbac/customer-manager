@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Backdrop
           open={toolbarIsVisible}
           toolbarClosedHandler={toolbarClosedHandler}
