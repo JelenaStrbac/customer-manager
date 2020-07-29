@@ -20,7 +20,6 @@ const Home = () => {
 
   const toolbarToggleHandler = () => {
     setToolbarIsVisible(!toolbarIsVisible);
-    console.log(toolbarIsVisible);
   };
 
   return (
