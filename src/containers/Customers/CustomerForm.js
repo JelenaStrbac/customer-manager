@@ -23,6 +23,7 @@ const CustomerForm = (props) => {
         minLength: 3,
         maxLength: 30,
       },
+      message: 'Name must have between 3 and 30 characters.',
       valid: false,
       touched: false,
     },
@@ -37,6 +38,7 @@ const CustomerForm = (props) => {
       validation: {
         required: true,
       },
+      message: 'Website must be url and start with https://.',
       valid: false,
       touched: false,
     },
@@ -47,6 +49,7 @@ const CustomerForm = (props) => {
         label: "Registration number",
         placeholder: "e.g. 111222334",
       },
+      message: 'Registration number must have exact 8 digits.',
       value: "",
       validation: {
         required: true,
@@ -68,6 +71,7 @@ const CustomerForm = (props) => {
         minLength: 3,
         maxLength: 30,
       },
+      message: 'Address must have between 3 and 30 characters.',
       valid: false,
       touched: false,
     },
@@ -76,13 +80,14 @@ const CustomerForm = (props) => {
       elementConfig: {
         type: "phone",
         label: "Phone",
-        placeholder: "e.g. +381 11 1234567",
+        placeholder: "e.g. 011 1234567 or +381 11 1234567",
       },
       value: "",
       validation: {
         required: true,
         isPhone: true,
       },
+      message: 'Please try with forms 011/123456 or +381 11 123456.',
       valid: false,
       touched: false,
     },
@@ -98,6 +103,7 @@ const CustomerForm = (props) => {
         required: true,
         isEmail: true,
       },
+      message: 'Email must contain @ character.',
       valid: false,
       touched: false,
     },
@@ -141,6 +147,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -156,6 +163,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -171,6 +179,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -186,6 +195,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -201,6 +211,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -211,6 +222,7 @@ const CustomerForm = (props) => {
         label: "Extraordinary and other revenue",
         placeholder: "e.g. 1,000",
       },
+      message: 'Please enter number higher or equal to 0.',
       value: "",
       validation: {
         required: true,
@@ -226,6 +238,7 @@ const CustomerForm = (props) => {
         label: "Extraordinary and other expenses",
         placeholder: "e.g. 700",
       },
+      message: 'Please enter number higher or equal to 0.',
       value: "",
       validation: {
         required: true,
@@ -246,6 +259,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -261,6 +275,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -276,6 +291,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -291,6 +307,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -306,6 +323,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -321,6 +339,7 @@ const CustomerForm = (props) => {
         required: true,
         isPositive: true,
       },
+      message: 'Please enter number higher or equal to 0.',
       valid: false,
       touched: false,
     },
@@ -484,6 +503,7 @@ const CustomerForm = (props) => {
                       value={el.config.value}
                       shouldValidate={el.config.validation}
                       invalid={!el.config.valid}
+                      message={el.config.message}
                       touched={el.config.touched}
                       label={el.config.elementConfig.label}
                       placeholder={el.config.elementConfig.placeholder}

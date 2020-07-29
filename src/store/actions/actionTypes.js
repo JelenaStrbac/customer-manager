@@ -54,3 +54,4 @@ export const SEARCH_QUERY = "SEARCH_QUERY";
 export const SORT_QUERY = "SORT_QUERY";
 export const FILTER_QUERY_ONE = "FILTER_QUERY_ONE";
 export const FILTER_QUERY_TWO = "FILTER_QUERY_TWO";
+export const RESET_ALL_FILTERS = "RESET_ALL_FILTERS";

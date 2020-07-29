@@ -3,8 +3,20 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   searchQuery: "",
   sortQuery: "",
-  filterQueryOne: [],
-  filterQueryTwo: [],
+  filterQueryOne: {
+    Micro: false,
+    Small: false,
+    Medium: false,
+    Large: false,
+  },
+  filterQueryTwo: {
+    Education: false,
+    Finance: false,
+    Health: false,
+    IT: false,
+    Production: false,
+    Other: false,
+  },
 };
 
 // search
@@ -19,11 +31,29 @@ const sortQuery = (state, action) => {
 
 // filter
 const filterQueryOne = (state, action) => {
-  return { ...state, filterQueryOne: action.query };
+  return {
+    ...state,
+    filterQueryOne: {
+      ...state.filterQueryOne,
+      [action.query]: !state.filterQueryOne[action.query],
+    },
+  };
 };
 
 const filterQueryTwo = (state, action) => {
-  return { ...state, filterQueryTwo: action.query };
+  return {
+    ...state,
+    filterQueryTwo: {
+      ...state.filterQueryTwo,
+      [action.query]: !state.filterQueryTwo[action.query],
+    },
+  };
+};
+
+const resetAllFilters = (state, action) => {
+  return {
+    ...initialState,
+  };
 };
 
 const toolsReducer = (state = initialState, action) => {
@@ -36,6 +66,8 @@ const toolsReducer = (state = initialState, action) => {
       return filterQueryOne(state, action);
     case actionTypes.FILTER_QUERY_TWO:
       return filterQueryTwo(state, action);
+    case actionTypes.RESET_ALL_FILTERS:
+      return resetAllFilters(state, action);
     default:
       return state;
   }

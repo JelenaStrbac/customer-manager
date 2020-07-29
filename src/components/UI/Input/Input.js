@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Cleave from "cleave.js/react";
 
 import "./Input.scss";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-const input = (props) => {
+const Input = (props) => {
   let inputElement = null;
   const inputClasses = ["InputElement"];
 
@@ -14,10 +15,22 @@ const input = (props) => {
     contentClass.push("SmallLetter");
   }
 
+  const [isFocusRemoved, setIsFocusRemoved] = useState(false);
+  const handleBlur = () => {
+    setIsFocusRemoved(true);
+  };
+
+  const renderError = (message) => {
+    if (props.invalid && isFocusRemoved) {
+      return <ErrorMessage>{message}</ErrorMessage>;
+    }
+  };
+
   switch (props.elementType) {
     case "input":
       inputElement = (
         <>
+        {renderError(props.message)}
           <input
             autoComplete="off"
             className={inputClasses.join(" ")}
@@ -25,6 +38,7 @@ const input = (props) => {
             value={props.value}
             onChange={props.changed}
             placeholder={props.placeholder}
+            onBlur={handleBlur}
           />
           <label className={labelClass.join(" ")}>
             <span className={contentClass.join(" ")}>{props.label}</span>
@@ -35,6 +49,7 @@ const input = (props) => {
     case "inputFormated":
       inputElement = (
         <>
+        {renderError(props.message)}
           <Cleave
             options={{
               numeral: true,
@@ -43,6 +58,7 @@ const input = (props) => {
             className={inputClasses.join(" ")}
             value={props.value}
             onChange={props.changed}
+            onBlur={handleBlur}
             placeholder={props.placeholder}
           />
           <label className={labelClass.join(" ")}>
@@ -118,4 +134,4 @@ const input = (props) => {
   return <div className="Input">{inputElement}</div>;
 };
 
-export default input;
+export default Input;

@@ -16,15 +16,15 @@ const handleFilteringAndSorting = (tools, allCustomers) => {
     .filter((el) =>
       el.customerData.companyName.toLowerCase().includes(searchQuery)
     )
-    .filter((elm, i, arr) =>
-      filterQueryOne.length
-        ? filterQueryOne.some((k) => k.includes(elm.customerData.size))
-        : arr
+    .filter((elm) =>
+      Object.values(filterQueryOne).some((item) => item)
+        ? filterQueryOne[elm.customerData.size]
+        : true
     )
-    .filter((elem, idx, array) =>
-      filterQueryTwo.length
-        ? filterQueryTwo.some((k) => k.includes(elem.customerData.industry))
-        : array
+    .filter((elem) =>
+      Object.values(filterQueryTwo).some((item) => item)
+        ? filterQueryTwo[elem.customerData.industry]
+        : true
     );
 
   let sortArr = [];

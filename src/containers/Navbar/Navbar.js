@@ -22,7 +22,7 @@ const Navbar = (props) => {
     default:
       title = "Browse Your Customer";
   }
-  console.log(props);
+
   return (
     <div className="Navbar">
       <div className="LogoutSign">
