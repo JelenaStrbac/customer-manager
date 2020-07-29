@@ -27,7 +27,7 @@ export const checkValidity = (value, rules) => {
   }
 
   if (rules.isPhone) {
-    const pattern = /^(\+381)?(\s|-|\/)?(([0-9]){2}){1}(\s|-|\/)?(([0-9])\d{6}|([0-9])\d{5}){1}$/;
+    const pattern = /^(((\+381)(\s|-|\/)?(([0-9]){2}){1})|((0){1}([1-9]){2}))(\s|-|\/)?(([0-9])\d{6}|([0-9])\d{5}){1}$/;
     isValid = pattern.test(value) && isValid;
   }
 

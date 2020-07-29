@@ -25,6 +25,7 @@ const Auth = (props) => {
         required: true,
         isEmail: true,
       },
+      message: "Email must contain @ character.",
       valid: false,
       touched: false,
       icon: "envelope",
@@ -40,6 +41,7 @@ const Auth = (props) => {
         required: true,
         minLength: 6,
       },
+      message: "Password must have minimum 6 characters.",
       valid: false,
       touched: false,
       icon: "lock",
@@ -55,7 +57,7 @@ const Auth = (props) => {
 
     updatedFormElement.valid = checkValidity(
       updatedFormElement.value,
-      updatedFormElement.validation,
+      updatedFormElement.validation
     );
 
     updatedFormElement.touched = true;
@@ -94,6 +96,7 @@ const Auth = (props) => {
               value={el.config.value}
               shouldValidate={el.config.validation}
               invalid={!el.config.valid}
+              message={el.config.message}
               touched={el.config.touched}
               label={el.config.elementConfig.label}
               changed={(e) => inputChangedHandler(e, el.id)}
@@ -141,9 +144,7 @@ const Auth = (props) => {
           <div>
             <span className="LoginText">Login</span> to your account
           </div>
-          {props.error ? (
-            <ErrorMessage>{error}</ErrorMessage>
-          ) : null}
+          {props.error ? <ErrorMessage>{error}</ErrorMessage> : null}
           {form}
         </div>
       </div>
