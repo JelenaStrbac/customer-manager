@@ -7,6 +7,8 @@ import Logo from "../../components/Logo/Logo";
 import Icon from "../../components/UI/Icon/Icon";
 import Filter from "../Tools/Filter/Filter";
 import Sort from "../Tools/Sort/Sort";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 const Toolbar = (props) => {
   const location = useLocation();
@@ -23,14 +25,17 @@ const Toolbar = (props) => {
       </div>
 
       <div className="ToolbarIcons">
-        <Link to="/" className="ToolbarIcon">
-          <Icon icon="home" /> Home
-        </Link>
-        <Link to="/documentation" className="ToolbarIcon">
-          <Icon icon="file" /> Documentation
-        </Link>
+        <div className="ToolbarIcon" onClick={() => props.onResetAllFilters()}>
+          <Link to="/">
+            <Icon icon="home" /> Home
+          </Link>
+        </div>
+        <div className="ToolbarIcon">
+          <Link to="/documentation">
+            <Icon icon="file" /> Documentation
+          </Link>
+        </div>
       </div>
-
 
       {location.pathname === "/" ? (
         <>
@@ -41,4 +46,10 @@ const Toolbar = (props) => {
   );
 };
 
-export default Toolbar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onResetAllFilters: () => dispatch(actions.resetAllFilters()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Toolbar);
