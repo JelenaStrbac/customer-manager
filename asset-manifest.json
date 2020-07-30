@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/customer-manager/static/css/main.1abf650c.chunk.css",
-    "main.js": "/customer-manager/static/js/main.e9301080.chunk.js",
-    "main.js.map": "/customer-manager/static/js/main.e9301080.chunk.js.map",
+    "main.js": "/customer-manager/static/js/main.8441d5bb.chunk.js",
+    "main.js.map": "/customer-manager/static/js/main.8441d5bb.chunk.js.map",
     "runtime-main.js": "/customer-manager/static/js/runtime-main.966a8653.js",
     "runtime-main.js.map": "/customer-manager/static/js/runtime-main.966a8653.js.map",
     "static/js/2.39cf71e3.chunk.js": "/customer-manager/static/js/2.39cf71e3.chunk.js",
     "static/js/2.39cf71e3.chunk.js.map": "/customer-manager/static/js/2.39cf71e3.chunk.js.map",
     "index.html": "/customer-manager/index.html",
-    "precache-manifest.7fb780edd41cfb178a4849fa38355ea5.js": "/customer-manager/precache-manifest.7fb780edd41cfb178a4849fa38355ea5.js",
+    "precache-manifest.a26fa7946ceb3b06d1aa76f70b50a7ff.js": "/customer-manager/precache-manifest.a26fa7946ceb3b06d1aa76f70b50a7ff.js",
     "service-worker.js": "/customer-manager/service-worker.js",
     "static/css/main.1abf650c.chunk.css.map": "/customer-manager/static/css/main.1abf650c.chunk.css.map",
     "static/js/2.39cf71e3.chunk.js.LICENSE.txt": "/customer-manager/static/js/2.39cf71e3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.966a8653.js",
     "static/js/2.39cf71e3.chunk.js",
     "static/css/main.1abf650c.chunk.css",
-    "static/js/main.e9301080.chunk.js"
+    "static/js/main.8441d5bb.chunk.js"
   ]
 }
