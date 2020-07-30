@@ -33,7 +33,7 @@ export const checkValidity = (value, rules) => {
 
   if (rules.isPositive) {
     isValid =
-      (typeof value !== "number" ? parseInt(value.replace(",", "")) : value) >=
+      (typeof value !== "number" ? parseInt(value.replace(/,/g, "")) : value) >=
         0 && isValid;
   }
 

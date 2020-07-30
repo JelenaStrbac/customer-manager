@@ -429,7 +429,7 @@ const CustomerForm = (props) => {
       "shortTermLiabilities",
     ].forEach((k) =>
       typeof formData[k] !== "number"
-        ? (formData[k] = parseInt(formData[k].replace(",", "")))
+        ? (formData[k] = parseInt(formData[k].replace(/,/g, "")))
         : null
     ); // goal to submit numbers
 
