@@ -13,7 +13,10 @@ const Sort = (props) => {
         <span>Sort</span>
       </div>
       <div className="Select">
-        <select defaultValue="" onChange={(e) => props.onSort(e.target.value)}>
+        <select
+          value={props.sortQueryFromRedux || ""}
+          onChange={(e) => props.onSort(e.target.value)}
+        >
           <option value="" disabled>
             Sort by:
           </option>
@@ -27,10 +30,16 @@ const Sort = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    sortQueryFromRedux: state.tools.sortQuery,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onSort: (query) => dispatch(actions.sortQuery(query)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Sort);
+export default connect(mapStateToProps, mapDispatchToProps)(Sort);

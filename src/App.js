@@ -15,7 +15,7 @@ const App = (props) => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
           <Route path="/auth" exact component={Auth} />

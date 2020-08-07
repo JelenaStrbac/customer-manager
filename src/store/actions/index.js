@@ -40,4 +40,5 @@ export {
   sortQuery,
   filterQueryOne,
   filterQueryTwo,
+  resetAllFilters,
 } from "./tools";

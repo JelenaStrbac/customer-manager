@@ -1,24 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Checkboxes.scss";
 import Checkbox from "../../../../components/UI/Input/Checkbox/Checkbox";
+import { connect } from "react-redux";
 
 const Checkboxes = (props) => {
-  const [checkedItems, setCheckedItems] = useState({});
-
   const handleChange = (e) => {
-    const updatedItems = {
-      ...checkedItems,
-      [e.target.name]: e.target.checked,
-    };
-    const checkedValuesArr = [];
-    for (let key in updatedItems) {
-      if (updatedItems[key]) {
-        checkedValuesArr.push(key);
-      }
-    }
-    setCheckedItems(updatedItems);
-    props.onCheck(checkedValuesArr);
+    props.onCheck(e.target.name);
   };
 
   return (
@@ -31,7 +19,10 @@ const Checkboxes = (props) => {
               <div>{el.name}</div>
               <Checkbox
                 name={el.name}
-                checked={checkedItems[el.name]}
+                checked={
+                  props.filterQueryOneFromRedux[el.name] ||
+                  props.filterQueryTwoFromRedux[el.name]
+                }
                 onChange={handleChange}
               />
               <span className="Checkmark"></span>
@@ -43,4 +34,11 @@ const Checkboxes = (props) => {
   );
 };
 
-export default Checkboxes;
+const mapStateToProps = (state) => {
+  return {
+    filterQueryOneFromRedux: state.tools.filterQueryOne,
+    filterQueryTwoFromRedux: state.tools.filterQueryTwo,
+  };
+};
+
+export default connect(mapStateToProps, null)(Checkboxes);

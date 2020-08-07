@@ -54,7 +54,7 @@ const Customer = (props) => {
         <div className="CustomerContent">
           <div>
             <b>Turnover:</b>{" "}
-            {`RSD ${(props.operatingRevenue / 1000).toFixed(1)} mil.`}
+            {`RSD ${(props.operatingRevenue / 1000).toLocaleString()} mil.`}
           </div>
           <div>
             <b>EBIT margin:</b>{" "}

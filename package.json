@@ -2,6 +2,7 @@
   "name": "customer-manager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://JelenaStrbac.github.io/customer-manager",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/react": "^10.4.7",
@@ -24,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +46,7 @@
     "autoprefixer": "^9.8.5",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "msw": "^0.19.5",
+    "gh-pages": "^3.1.0",
     "postcss-loader": "^3.0.0"
   }
 }

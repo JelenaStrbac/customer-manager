@@ -30,3 +30,10 @@ export const filterQueryTwo = (query) => {
     query,
   };
 };
+
+// reset all filters
+export const resetAllFilters = () => {
+  return {
+    type: actionTypes.RESET_ALL_FILTERS,
+  };
+};

@@ -20,12 +20,11 @@ const Home = () => {
 
   const toolbarToggleHandler = () => {
     setToolbarIsVisible(!toolbarIsVisible);
-    console.log(toolbarIsVisible);
   };
 
   return (
     <div className="Home">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Backdrop
           open={toolbarIsVisible}
           toolbarClosedHandler={toolbarClosedHandler}

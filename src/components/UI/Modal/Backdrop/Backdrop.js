@@ -4,7 +4,6 @@ import classNames from "classnames";
 import "./Backdrop.scss";
 
 const Backdrop = (props) => {
-  console.log(props);
   return (
     <div
       className={classNames("Backdrop", {
