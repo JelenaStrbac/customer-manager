@@ -46,7 +46,7 @@ describe("Auth", () => {
     expect(passwordInput).toBeInTheDocument();
   });
 
-  test("Renders Auth component correctly", async () => {
+  test("Keeps data about email and password in local storage", async () => {
     const { getByTestId, getByText } = render(<Auth />);
 
     const container = getByTestId("auth");
