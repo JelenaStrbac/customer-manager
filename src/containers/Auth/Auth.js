@@ -130,7 +130,7 @@ const Auth = (props) => {
   }
 
   return (
-    <div className="Auth">
+    <div className="Auth" data-testid="auth">
       {props.isAuthenticated ? <Redirect to="/" /> : null}
       <Logo />
       <div className="WelcomeAndForm">

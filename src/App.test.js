@@ -1,9 +1,15 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from "../../utils/test-utils";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import App from "./App";
+
+describe("App", () => {
+  test("Renders App component correctly - Login page if not authenticated", () => {
+    const isAuthenticated = false;
+    
+    render(<App />);
+    const emailInputField = screen.getByLabelText('email');
+    console.log(emailInputField)
+  });
 });
