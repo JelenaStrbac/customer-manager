@@ -20,15 +20,15 @@ export function* authUserSaga(action) {
     "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBsYNXD4YFAmfFwwDB1BScL105tr_FpOBo";
 
   try {
-    const response = yield call(() => (axios.post(url, data)));
+    const response = yield call(() => axios.post(url, data));
 
     // local storage
     const expirationDate = yield new Date(
       new Date().getTime() + response.data.expiresIn * 1000
     );
-    yield call([localStorage, 'setItem'], "token", response.data.idToken)
-    yield call([localStorage, 'setItem'], "expirationDate", expirationDate)
-    yield call([localStorage, 'setItem'], "userId", response.data.localId)
+    yield call([localStorage, "setItem"], "token", response.data.idToken);
+    yield call([localStorage, "setItem"], "expirationDate", expirationDate);
+    yield call([localStorage, "setItem"], "userId", response.data.localId);
 
     // AUTH SUCCESS
     yield put(
@@ -37,6 +37,7 @@ export function* authUserSaga(action) {
     // AUTH CHECK TIMEOUT
     yield put(actions.checkAuthTimeout(response.data.expiresIn));
   } catch (error) {
+    console.log(error);
     // AUTH FAIL
     yield put(actions.authFail(error.response.data.error));
   }
@@ -50,9 +51,9 @@ export function* checkAuthTimeoutSaga(action) {
 
 // 3.
 export function* logoutSaga(action) {
-  yield call([localStorage, 'removeItem'], "token")
-  yield call([localStorage, 'removeItem'], "expirationDate")
-  yield call([localStorage, 'removeItem'], "userId")
+  yield call([localStorage, "removeItem"], "token");
+  yield call([localStorage, "removeItem"], "expirationDate");
+  yield call([localStorage, "removeItem"], "userId");
   yield put(actions.logoutSucced());
 }
 

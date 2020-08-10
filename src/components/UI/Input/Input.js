@@ -30,8 +30,9 @@ const Input = (props) => {
     case "input":
       inputElement = (
         <>
-        {renderError(props.message)}
+          {renderError(props.message)}
           <input
+            id={props.elementConfig.label}
             autoComplete="off"
             className={inputClasses.join(" ")}
             {...props.elementConfig}
@@ -40,7 +41,10 @@ const Input = (props) => {
             placeholder={props.placeholder}
             onBlur={handleBlur}
           />
-          <label className={labelClass.join(" ")}>
+          <label
+            className={labelClass.join(" ")}
+            htmlFor={props.elementConfig.label}
+          >
             <span className={contentClass.join(" ")}>{props.label}</span>
           </label>
         </>
@@ -49,7 +53,7 @@ const Input = (props) => {
     case "inputFormated":
       inputElement = (
         <>
-        {renderError(props.message)}
+          {renderError(props.message)}
           <Cleave
             options={{
               numeral: true,

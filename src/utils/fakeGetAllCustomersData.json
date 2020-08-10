@@ -1,0 +1,54 @@
+[
+  {
+    "customerData": {
+      "address": "Prva juzna radna 3",
+      "companyName": "JELENA STRBAC",
+      "currentAssets": 6132758,
+      "email": "posta@lidl.rs",
+      "employees": "1088",
+      "equity": 27294072,
+      "financialExpenses": 27772,
+      "financialRevenue": 19590,
+      "fixedAssets": 26787125,
+      "industry": "Other",
+      "longTermLiabilities": 16434,
+      "operatingExpenses": 16561163,
+      "operatingRevenue": 11470200,
+      "otherExpenses": 612528,
+      "otherRevenue": 223580,
+      "phone": "+381 11 6554000",
+      "regNumber": "20699264",
+      "shortTermLiabilities": 5609377,
+      "size": "Micro",
+      "taxation": 17940,
+      "website": "https://www.lidl.rs/"
+    },
+    "userId": "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2"
+  },
+  {
+    "customerData": {
+      "address": "Jurija Gagarina 14, Beograd",
+      "companyName": "PETAR TODOROVIC",
+      "currentAssets": 41685215,
+      "email": "office@delhaize.rs",
+      "employees": "12579",
+      "equity": 58851020,
+      "financialExpenses": 35797,
+      "financialRevenue": 764518,
+      "fixedAssets": 44578559,
+      "industry": "Other",
+      "longTermLiabilities": 2077230,
+      "operatingExpenses": 97090660,
+      "operatingRevenue": 104869310,
+      "otherExpenses": 3600056,
+      "otherRevenue": 1094123,
+      "phone": "+381 11 7153400",
+      "regNumber": "17569171",
+      "shortTermLiabilities": 25335524,
+      "size": "Large",
+      "taxation": 826424,
+      "website": "https://www.maxi.rs/"
+    },
+    "userId": "hM2zJjDOcjVDCRIfs8Ljy2Dbz0U2"
+  }
+]

@@ -9,7 +9,7 @@ import Customer from "../../../components/Customers/Customer";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Pagination from "../../Tools/Pagination/Pagination";
 
-const handleFilteringAndSorting = (tools, allCustomers) => {
+export const handleFilteringAndSorting = (tools, allCustomers) => {
   const { searchQuery, sortQuery, filterQueryOne, filterQueryTwo } = tools; // tools destructured from props
 
   let filteredCustomersArray = allCustomers
@@ -144,7 +144,7 @@ const CustomersList = (props) => {
           pageCount={paginationDetails.pageCount}
           handlePageClick={handlePageClick}
         />
-        <div className="CustomersBreakdown">
+        <div className="CustomersBreakdown" data-testid="CustomersBreakdown">
           {showAllCustomers ? showAllCustomers : null}
         </div>
       </div>
