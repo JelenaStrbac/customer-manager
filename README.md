@@ -6,28 +6,28 @@
 
 - HTML and CSS / SCSS;
 - ReactJS (React hooks and React Router DOM), Redux, Redux Saga;
-- React testing with Jest - 🔜 to be updated!
+- React testing with Jest;
 - Firebase.
 
 ## Contents
 
 - **Login page (public)**
-    - Login with front end validation. 
-    - Every time a user signs in, the user credentials are sent to the Firebase Authentication backend and exchanged for a Firebase ID token. Firebase ID tokens are kept in local storage (note that these tokes are short lived and last for an hour). 
+  - Login with front end validation.
+  - Every time a user signs in, the user credentials are sent to the Firebase Authentication backend and exchanged for a Firebase ID token. Firebase ID tokens are kept in local storage (note that these tokes are short lived and last for an hour).
 - **Home page (private)**
-    - It's paginated and contains list of all customers fetched from Firebase.
-    - Search, sort and filter tools are available.
+  - It's paginated and contains list of all customers fetched from Firebase.
+  - Search, sort and filter tools are available.
 - **Create customer page (private)**
-    - Contains application form divided in three sections - main info, industry and classification and financial data.
-    - Form validation provided (all fields are required, textual fields must have min 3 characters, all numerals must be positive, phone and email validation).
+  - Contains application form divided in three sections - main info, industry and classification and financial data.
+  - Form validation provided (all fields are required, textual fields must have min 3 characters, all numerals must be positive, phone and email validation).
 - **View customer page (private)**
-    - Breakdown of particular customer's data. Beside the ones required by application form, also contains numerous financial ratios that are calculated on the basis of provided data. 
-    - Contains buttons for editing and deleting customer.
-    - By clicking on the delete button user opens a delete modal. Deleting from Firebase is permanent.
-- **Edit customer page (private)** 
-    - Shares the same application form and UI as Create customer page.
-- **Documentation page (private)** 
-    - Text with explanations how to use and interpret results obtained from the app.
+  - Breakdown of particular customer's data. Beside the ones required by application form, also contains numerous financial ratios that are calculated on the basis of provided data.
+  - Contains buttons for editing and deleting customer.
+  - By clicking on the delete button user opens a delete modal. Deleting from Firebase is permanent.
+- **Edit customer page (private)**
+  - Shares the same application form and UI as Create customer page.
+- **Documentation page (private)**
+  - Text with explanations how to use and interpret results obtained from the app.
 
 ## Usage
 
