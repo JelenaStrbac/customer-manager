@@ -32,12 +32,12 @@
 
 <div align="center" markdown="1">
 
-<img src="./src/assets/login-page.png" alt="login-page" width="200">
-<img src="./src/assets/home-page.png" alt="home-page" width="200">
-<img src="./src/assets/create-page.png" alt="create-page" width="200">
-<img src="./src/assets/view-page.png" alt="view-page" width="200">
-<img src="./src/assets/edit-page.png" alt="edit-page" width="200">
-<img src="./src/assets/documentation-page.png" alt="documentation-page" width="200">
+<img src="./src/assets/login-page.png" alt="login-page" width="250">
+<img src="./src/assets/home-page.png" alt="home-page" width="250">
+<img src="./src/assets/create-page.png" alt="create-page" width="250">
+<img src="./src/assets/view-page.png" alt="view-page" width="250">
+<img src="./src/assets/edit-page.png" alt="edit-page" width="250">
+<img src="./src/assets/documentation-page.png" alt="documentation-page" width="250">
 
 </div>
 
