@@ -47,8 +47,8 @@ describe("Customers List", () => {
   });
 });
 
-describe("`handleFilteringAndSorting` works as expected", () => {
-  test("works correctly with default filters", () => {
+describe("handleFilteringAndSorting", () => {
+  test("checks if all given customers are returned with default filters", () => {
     const result = handleFilteringAndSorting(
       defaultTools,
       fakeGetAllCustomersData
